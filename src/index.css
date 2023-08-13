@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--fs-0: clamp(1rem, calc(0.91rem + 0.43vw), 1.25rem);
+
+	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+	font-size: var(--fs-0);
+	line-height: 24px;
+	font-weight: 400;
+	color: var(--text);
+	box-sizing: border-box;
+	/* color-scheme: light dark; */
+}
+
+@layer components {
+	.btn-primary {
+		@apply bg-primary-500 py-2 px-4 text-white font-semibold rounded border-transparent transition-all hover:bg-secondary-500 hover:text-black focus:outline-secondary-500 focus:border-transparent;
+	}
+	.btn-secondary {
+		@apply bg-secondary-500 py-2 px-4 text-black font-semibold rounded transition-all hover:bg-primary-500 hover:text-white;
+	}
+	.input-label {
+		@apply text-base font-medium
+	}
+	.input {
+		@apply w-full bg-transparent py-2 px-4 rounded-md border border-slate-400 shadow caret-primary-500 outline-none focus:border-primary-500 focus:border
+	}
+	.dashboard {
+		@apply grid grid-cols-12
+	}
+	.dashboard-nav {
+		@apply col-span-3 bg-secondary-200 px-4 transition lg:fixed lg:top-0 lg:left-0 lg:bottom-0 lg:max-w-[300px] 
+	}
+	.dashboard-main {
+		@apply col-start-4 col-end-13 lg:col-start-1
+	}
+	.nav-link {
+		@apply grid grid-flow-col gap-4 items-center justify-start w-full p-4 rounded-xl hover:bg-secondary-500 hover:text-black
+	}
+	.nav-logout-btn {
+		@apply grid grid-flow-col gap-4 items-center justify-start w-full p-4 rounded-xl hover:bg-red-500 hover:text-white
+	}
+	.opaque {
+		@apply bg-black opacity-30
+	}
+}
+/* @media (prefers-color-scheme: light) {
+
+} */
