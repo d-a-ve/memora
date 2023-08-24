@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getInputError } from "../../Utils/helpers"
+import getInputError from "../../Utils/getInputError";
 import { InputWithLabelPropsType } from "./types";
 import { Input } from "./Input";
 import { InputWithEyeIcon } from "./InputWithEyeIcon";

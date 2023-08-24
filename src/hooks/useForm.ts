@@ -1,18 +1,78 @@
-import { useState, ChangeEvent } from "react";
-import { LOGIN_DEFAULT_VALUES_TYPE } from "../types";
+import { FormEvent } from "react";
+import useAuthApi from "./useAuthApi";
+import getValidFormData from "../Utils/getValidFormData";
+import { toastError } from "../Utils/toastNotifs";
+import { useNavigate } from "react-router-dom";
+import {
+	createUserAccount,
+	createUserSession,
+	getUserAccount,
+} from "../appwrite/utils/userSession";
 
-export default function useForm(defaultValues:LOGIN_DEFAULT_VALUES_TYPE) {
-  const [inputValues, setInputValues] = useState(defaultValues)
+export default function useForm() {
+	const { setCurrentUser } = useAuthApi();
+	const navigate = useNavigate();
 
-  const onInputValuesChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setInputValues((prevValue) => ({
-			...prevValue,
-			[e.target.name]: e.target.value,
-		}));
+	const signupSubmit = async (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const { formData, isFormValid } = getValidFormData(e);
+		const [nameField, emailField, passwordField, confirmPasswordField] =
+			formData;
+		const doesPasswordMatch = passwordField[1] === confirmPasswordField[1];
+
+		try {
+			if (isFormValid && doesPasswordMatch) {
+				await createUserAccount(
+					emailField[1] as string,
+					passwordField[1] as string,
+					nameField[1] as string
+				);
+				await createUserSession(
+					emailField[1] as string,
+					passwordField[1] as string
+				);
+				console.log(setCurrentUser);
+				const userAccount = await getUserAccount();
+				console.log("User Account", userAccount);
+				setCurrentUser(userAccount);
+				navigate("/dashboard");
+			} else {
+        toastError(
+          "Cannot submit the form. Please check the highlighted fields for errors and try again."
+        );
+      }
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
-  return {
-    inputValues,
-    onInputValuesChange
-  }
+	const loginSubmit = async (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const { formData, isFormValid } = getValidFormData(e);
+		const [emailField, passwordField] = formData;
+
+		try {
+			if (isFormValid) {
+				await createUserSession(
+					emailField[1] as string,
+					passwordField[1] as string
+				);
+				const userAccount = await getUserAccount();
+				console.log("User Account", userAccount);
+				setCurrentUser(userAccount);
+				navigate("/dashboard");
+			} else {
+        toastError(
+          "Cannot submit the form. Please check the highlighted fields for errors and try again."
+        );
+      }
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	return {
+		signupSubmit,
+		loginSubmit,
+	};
 }

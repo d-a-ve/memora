@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Input } from "./Input";
 import { InputPropsType } from "./types";
-import { getSVGFromString } from "../../Utils/getSVGFromString";
+import getSVGFromString from "../../Utils/getSVGFromString";
 
 const eyeIcon = getSVGFromString("eye", 24, 24)
 

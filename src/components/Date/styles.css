@@ -71,7 +71,7 @@
 	background: url("./assets/balloon.svg") no-repeat center;
 	background-size: 80%;
 	/* background-color: #b204f1; */
-	color: #eee
+	/* color: #eee */
 }
 
 @media screen and (max-width: 320px) {

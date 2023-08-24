@@ -2,10 +2,16 @@ import { useState } from "react";
 // import { isSameMonth } from "date-fns";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "./styles.css"
+import "./styles.css";
 import { DatePickerHeader } from "./DatePickerHeader";
 
-export function DatePickerComponent() {
+export function DatePickerComponent({
+	inline,
+	isReadOnly,
+}: {
+	inline: boolean;
+	isReadOnly: boolean;
+}) {
 	const [startDate, setStartDate] = useState<Date | null>(new Date());
 	const dates = [
 		new Date(2023, 6, 1),
@@ -29,8 +35,8 @@ export function DatePickerComponent() {
 			highlightDates={dates}
 			injectTimes={dates}
 			closeOnScroll={true}
-			// inline={true}
-			// readOnly={true}
+			inline={inline}
+			readOnly={isReadOnly}
 			// minDate={new Date(1900)}
 			className="input"
 			yearDropdownItemNumber={12}
@@ -41,8 +47,8 @@ export function DatePickerComponent() {
 			scrollableYearDropdown={true}
 			// calendarClassName="bg-red-500"
 			// dayClassName={(date) => {
-      //   console.log(date)
-			// 	return isSameMonth(date, new Date()) ? "text-black" : "text-gray-300"
+			// 	console.log(date);
+			// 	return isSameMonth(date, new Date()) ? "text-black" : "text-gray-300";
 			// }}
 			renderCustomHeader={({
 				date,

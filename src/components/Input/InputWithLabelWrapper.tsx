@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getInputError } from "../../Utils/helpers";
+import getInputError from "../../Utils/getInputError";
 import { InputWithLabelWrapperPropsType } from "./types";
 import InputError from "./InputError";
 import { Input } from "./Input";

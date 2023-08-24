@@ -1,73 +1,59 @@
-import { FormEvent } from "react";
+// import { FormEvent } from "react";
 import { Link } from "react-router-dom";
-import {
-	signInWithEmailAndPassword,
-	AuthError,
-	AuthErrorCodes,
-} from "firebase/auth";
-import { toast } from "react-toastify";
-import { auth } from "../../firebase/config";
-import { getInputError } from "../../Utils/helpers";
+// import { authAccount } from "../../appwrite/config";
+// import getInputError from "../../Utils/getInputError";
 import { LOGIN_INPUT_FIELDS } from "./constants";
 import { AUTHMETHODS } from "../../constants";
-
+// import { toast } from "react-toastify";
 import { InputWithLabel, InputWithLabelWrapper } from "../../components/Input";
 import { FormFooter, FormHeader, FormWrapper } from "../../components/Form";
 import { ActionButtonWithIcon } from "../../components/Button/ActionButtonWithIcon";
 import { AuthLayout } from "../../components/Layout";
 import ToastNotif from "../../components/Toast";
+import useForm from "../../hooks/useForm";
 
 export default function Login() {
+	const { loginSubmit } = useForm();
 	//  const [wasSubmitted, setWasSubmitted] = useState(false);
 
-function handleSubmit(e: FormEvent<HTMLFormElement>) {
-	const toastError = () =>
-		toast.error(
-			"Cannot submit the form. Please check the highlighted fields for errors and try again."
-		);
+	// function handleSubmit(e: FormEvent<HTMLFormElement>) {
+	// 	const toastError = () =>
+	// 		toast.error(
+	// 			"Cannot submit the form. Please check the highlighted fields for errors and try again."
+	// 		);
 
-	e.preventDefault();
-	const formData = new FormData(e.currentTarget);
-	const formFieldValuesObj = Object.fromEntries(formData.entries());
-	const formFieldvaluesArr = Object.entries(formFieldValuesObj);
-	const isFormValid = formFieldvaluesArr
-		.map((field) => getInputError(field[0], field[1] as string))
-		.every((value) => value.isValid);
-	const [emailField, passwordField] =
-		formFieldvaluesArr;
+	// 	e.preventDefault();
+	// 	const formData = new FormData(e.currentTarget);
+	// 	const formFieldValuesObj = Object.fromEntries(formData.entries());
+	// 	const formFieldvaluesArr = Object.entries(formFieldValuesObj);
+	// 	const isFormValid = formFieldvaluesArr
+	// 		.map((field) => getInputError(field[0], field[1] as string))
+	// 		.every((value) => value.isValid);
+	// 	const [emailField, passwordField] = formFieldvaluesArr;
 
-	console.log("formEntries", formData.entries(), "formFieldValuesArr", formFieldvaluesArr);
-	// setWasSubmitted(true);
-	if (isFormValid) {
-		console.log("logged in");
-		signInWithEmailAndPassword(
-			auth,
-			emailField[1] as string,
-			passwordField[1] as string
-		)
-			.then((userCredential) => {
-				console.log(userCredential);
-				toast.success("Logged in")
-			})
-			.catch((error: AuthError) => {
-				console.log(error.message)
-				let errorMessage;
-				switch (error.code) {
-					case AuthErrorCodes.EMAIL_EXISTS:
-						errorMessage =
-							"This email already exists. Please login or try again!";
-						break;
-					default:
-						errorMessage = "Invalid!";
-				}
-				console.log(errorMessage)
-				toast.error(error.message);
-			});
-		return;
-	}
-	toastError();
-	console.log("Error");
-}
+	// 	console.log(
+	// 		"formEntries",
+	// 		formData.entries(),
+	// 		"formFieldValuesArr",
+	// 		formFieldvaluesArr
+	// 	);
+	// 	// setWasSubmitted(true);
+	// 	if (isFormValid) {
+	// 		console.log("logged in");
+	// 		console.time("Begin");
+	// 		const createLoginSessionPromise = authAccount.createEmailSession(
+	// 			emailField[1] as string,
+	// 			passwordField[1] as string
+	// 		);
+	// 		createLoginSessionPromise
+	// 			.then((response) => console.log("Logged in", response))
+	// 			.catch((error) => console.log("Something went wrong", error));
+	// 		console.timeEnd("Begin");
+	// 		return;
+	// 	}
+	// 	toastError();
+	// 	console.log("Error");
+	// }
 	return (
 		<AuthLayout>
 			<FormHeader
@@ -76,7 +62,7 @@ function handleSubmit(e: FormEvent<HTMLFormElement>) {
 				subTitleCta="Sign up"
 				ctaLinkTo="/signup"
 			/>
-			<FormWrapper buttonText="Login" submitFunction={handleSubmit}>
+			<FormWrapper buttonText="Login" submitFunction={loginSubmit}>
 				{LOGIN_INPUT_FIELDS.map(
 					({
 						id,
@@ -86,7 +72,7 @@ function handleSubmit(e: FormEvent<HTMLFormElement>) {
 						twoLabelElements,
 						isRequired,
 						placeHolder,
-						isPassword
+						isPassword,
 					}) => {
 						if (twoLabelElements) {
 							return (
@@ -124,7 +110,7 @@ function handleSubmit(e: FormEvent<HTMLFormElement>) {
 					<ActionButtonWithIcon
 						key={method.id}
 						buttonText={method.name}
-						clickFunction={method.onClick}
+						clickFunction={method.clickFunction}
 						iconUrl={method.icon}
 					/>
 				))}

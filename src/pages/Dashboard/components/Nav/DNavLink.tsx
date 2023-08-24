@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { getSVGFromString } from "../../../../Utils/getSVGFromString";
+import getSVGFromString from "../../../../Utils/getSVGFromString";
 import { DNavLinkPropsType } from "./types";
 
 export default function DNavLink({ icon, text, to }: DNavLinkPropsType) {

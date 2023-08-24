@@ -9,8 +9,8 @@ export default function DNavController({
 		<span
 			onClick={clickFunction}
 			title={title}
-			className="cursor-pointer hidden lg:inline btn-secondary">
-			Icon
+			className="cursor-pointer hidden lg:inline">
+			{icon}
 		</span>
 	);
 }

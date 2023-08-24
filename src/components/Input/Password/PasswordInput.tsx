@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { InputWithEyeIcon } from "../InputWithEyeIcon";
 import InputError from "./../InputError";
-import { getInputError } from "../../../Utils/helpers";
+import getInputError from "../../../Utils/getInputError";
 import { usePassword } from "./hooks/usePassword";
 import { useSetPassword } from "./hooks/useSetPassword";
 

@@ -1,5 +1,5 @@
 import DNavController from "./DNavController";
-import { getSVGFromString } from "../../../../Utils/getSVGFromString";
+import getSVGFromString from "../../../../Utils/getSVGFromString";
 import { DNavHeaderPropsType } from "./types";
 
 export default function DNavHeader({ setNavOpen }: DNavHeaderPropsType) {

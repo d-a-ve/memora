@@ -1,19 +1,19 @@
-import { googleSignIn, facebookSignIn } from "./firebase/auth";
+import { signInWithOAuth } from "./appwrite/utils/userSession";
 
 export const AUTHMETHODS = [
-  {
-    id: 1,
-    name: "Google",
-    icon: "./assets/google.svg",
-		onClick: () => googleSignIn()
-  },
-  {
-    id: 2,
-    name: "Facebook",
-    icon: "./assets/facebook.svg",
-		onClick: () => facebookSignIn()
-  }
-]
+	{
+		id: 1,
+		name: "Google",
+		icon: "./assets/google.svg",
+		clickFunction: () => signInWithOAuth("google"),
+	},
+	{
+		id: 2,
+		name: "Facebook",
+		icon: "./assets/facebook.svg",
+		clickFunction: () => signInWithOAuth("facebook"),
+	},
+];
 
 export const LOGIN_DEFAULT_VALUES = {
 	email: "",

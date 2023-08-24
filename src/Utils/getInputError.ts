@@ -1,4 +1,4 @@
-export function getInputError(inputType: string, value: string) {
+export default function getInputError(inputType: string, value: string) {
 	let errorMessage: string;
 	let pattern: RegExp;
 	switch (inputType) {
@@ -32,12 +32,4 @@ export function getInputError(inputType: string, value: string) {
 	}
 
 	return { isValid: pattern.test(value), errorMessage };
-}
-
-export function range(start:number, end:number, step:number) {
-		const ans = [];
-		for (let i = start; i <= end; i += step) {
-			ans.push(i);
-		}
-		return ans;
 }
