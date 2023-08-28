@@ -15,14 +15,12 @@ export function Signup() {
 		<AuthLayout>
 			<FormHeader
 				headerTitle="Sign up for an account"
-				subTitle="Already have an account? "
+				subTitle="Already have an account?"
 				subTitleCta="Login"
 				ctaLinkTo="/login"
 			/>
 			<FormWrapper
-				buttonText="Sign up"
-				submitFunction={signupSubmit}
-				password={<Password />}>
+				submitFunction={signupSubmit}>
 				{SIGNUP_INPUT_FIELDS.map(
 					({ id, labelText, labelFor, inputType, isRequired, placeHolder }) => {
 						return (
@@ -37,6 +35,10 @@ export function Signup() {
 						);
 					}
 				)}
+				<Password />
+				<div className="mt-2">
+					<button className="btn-primary w-full">Sign up</button>
+				</div>
 			</FormWrapper>
 			<FormFooter>
 				{AUTHMETHODS.map((method) => (

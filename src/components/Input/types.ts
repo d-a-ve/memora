@@ -5,12 +5,13 @@ export type InputPropsType = {
 	inputType: string;
 	labelFor: string;
 	required: boolean;
-	placeHolder?: string;
 	inputValue: string;
+	placeHolder?: string;
+	displayError?: boolean;
+	isPassword?: boolean;
+	className?: string;
 	changeHandler: (e: ChangeEvent<HTMLInputElement>) => void;
-	blurHandler: () => void;
-	displayError: boolean;
-	isPassword?: boolean
+	blurHandler?: () => void;
 };
 
 export type InputWithLabelPropsType = {

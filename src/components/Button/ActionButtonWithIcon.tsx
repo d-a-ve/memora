@@ -1,11 +1,12 @@
 import { ActionButtonWithIconProps } from "./types";
 
-export function ActionButtonWithIcon({ buttonText, clickFunction, iconUrl }: ActionButtonWithIconProps) {
+export function ActionButtonWithIcon({ buttonText, clickFunction, iconUrl, buttonType }: ActionButtonWithIconProps) {
 	// const buttonClassName = isPrimary ? "btn-primary" : "btn-secondary";
 
 	return (
 		<div>
 			<button
+			type={buttonType}
 				className="w-full flex justify-center border-transparent border bg-secondary-500 text-black py-2 rounded hover:border-primary-500"
 				onClick={clickFunction}>
 				<span className="grid grid-cols-[30px_1fr] justify-center">

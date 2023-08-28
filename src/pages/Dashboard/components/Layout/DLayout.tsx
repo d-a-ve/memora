@@ -10,7 +10,7 @@ export default function DLayout({ children }: { children: ReactNode }) {
 			<Header logoComponent={<Logo isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />} />
 			<div className="dashboard">
 				<DNav isNavOpen={isNavOpen}/>
-				<div className={`dashboard-main ${isNavOpen ? "lg:opaque" : ""}`}>
+				<div className={`dashboard-main pb-16 ${isNavOpen ? "lg:opaque" : ""}`}>
 					{children}
 				</div>
 			</div>

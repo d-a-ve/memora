@@ -1,13 +1,13 @@
 import { FormEvent } from "react";
-import useAuthApi from "./useAuthApi";
-import getValidFormData from "../Utils/getValidFormData";
-import { toastError } from "../Utils/toastNotifs";
 import { useNavigate } from "react-router-dom";
 import {
 	createUserAccount,
 	createUserSession,
 	getUserAccount,
 } from "../appwrite/utils/userSession";
+import useAuthApi from "./useAuthApi";
+import getValidFormData from "../Utils/getValidFormData";
+import { toastError } from "../Utils/toastNotifs";
 
 export default function useForm() {
 	const { setCurrentUser } = useAuthApi();

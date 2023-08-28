@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 // import { isSameMonth } from "date-fns";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,9 +8,11 @@ import { DatePickerHeader } from "./DatePickerHeader";
 export function DatePickerComponent({
 	inline,
 	isReadOnly,
+	customInput
 }: {
 	inline: boolean;
 	isReadOnly: boolean;
+	customInput?: ReactNode
 }) {
 	const [startDate, setStartDate] = useState<Date | null>(new Date());
 	const dates = [
@@ -29,7 +31,7 @@ export function DatePickerComponent({
 
 	return (
 		<DatePicker
-			showIcon
+
 			selected={startDate}
 			onChange={(date) => setStartDate(date)}
 			highlightDates={dates}
@@ -45,6 +47,7 @@ export function DatePickerComponent({
 			dateFormatCalendar="LLLL"
 			fixedHeight={true}
 			scrollableYearDropdown={true}
+			customInput={customInput}
 			// calendarClassName="bg-red-500"
 			// dayClassName={(date) => {
 			// 	console.log(date);

@@ -8,14 +8,15 @@ export function Input({
 	required,
 	inputValue,
 	placeHolder,
-  displayError
+  displayError,
+	className
 }: InputPropsType) {
 	return (
 		<input
 			onChange={changeHandler}
 			onBlur={blurHandler}
 			name={labelFor}
-			className="input"
+			className={className || "input"}
 			type={inputType}
 			id={`${labelFor}-input`}
 			required={required}

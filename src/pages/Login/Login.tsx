@@ -62,7 +62,7 @@ export default function Login() {
 				subTitleCta="Sign up"
 				ctaLinkTo="/signup"
 			/>
-			<FormWrapper buttonText="Login" submitFunction={loginSubmit}>
+			<FormWrapper submitFunction={loginSubmit}>
 				{LOGIN_INPUT_FIELDS.map(
 					({
 						id,
@@ -104,6 +104,9 @@ export default function Login() {
 						);
 					}
 				)}
+				<div className="mt-2">
+					<button type="submit" className="btn-primary w-full">Login</button>
+				</div>
 			</FormWrapper>
 			<FormFooter>
 				{AUTHMETHODS.map((method) => (

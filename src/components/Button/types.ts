@@ -1,5 +1,6 @@
 export type ButtonProps = {
 	buttonText: string;
+	buttonType?: "button" | "submit" | "reset";
 };
 
 export type LinkButtonProps = ButtonProps & {
@@ -8,7 +9,7 @@ export type LinkButtonProps = ButtonProps & {
 }
 
 export type ActionButtonProps = ButtonProps & {
-	clickFunction: () => void
+	clickFunction?: () => void,
 };
 
 export type ActionButtonWithIconProps = ActionButtonProps & {

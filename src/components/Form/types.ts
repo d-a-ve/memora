@@ -8,9 +8,6 @@ export type FormHeaderType = {
 };
 
 export type FormWrapperType = {
-	buttonText: string;
 	submitFunction: (e: FormEvent<HTMLFormElement>) => void;
 	children: ReactNode;
-	// eslint-disable-next-line no-undef
-	password?: JSX.Element;
 };

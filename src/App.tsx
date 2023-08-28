@@ -6,18 +6,24 @@ import {
 	Routes,
 	Route,
 } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import AuthContextProvider from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { OAuthRedirectRoute } from "./components/OAuthRedirectRoute";
 
-const Login = lazy(() => import("./pages/Login/Login"));
-const Signup = lazy(() => import("./pages/Signup"));
-const Overview = lazy(() => import("./pages/Dashboard/pages/Overview"));
-const UpcomingBirthdays = lazy(
-	() => import("./pages/Dashboard/pages/UpcomingBirthdays")
-);
-const Dashboard = lazy(() => import("./pages/Dashboard/pages/Dashboard"));
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard/pages/Dashboard";
+import Overview from "./pages/Dashboard/pages/Overview";
+import UpcomingBirthdays from "./pages/Dashboard/pages/UpcomingBirthdays";
+
+// const Login = lazy(() => import("./pages/Login/Login"));
+// const Signup = lazy(() => import("./pages/Signup"));
+// const Overview = lazy(() => import("./pages/Dashboard/pages/Overview"));
+// const UpcomingBirthdays = lazy(
+// 	() => import("./pages/Dashboard/pages/UpcomingBirthdays")
+// );
+// const Dashboard = lazy(() => import("./pages/Dashboard/pages/Dashboard"));
 
 // const router = createBrowserRouter([
 // 	{

@@ -6,7 +6,7 @@ export default function DatePickerButtonWithIcon({
   children
 }: DatePickerButtonWithIconPropsType) {
 	return (
-		<button className="w-4" onClick={clickHandler} disabled={isDisabled}>
+		<button type="button" className="w-4" onClick={clickHandler} disabled={isDisabled}>
 			{children}
 		</button>
 	);

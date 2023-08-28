@@ -25,10 +25,8 @@ export default function getInputError(inputType: string, value: string) {
 				"Passwords do not match. Please re-enter the same password in both fields.";
 			break;
 		default:
-			pattern =
-				/^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{6,}$/;
-			errorMessage =
-				"Value must contain at least one lowercase letter, uppercase letter, number, symbol each and must be at least 6 characters long";
+			pattern = /^[A-Za-z]+$/;
+			errorMessage = "Please enter a name";
 	}
 
 	return { isValid: pattern.test(value), errorMessage };

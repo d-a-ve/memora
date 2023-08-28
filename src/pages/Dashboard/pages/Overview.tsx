@@ -1,3 +1,4 @@
+import AddBirthday from "../components/Birthday/AddBirthday";
 import { DashboardBirthdayCalender } from "../components/Calender/DashboardBirthdayCalender";
 import { UpcomingBirthdaySection } from "../components/UpcomingBirthday/UpcomingBirthdaySection";
 
@@ -11,6 +12,7 @@ export default function Overview() {
 			<div>
         <UpcomingBirthdaySection />
       </div>
+      <AddBirthday />
 		</div>
 	);
 }
