@@ -4,10 +4,10 @@ import {
 	createUserAccount,
 	createUserSession,
 	getUserAccount,
-} from "../appwrite/utils/userSession";
+} from "@appwrite/utils/userSession";
 import useAuthApi from "./useAuthApi";
-import getValidFormData from "../Utils/getValidFormData";
-import { toastError } from "../Utils/toastNotifs";
+import getValidFormData from "@utils/getValidFormData";
+import { toastError } from "@utils/toastNotifs";
 
 export default function useForm() {
 	const { setCurrentUser } = useAuthApi();

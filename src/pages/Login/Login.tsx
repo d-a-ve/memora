@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 // import { authAccount } from "../../appwrite/config";
 // import getInputError from "../../Utils/getInputError";
 import { LOGIN_INPUT_FIELDS } from "./constants";
-import { AUTHMETHODS } from "../../constants";
+import { AUTHMETHODS } from "@constants";
 // import { toast } from "react-toastify";
-import { InputWithLabel, InputWithLabelWrapper } from "../../components/Input";
-import { FormFooter, FormHeader, FormWrapper } from "../../components/Form";
-import { ActionButtonWithIcon } from "../../components/Button/ActionButtonWithIcon";
-import { AuthLayout } from "../../components/Layout";
-import ToastNotif from "../../components/Toast";
-import useForm from "../../hooks/useForm";
+import { InputWithLabel, InputWithLabelWrapper } from "@components/Input";
+import { FormFooter, FormHeader, FormWrapper } from "@components/Form";
+import { ActionButtonWithIcon } from "@components/Button/ActionButtonWithIcon";
+import { AuthLayout } from "@components/Layout";
+import ToastNotif from "@components/Toast";
+import useForm from "@hooks/useForm";
 
 export default function Login() {
 	const { loginSubmit } = useForm();

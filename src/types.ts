@@ -35,3 +35,26 @@ export type UserType = {
 	phoneVerification: boolean;
 	prefs: Preferences;
 };
+
+export type databaseDocType = Record<string, unknown>;
+
+export type birthdaysAttrType = {
+	user_id: string;
+	person_name: string;
+	person_birthday: string;
+};
+
+export type documentType = {
+	$id: string;
+	$collectionId: string;
+	$databaseId: string;
+	$createdAt: string;
+	$updatedAt: string;
+	$permissions: string[];
+	[key: string]: any;
+};
+
+export type birthdayDataType = {
+	total: number;
+	documents: documentType[];
+};

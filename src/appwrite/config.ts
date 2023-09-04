@@ -1,4 +1,4 @@
-import { Client, Account, ID, Role } from "appwrite";
+import { Client, Account, ID, Databases, Query } from "appwrite";
 
 const client = new Client();
 
@@ -17,7 +17,8 @@ client
 // localhost instance
 // client.setEndpoint("http://localhost/v1").setProject("64e430bf8ee8c682c97e");
 
+export const db = new Databases(client)
 export const authAccount = new Account(client)
-export const uniqueId = ID.unique()
-export const role = Role
+export const uniqueId = ID.unique();
+export const query = Query;
 export default client

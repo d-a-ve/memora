@@ -1,12 +1,12 @@
 import { SIGNUP_INPUT_FIELDS } from "./constants";
-import { AUTHMETHODS } from "../../constants";
-import { InputWithLabel } from "../../components/Input";
-import { FormFooter, FormHeader, FormWrapper } from "../../components/Form";
-import { ActionButtonWithIcon } from "../../components/Button/ActionButtonWithIcon";
-import { AuthLayout } from "../../components/Layout";
-import { Password } from "../../components/Input/Password";
-import ToastNotif from "../../components/Toast";
-import useForm from "../../hooks/useForm";
+import { AUTHMETHODS } from "@constants";
+import { InputWithLabel } from "@components/Input";
+import { FormFooter, FormHeader, FormWrapper } from "@components/Form";
+import { ActionButtonWithIcon } from "@components/Button/ActionButtonWithIcon";
+import { AuthLayout } from "@components/Layout";
+import { Password } from "@components/Input/Password";
+import ToastNotif from "@components/Toast";
+import useForm from "@hooks/useForm";
 // import { authAccount } from "../../appwrite/config";
 
 export function Signup() {

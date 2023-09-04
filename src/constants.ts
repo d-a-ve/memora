@@ -1,4 +1,4 @@
-import { signInWithOAuth } from "./appwrite/utils/userSession";
+import { signInWithOAuth } from "@appwrite/utils/userSession";
 
 export const AUTHMETHODS = [
 	{

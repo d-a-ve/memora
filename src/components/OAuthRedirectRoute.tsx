@@ -1,4 +1,4 @@
-import { getOAuthSession } from "../appwrite/utils/userSession"
+import { getOAuthSession } from "@appwrite/utils/userSession"
 
 export function OAuthRedirectRoute() {
   const OAuthUserSession = async () => {

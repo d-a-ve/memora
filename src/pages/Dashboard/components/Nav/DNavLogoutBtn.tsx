@@ -1,7 +1,7 @@
-import getSVGFromString from "../../../../Utils/getSVGFromString";
-import useAuthApi from "../../../../hooks/useAuthApi";
-import { toastError } from "../../../../Utils/toastNotifs";
-import { deleteSession } from "../../../../appwrite/utils/userSession";
+import getSVGFromString from "@utils/getSVGFromString";
+import useAuthApi from "@hooks/useAuthApi";
+import { toastError } from "@utils/toastNotifs";
+import { deleteSession } from "@appwrite/utils/userSession";
 
 export default function DNavLogoutBtn() {
 	const { setCurrentUser } = useAuthApi();
