@@ -1,4 +1,4 @@
-import { Client, Account, ID, Databases, Query } from "appwrite";
+import { Client, Account, ID, Databases, Query, Avatars } from "appwrite";
 
 const client = new Client();
 
@@ -19,6 +19,7 @@ client
 
 export const db = new Databases(client)
 export const authAccount = new Account(client)
+export const avatar = new Avatars(client);
 export const uniqueId = ID.unique();
 export const query = Query;
 export default client

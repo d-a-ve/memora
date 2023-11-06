@@ -1,20 +1,32 @@
+import { getInitials } from "@appwrite/utils/avatar";
+import { getDateFromDateString, getDaysLeft } from "@utils/getDate";
 
-export function UpcomingBirthdayCard() {
-  return (
+export function UpcomingBirthdayCard({
+	name,
+	birthday,
+}: {
+	name: string;
+	birthday: string;
+}) {
+	const { day, monthName } = getDateFromDateString(birthday);
+	const timeLeft = getDaysLeft(birthday);
+	const initials = getInitials(name);
+
+	return (
 		<div className="flex items-center justify-between bg-secondary-400 rounded-xl p-3 pr-4 text-fs--1 mb-3">
 			<div className="flex items-center">
-				<div className="w-12 h-12 bg-purple-400 rounded-lg flex items-center justify-center">
-					<p className="text-black font-semibold">DA</p>
+				<div className="w-12 h-12 rounded-lg overflow-hidden">
+					<img src={initials.href} alt={`${name} initials`}/>
 				</div>
 				<div className="ml-2">
-					<p className=" mb-1">David Aronmwan</p>
+					<p className=" mb-1">{name}</p>
 					<p>
-						<span className="text-fs-1">23</span>.August
+						<span className="text-fs-1">{day}</span>.{monthName}
 					</p>
 				</div>
 			</div>
 			<div>
-				<p className=" font-semibold">In 5 days</p>
+				<p className="capitalize font-semibold">{timeLeft}</p>
 			</div>
 		</div>
 	);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AddBirthdayModal from "./AddBirthdayModal";
 import ShowAddBirthday from "./ShowAddBirthday";
 

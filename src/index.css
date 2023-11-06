@@ -14,9 +14,9 @@
 	/* color-scheme: light dark; */
 }
 
-	.nav-height {
-		height: calc(100vh - (4rem));
-	}
+.nav-height {
+	height: calc(100vh - (4rem));
+}
 
 @layer components {
 	.btn-primary {
@@ -32,7 +32,7 @@
 		@apply w-full bg-transparent py-2 px-4 rounded-md border border-slate-400 shadow caret-primary-500 outline-none focus:border-primary-500;
 	}
 	.search-input {
-		@apply input text-fs--1 sm:py-1 sm:px-3
+		@apply input text-fs--1 sm:py-1 sm:px-3;
 	}
 	.dashboard {
 		@apply grid grid-cols-[300px,_1fr];
@@ -41,7 +41,7 @@
 		@apply col-span-1 bg-secondary-200 px-4 transition lg:fixed lg:top-0 lg:left-0 lg:bottom-0 lg:max-w-[300px];
 	}
 	.dashboard-main {
-		@apply col-start-2 col-end-3 lg:col-start-1;
+		@apply col-start-2 col-end-3 px-4 lg:col-start-1;
 	}
 	.nav-link {
 		@apply grid grid-flow-col gap-4 items-center justify-start w-full p-4 rounded-xl hover:bg-secondary-500 hover:text-black;

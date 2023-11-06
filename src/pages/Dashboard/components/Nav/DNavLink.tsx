@@ -1,11 +1,13 @@
 import { NavLink } from "react-router-dom";
 import getSVGFromString from "../../../../Utils/getSVGFromString";
 import { DNavLinkPropsType } from "./types";
+import useAuth from "@hooks/useAuth";
 
 export default function DNavLink({ icon, text, to }: DNavLinkPropsType) {
+	const { currentUser } = useAuth();
 	return (
 		<NavLink
-			to={`/dashboard/${to}`}
+			to={`/dashboard/${currentUser?.$id || "64e447cebb60d0ff0bd7"}/${to}`}
 			className={({ isActive, isPending }) =>
 				isActive
 					? "nav-link bg-primary-500 text-white"

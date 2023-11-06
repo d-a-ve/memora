@@ -9,13 +9,13 @@ import ToastNotif from "@components/Toast";
 import useForm from "@hooks/useForm";
 // import { authAccount } from "../../appwrite/config";
 
-export function Signup() {
+export default function Signup() {
 	const { signupSubmit } = useForm();
 	return (
 		<AuthLayout>
 			<FormHeader
 				headerTitle="Sign up for an account"
-				subTitle="Already have an account?"
+				subTitle="Already have an account? "
 				subTitleCta="Login"
 				ctaLinkTo="/login"
 			/>
