@@ -1,11 +1,11 @@
 import { LoginModule } from "@/modules/login";
 
 function Login() {
-	return (
-		<>
-			<LoginModule />
-		</>
-	);
+  return (
+    <>
+      <LoginModule />
+    </>
+  );
 }
 
 export default Login;

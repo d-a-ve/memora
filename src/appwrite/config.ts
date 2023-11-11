@@ -4,8 +4,8 @@ const client = new Client();
 
 // client created on the appwrite website
 client
-	.setEndpoint("https://cloud.appwrite.io/v1")
-	.setProject("64d95b1580afbf89beff");
+  .setEndpoint("https://cloud.appwrite.io/v1")
+  .setProject("64d95b1580afbf89beff");
 
 // gitpod instance
 // client
@@ -17,9 +17,9 @@ client
 // localhost instance
 // client.setEndpoint("http://localhost/v1").setProject("64e430bf8ee8c682c97e");
 
-export const db = new Databases(client)
-export const authAccount = new Account(client)
+export const db = new Databases(client);
+export const authAccount = new Account(client);
 export const avatar = new Avatars(client);
 export const uniqueId = ID.unique();
 export const query = Query;
-export default client
+export default client;

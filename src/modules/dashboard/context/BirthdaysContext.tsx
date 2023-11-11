@@ -1,33 +1,34 @@
 import {
-	useState,
-	createContext,
-	ReactNode,
-	Dispatch,
-	SetStateAction,
+  useState,
+  createContext,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
 } from "react";
+
 import { birthdayDataType } from "../../../types";
 
 export const BirthdaysContext = createContext(
-	{} as birthdayDataType | undefined
+  {} as birthdayDataType | undefined
 );
 export const BirthdaysSetterContext = createContext<
-	Dispatch<SetStateAction<birthdayDataType | undefined>>
+  Dispatch<SetStateAction<birthdayDataType | undefined>>
 >(
-	undefined as unknown as Dispatch<SetStateAction<birthdayDataType | undefined>>
+  undefined as unknown as Dispatch<SetStateAction<birthdayDataType | undefined>>
 );
 
 export default function BirthdaysContextProvider({
-	children,
+  children,
 }: {
-	children: ReactNode;
+  children: ReactNode;
 }) {
-	const [birthdays, setBirthdays] = useState<birthdayDataType>();
+  const [birthdays, setBirthdays] = useState<birthdayDataType>();
 
-	return (
-		<BirthdaysContext.Provider value={birthdays}>
-			<BirthdaysSetterContext.Provider value={setBirthdays}>
-				{children}
-			</BirthdaysSetterContext.Provider>
-		</BirthdaysContext.Provider>
-	);
+  return (
+    <BirthdaysContext.Provider value={birthdays}>
+      <BirthdaysSetterContext.Provider value={setBirthdays}>
+        {children}
+      </BirthdaysSetterContext.Provider>
+    </BirthdaysContext.Provider>
+  );
 }

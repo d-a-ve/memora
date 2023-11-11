@@ -1,11 +1,11 @@
 import { DashboardUpcomingBirthdaysModule } from "@/modules/dashboard";
 
 function UpcomingBirthday() {
-	return (
-		<>
-			<DashboardUpcomingBirthdaysModule />
-		</>
-	);
+  return (
+    <>
+      <DashboardUpcomingBirthdaysModule />
+    </>
+  );
 }
 
 export default UpcomingBirthday;

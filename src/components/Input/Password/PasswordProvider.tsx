@@ -1,18 +1,18 @@
 import {
-	createContext,
-	useState,
-	Dispatch,
-	SetStateAction,
-	ReactNode,
+  createContext,
+  useState,
+  Dispatch,
+  SetStateAction,
+  ReactNode,
 } from "react";
 
 export const PasswordContext = createContext<string | null>(null);
 export const SetPasswordContext = createContext<Dispatch<
-	SetStateAction<string>
+  SetStateAction<string>
 > | null>(null);
 
 export function PasswordProvider({ children }: { children: ReactNode }) {
-	const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <PasswordContext.Provider value={password}>
@@ -20,5 +20,5 @@ export function PasswordProvider({ children }: { children: ReactNode }) {
         {children}
       </SetPasswordContext.Provider>
     </PasswordContext.Provider>
-  )
+  );
 }

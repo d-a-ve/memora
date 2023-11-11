@@ -1,11 +1,11 @@
 import { DashboardOverviewModule } from "@/modules/dashboard";
 
 function Overview() {
-	return (
-		<>
-			<DashboardOverviewModule />
-		</>
-	);
+  return (
+    <>
+      <DashboardOverviewModule />
+    </>
+  );
 }
 
 export default Overview;
