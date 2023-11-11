@@ -12,11 +12,14 @@ import AuthContextProvider from "@context/AuthContext";
 import ProtectedRoute from "@components/ProtectedRoute";
 import { OAuthRedirectRoute } from "@components/OAuthRedirectRoute";
 
-import Login from "@Login/Login";
-import Signup from "@Signup/Signup";
-import Dashboard from "@Dashboard/pages/Dashboard";
-import Overview from "@Dashboard/pages/Overview";
-import UpcomingBirthdays from "@Dashboard/pages/UpcomingBirthdays";
+import Login from "@pages/Login";
+import Signup from "@pages/Signup";
+import Home from "@pages/Home";
+import DashboardOverview from "@pages/dashboard/Overview";
+import DashboardUpcomingBirthdays from "@pages/dashboard/UpcomingBirthday";
+import {
+	DashboardLayout,
+} from "@modules/dashboard";
 import { dashboardLoader } from "./routes/dashboardLoader";
 
 // const Login = lazy(() => import("./pages/Login/Login"));
@@ -31,7 +34,7 @@ const router = createBrowserRouter(
 	createRoutesFromElements(
 		<>
 			<Route path="/" errorElement={<div>Error Page</div>} element={<Outlet />}>
-				<Route index element={<div>Home Page</div>} />
+				<Route index element={<Home />} />
 				<Route path="login" element={<Login />} />
 				<Route path="signup" element={<Signup />} />
 				<Route path="oauth" element={<OAuthRedirectRoute />} />
@@ -40,12 +43,17 @@ const router = createBrowserRouter(
 			<Route element={<ProtectedRoute />}>
 				<Route
 					path="/dashboard/:userId"
-					element={<Dashboard />}
+					element={<DashboardLayout />}
 					errorElement={<div>Dashboard Error Page</div>}>
-					<Route index element={<Overview />} loader={dashboardLoader} />
+					<Route
+						index
+						element={<DashboardOverview />}
+						loader={dashboardLoader}
+					/>
 					<Route
 						path="/dashboard/:userId/upcomingbirthdays"
-						element={<UpcomingBirthdays /> } loader={dashboardLoader}
+						element={<DashboardUpcomingBirthdays />}
+						loader={dashboardLoader}
 					/>
 				</Route>
 			</Route>

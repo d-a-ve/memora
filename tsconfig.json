@@ -23,10 +23,8 @@
       "@context/*": ["./context/*"],
       "@hooks/*": ["./hooks/*"],
       "@routes/*": ["./routes/*"],
-      "@Home/*": ["./pages/Home/*"],
-      "@Login/*": ["./pages/Login/*"],
-      "@Signup/*": ["./pages/Signup/*"],
-      "@Dashboard/*": ["./pages/Dashboard/*"],
+      "@modules/*": ["./modules/*"],
+      "@pages/*": ["./pages/*"],
       "@utils/*": ["./Utils/*"],
       "@constants": ["./constants"],
     }
