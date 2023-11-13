@@ -2,7 +2,8 @@ import { NavLink } from "react-router-dom";
 
 import useAuth from "@hooks/useAuth";
 
-import getSVGFromString from "../../../../Utils/getSVGFromString";
+import getSVGFromString from "@utils/getSVGFromString";
+
 import { DNavLinkPropsType } from "../../dashboard";
 
 export default function DNavLink({ icon, text, to }: DNavLinkPropsType) {

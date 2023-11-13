@@ -1,4 +1,5 @@
-import getSVGFromString from "../../../../Utils/getSVGFromString";
+import getSVGFromString from "@utils/getSVGFromString";
+
 import { DNavHeaderPropsType } from "../../dashboard";
 import DNavController from "./DNavController";
 

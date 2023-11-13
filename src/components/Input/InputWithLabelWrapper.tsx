@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import getInputError from "../../Utils/getInputError";
+import getInputError from "@utils/getInputError";
+
 import { Input } from "./Input";
 import InputError from "./InputError";
 import { InputWithEyeIcon } from "./InputWithEyeIcon";
