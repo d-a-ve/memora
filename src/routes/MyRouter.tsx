@@ -30,6 +30,7 @@ import { dashboardLoader } from "./dashboardLoader";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+
       <Route path="/" errorElement={<div>Error Page</div>} element={<Outlet />}>
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
@@ -39,7 +40,7 @@ const router = createBrowserRouter(
 
       <Route element={<ProtectedRoute />}>
         <Route
-          path="/dashboard/:userId"
+          path="/dashboard/:userId/"
           element={<DashboardLayout />}
           errorElement={<div>Dashboard Error Page</div>}
         >

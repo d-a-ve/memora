@@ -12,9 +12,11 @@ export function getDateFromSlashSeparatedString(birthdayDate: string) {
   const year = d.getFullYear();
   const [day, month] = birthdayDate.split("/").map((date) => Number(date));
 
-  return formatISO(new Date(year, month - 1, day, 5), {
+  const formattedDate = formatISO(new Date(year, month - 1, day), {
     representation: "date",
   }); // Output: '2019-09-18'
+  console.log(formattedDate);
+  return formattedDate;
 }
 
 export function getDateFromDateString(date: string) {

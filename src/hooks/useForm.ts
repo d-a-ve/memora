@@ -13,10 +13,13 @@ import { getDateFromSlashSeparatedString } from "@utils/getDate";
 import getValidFormData from "@utils/getValidFormData";
 import { toastError } from "@utils/toastNotifs";
 
+import useAuth from "./useAuth";
 import useAuthApi from "./useAuthApi";
 
 export default function useForm() {
   const { setCurrentUser } = useAuthApi();
+  const { currentUser } = useAuth();
+
   const navigate = useNavigate();
 
   const signupSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -66,7 +69,7 @@ export default function useForm() {
         const userAccount = await getUserAccount();
         console.log("User Account", userAccount);
         setCurrentUser(userAccount);
-        navigate(`/dashboard/${userAccount.$id}?query_limit=15`);
+        navigate(`/dashboard/${userAccount.$id}`);
       } else {
         toastError(
           "Cannot submit the form. Please check the highlighted fields for errors and try again."
@@ -81,12 +84,15 @@ export default function useForm() {
     const { formData } = getValidFormData(e);
     const [name, birthdayDate] = formData;
     try {
+      console.log(currentUser?.email);
+
       const birthdayDoc = await createDocInBirthdaysCol(uniqueId, {
-        user_id: "64e447cebb60d0ff0bd7",
+        user_id: currentUser?.$id,
         person_name: name[1] as string,
         person_birthday: getDateFromSlashSeparatedString(
           birthdayDate[1] as string
         ),
+        user_email: currentUser?.email,
       });
       console.log(birthdayDoc);
     } catch (error) {

@@ -1,5 +1,8 @@
 // import { FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+
+import useAuth from "@/hooks/useAuth";
+import { useUser } from "@/hooks/useUser";
 
 import useForm from "@hooks/useForm";
 
@@ -15,6 +18,16 @@ import { LOGIN_INPUT_FIELDS } from "../constants";
 
 export default function Login() {
   const { loginSubmit } = useForm();
+  const { data: currentUser, isLoading: isCurrentUserLoading } = useUser();
+  // const { currentUser } = useAuth();
+
+  if (isCurrentUserLoading) return <div>Loading...</div>;
+
+  console.log({ currentUser });
+  if (currentUser) {
+    console.log("Already logged in");
+    return <Navigate to={`/dashboard/${currentUser.$id}`} />;
+  }
   //  const [wasSubmitted, setWasSubmitted] = useState(false);
 
   // function handleSubmit(e: FormEvent<HTMLFormElement>) {

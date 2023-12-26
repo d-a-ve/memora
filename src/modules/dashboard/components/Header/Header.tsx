@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 
 import User from "./User";
+import { Link } from "react-router-dom";
 
 export default function Header({
   logoComponent,
@@ -9,6 +10,7 @@ export default function Header({
 }) {
   return (
     <div className="sticky top-0 left-0 z-10">
+      <Link to="/login">Login</Link>
       <div className="col-start-1 col-end-13 flex items-center justify-between py-3 px-4 h-16 bg-secondary-300">
         {logoComponent}
         <User />

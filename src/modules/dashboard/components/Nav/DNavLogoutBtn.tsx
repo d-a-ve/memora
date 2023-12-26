@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { deleteSession } from "@appwrite/utils/userSession";
 
 import useAuthApi from "@hooks/useAuthApi";
@@ -7,11 +9,13 @@ import { toastError } from "@utils/toastNotifs";
 
 export default function DNavLogoutBtn() {
   const { setCurrentUser } = useAuthApi();
+  const navigate = useNavigate();
 
   const logout = async () => {
     try {
       await deleteSession();
       setCurrentUser(undefined);
+      navigate("/login");
     } catch (error) {
       toastError("Something went wrong, could not log out!!!");
     }

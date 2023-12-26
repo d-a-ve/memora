@@ -1,23 +1,26 @@
-# Vite + React 18 + TS + TailwindCSS + ESLint
+## Todos
+1. Make the dashboard nav bar fixed and not scroll with the rest of the page.
+1. Order the birthday dates in ascending order
+1. Find a tool that can send emails for you based on data in database. It would be called everyday.
+1. Settings page
+1. Back to top button
+1. Cloud function for sending mails daily
 
-This is a starter template for React (TypeScript) using Vite. I've also added TailwindCSS so you can style your app without writing CSS code, and ESLint to analyze your code and suggest some optimizations.
 
-You can find more about these technologies in the following links: [Vite](https://vitejs.dev/), [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/), [TailwindCSS](https://tailwindcss.com/), [Eslint](https://eslint.org/).
-
-## How to install
-
-Just run the next command in a terminal (make sure that you have installed NPM).
-
-```
-npx degit dserranoc/vite-reactts18-eslint-tailwindcss project-name
-```
-
-## How to start
-
-After the installation of the dependencies run:
-
-```
-npm run dev
-```
-
-Made with ❤️ by Daniel Serrano Cobos
+## Cloud Function Pseudo code
+1. Get today's date
+1. Create an array called todayBirthdays having a schema of:
+  {
+    userId: "I 67yugc6c7ecgbc",
+    birthdays: ["John", "Doe", "testing"],
+  }[]
+1. Run through the birthday database and find birthdays that match today's date
+1. Check if the userId exists in todayBirthdays.
+  1. True: update the birthdays array for that userId by adding the person's name to the array. 
+  1. False: Create a new object in the todayBirthdays array and update the userId and birthdays array
+1. Loop through the todayBirthdays
+  1. Get the email address from appwrite based on the userId
+  1. Check that the length for birthdays array is more than 1
+    1. True: Use email template that is for multiple people
+    1. False: User email template for a single person 
+  1. Send mail to the email address and log the status of this line

@@ -1,5 +1,17 @@
 import { Dispatch, SetStateAction } from "react";
 
+const ok = {
+  userId: "I 67yugc6c7ecgbc",
+  birthdays: ["John", "Doe", "testing"],
+};
+const dates = [
+  {
+    userId: "I 67yugc6c7ecgbc",
+    birthdays: ["John", "Doe", "testing"],
+  },
+  {},
+];
+
 export default function ShowAddBirthday({
   setModalOpen,
 }: {
