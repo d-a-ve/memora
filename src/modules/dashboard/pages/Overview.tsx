@@ -1,42 +1,39 @@
 // import { listUserDocFromBirthdaysCol } from "@appwrite/utils/database";
-import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-import { enableRealtimeForBirthdaysCol } from "@/appwrite/utils/realtime";
-import useBirthdayApi from "@/modules/dashboard/hooks/useBirthdayApi";
-import useSetupBirthdayWithLoader from "@/modules/dashboard/hooks/useSetupBirthdayWithLoader";
+import { listUserDocFromBirthdaysCol } from "@/appwrite/utils/database";
 
 import AddBirthday from "../components/Birthday/AddBirthday";
 import { DashboardBirthdayCalender } from "../components/Calender/DashboardBirthdayCalender";
 import { UpcomingBirthdaySection } from "../components/UpcomingBirthday/UpcomingBirthdaySection";
+import { useBirthdayQuery } from "../hooks/useBirthdayQuery";
 
 export default function Overview() {
-  const { setBirthdays } = useBirthdayApi();
-  useSetupBirthdayWithLoader();
-  // const listDocs = async () => {
-  // 	try {
-  // 		const docs = await listUserDocFromBirthdaysCol();
-  // 		console.log("Data from appwrite: ", docs);
-  // 		setBirthdays(docs);
-  // 	} catch (error) {
-  // 		console.log("Error: ", error)
-  // 	}
-  // }
-  // listDocs()
-  useEffect(() => {
-    const unsubscribe = enableRealtimeForBirthdaysCol(setBirthdays);
+  const { userId } = useParams();
+  console.log({ userId });
+  const {
+    data: birthdays,
+    isLoading: isBirthdaysLoading,
+    error: birthdaysError,
+  } = useBirthdayQuery({
+    queryFn: () => listUserDocFromBirthdaysCol(userId),
+    queryKey: ["birthdays", userId],
+  });
 
-    return () => unsubscribe();
-  }, []);
+  console.log({ birthdaysError: birthdaysError?.message, birthdays });
+
+  if (isBirthdaysLoading) return <div>Loading...</div>;
+
+  if (birthdaysError) return <div>Something went wrong!!</div>;
 
   return (
     <>
       <div className="mb-6">
         Date section
-        <DashboardBirthdayCalender />
+        <DashboardBirthdayCalender birthdays={birthdays} />
       </div>
-      <div>
-        <UpcomingBirthdaySection />
-      </div>
+
+      <UpcomingBirthdaySection birthdays={birthdays} />
       <AddBirthday />
     </>
   );

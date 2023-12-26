@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 
-import { useUser } from "@/hooks/useUser";
-
 import { FormHeaderType } from "./types";
 
 export function FormHeader({
@@ -10,8 +8,6 @@ export function FormHeader({
   subTitleCta,
   ctaLinkTo,
 }: FormHeaderType) {
-  const { data: currentUser } = useUser();
-
   return (
     <>
       <p className="mb-8 md:mb-6">Use Logo image</p>
@@ -19,7 +15,6 @@ export function FormHeader({
         <h1 className="text-fs-1 font-semibold text-black mb-2">
           {headerTitle}
         </h1>
-        <Link to={`/dashboard/${currentUser?.$id}`}>Dashboard</Link>
         <p className="text-fs--1">
           {subTitle}
           <Link

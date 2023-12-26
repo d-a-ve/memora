@@ -1,8 +1,7 @@
 // import { FormEvent } from "react";
 import { Link, Navigate } from "react-router-dom";
 
-import useAuth from "@/hooks/useAuth";
-import { useUser } from "@/hooks/useUser";
+import { useUserQuery } from "@/hooks/useUserQuery";
 
 import useForm from "@hooks/useForm";
 
@@ -17,16 +16,22 @@ import ToastNotif from "@components/Toast";
 import { LOGIN_INPUT_FIELDS } from "../constants";
 
 export default function Login() {
-  const { loginSubmit } = useForm();
-  const { data: currentUser, isLoading: isCurrentUserLoading } = useUser();
+  const { loginSubmit, isLoading: isFormSubmitting } = useForm();
+  const {
+    data: currentUser,
+    isLoading: isCurrentUserLoading,
+    error,
+    isError,
+    isLoadingError,
+  } = useUserQuery(0);
   // const { currentUser } = useAuth();
-
+  console.log({ isError });
   if (isCurrentUserLoading) return <div>Loading...</div>;
 
-  console.log({ currentUser });
+  console.log({ currentUser, error });
   if (currentUser) {
     console.log("Already logged in");
-    return <Navigate to={`/dashboard/${currentUser.$id}`} />;
+    return <Navigate to={`/dashboard/${currentUser.$id}/`} />;
   }
   //  const [wasSubmitted, setWasSubmitted] = useState(false);
 
@@ -68,6 +73,7 @@ export default function Login() {
   // 	toastError();
   // 	console.log("Error");
   // }
+
   return (
     <AuthLayout>
       <FormHeader
@@ -122,7 +128,7 @@ export default function Login() {
         )}
         <div className="mt-2">
           <button type="submit" className="btn-primary w-full">
-            Login
+        {isFormSubmitting ? "Logging in..." :"Login"}
           </button>
         </div>
       </FormWrapper>

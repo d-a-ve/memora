@@ -17,7 +17,7 @@ export default function DLayout({ children }: { children: ReactNode }) {
         }
       />
       <div className="dashboard">
-        <DNav isNavOpen={isNavOpen} />
+        <DNav isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
         <div className={`dashboard-main pb-16 ${isNavOpen ? "lg:opaque" : ""}`}>
           <div className="max-w-3xl mx-auto mt-4">{children}</div>
         </div>

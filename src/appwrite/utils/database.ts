@@ -41,7 +41,7 @@ export async function listUserDocFromBirthdaysCol(
       [
         query.equal("user_id", userId),
         query.limit(Number(queryLimit)),
-        // query.orderAsc("person_birthday")
+        query.orderAsc("person_birthday"),
       ]
       /*
      So it does not return an error if the user_id does not match. TODO:
@@ -56,14 +56,14 @@ export async function listUserDocFromBirthdaysCol(
   }
 }
 
-export async function searchForBirthday(name: string, queryLimit = "25") {
+export async function searchForBirthday(name: string) {
   try {
     if (name.length === 0) return;
 
     const docs = await db.listDocuments(
       "64d963a67fe72a47c072",
       "64ecf3a38e08816df4a0",
-      [query.search("person_name", name), query.limit(Number(queryLimit))]
+      [query.search("person_name", name), query.orderAsc("person_birthday")]
     );
 
     return docs;

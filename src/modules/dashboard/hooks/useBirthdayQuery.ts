@@ -1,3 +1,4 @@
+import { ErrorType } from "@/types";
 import {
   QueryClient,
   QueryKey,
@@ -7,7 +8,7 @@ import {
 
 export const useBirthdayQuery = <
   TQueryFnData = unknown,
-  TError = unknown,
+  TError = ErrorType,
   TData = TQueryFnData,
   TQueryKey extends QueryKey = QueryKey
 >(

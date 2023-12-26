@@ -1,30 +1,15 @@
-import { useNavigate } from "react-router-dom";
-
-import { deleteSession } from "@appwrite/utils/userSession";
-
-import useAuthApi from "@hooks/useAuthApi";
+import useUserMutation from "@/hooks/useUserMutation";
 
 import getSVGFromString from "@utils/getSVGFromString";
-import { toastError } from "@utils/toastNotifs";
 
 export default function DNavLogoutBtn() {
-  const { setCurrentUser } = useAuthApi();
-  const navigate = useNavigate();
-
-  const logout = async () => {
-    try {
-      await deleteSession();
-      setCurrentUser(undefined);
-      navigate("/login");
-    } catch (error) {
-      toastError("Something went wrong, could not log out!!!");
-    }
-  };
+  const { mutate: logUserOut, isPending: isUserLoggingOut } = useUserMutation();
 
   return (
-    <button onClick={logout} className="nav-logout-btn">
+    <button onClick={() => logUserOut()} className="nav-logout-btn">
       {getSVGFromString("logout", 20, 20)}
-      <span>Log out</span>
+      <span>{isUserLoggingOut ? "Logging out..." : "Log out"}</span>
     </button>
   );
 }
+``

@@ -5,6 +5,8 @@ import {
   getDate,
   getYear,
   getMonth,
+  isToday,
+  isTomorrow,
 } from "date-fns";
 
 export function getDateFromSlashSeparatedString(birthdayDate: string) {
@@ -31,6 +33,13 @@ export function getDateFromDateString(date: string) {
 
 export function getDaysLeft(date: string) {
   const bdayDate = new Date(date);
-  const left = formatDistanceToNowStrict(bdayDate, { addSuffix: true });
+  if (isToday(bdayDate)) return "Today 🎉";
+
+  if (isTomorrow(bdayDate)) return "Tomorrow";
+
+  const left = formatDistanceToNowStrict(bdayDate, {
+    addSuffix: true,
+    roundingMethod: "ceil",
+  });
   return left;
 }

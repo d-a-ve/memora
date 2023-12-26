@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, ReactNode } from "react";
 
-export type NavigationOpenPropsType = {
+export type NavOpenPropsType = {
   isNavOpen: boolean;
   setIsNavOpen: Dispatch<SetStateAction<boolean>>;
 };

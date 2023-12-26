@@ -9,7 +9,7 @@ export const navLinksArray = [
     id: 2,
     text: "Upcoming Birthdays",
     icon: "calender",
-    to: "upcomingbirthdays",
+    to: "upcoming-birthdays",
   },
   {
     id: 3,

@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { uniqueId } from "@appwrite/config";
@@ -15,10 +15,13 @@ import { toastError } from "@utils/toastNotifs";
 
 import useAuth from "./useAuth";
 import useAuthApi from "./useAuthApi";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function useForm() {
+  const [isLoading, setIsLoading] = useState(false);
   const { setCurrentUser } = useAuthApi();
   const { currentUser } = useAuth();
+  const queryClient = useQueryClient();
 
   const navigate = useNavigate();
 
@@ -31,6 +34,7 @@ export default function useForm() {
 
     try {
       if (isFormValid && doesPasswordMatch) {
+        setIsLoading(true);
         await createUserAccount(
           emailField[1] as string,
           passwordField[1] as string,
@@ -52,6 +56,8 @@ export default function useForm() {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -62,14 +68,16 @@ export default function useForm() {
 
     try {
       if (isFormValid) {
+        setIsLoading(true);
         await createUserSession(
           emailField[1] as string,
           passwordField[1] as string
         );
         const userAccount = await getUserAccount();
         console.log("User Account", userAccount);
+        queryClient.invalidateQueries({ queryKey: ["current-user"] });
         setCurrentUser(userAccount);
-        navigate(`/dashboard/${userAccount.$id}`);
+        navigate(`/dashboard/${userAccount.$id}/`);
       } else {
         toastError(
           "Cannot submit the form. Please check the highlighted fields for errors and try again."
@@ -77,32 +85,15 @@ export default function useForm() {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
-  const addBirthdaySubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const { formData } = getValidFormData(e);
-    const [name, birthdayDate] = formData;
-    try {
-      console.log(currentUser?.email);
 
-      const birthdayDoc = await createDocInBirthdaysCol(uniqueId, {
-        user_id: currentUser?.$id,
-        person_name: name[1] as string,
-        person_birthday: getDateFromSlashSeparatedString(
-          birthdayDate[1] as string
-        ),
-        user_email: currentUser?.email,
-      });
-      console.log(birthdayDoc);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return {
     signupSubmit,
     loginSubmit,
-    addBirthdaySubmit,
+    isLoading,
   };
 }

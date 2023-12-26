@@ -58,3 +58,9 @@ export type birthdayDataType = {
   total: number;
   documents: documentType[];
 };
+
+export type ErrorType = {
+  message: string;
+  type: string;
+  code: number;
+};

@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 import { getOAuthSession, getUserAccount } from "@/appwrite/utils/userSession";
 import useAuthApi from "@/hooks/useAuthApi";
-import { useUser } from "@/hooks/useUser";
+import { useUserQuery } from "@/hooks/useUserQuery";
 
 import useAuth from "../hooks/useAuth";
 
@@ -11,7 +11,7 @@ export default function ProtectedRoute() {
     data: currentUser,
     isLoading: isCurrentUserLoading,
     error,
-  } = useUser();
+  } = useUserQuery(1);
 
   console.log({ error });
   if (isCurrentUserLoading) return <div>Loading...</div>;

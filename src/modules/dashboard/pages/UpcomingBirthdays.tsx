@@ -1,24 +1,22 @@
-import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-import { enableRealtimeForBirthdaysCol } from "@/appwrite/utils/realtime";
-import useBirthdayApi from "@/modules/dashboard/hooks/useBirthdayApi";
-import useSetupBirthdayWithLoader from "@/modules/dashboard/hooks/useSetupBirthdayWithLoader";
+import { listUserDocFromBirthdaysCol } from "@/appwrite/utils/database";
 
 import AddBirthday from "../components/Birthday/AddBirthday";
 import { UpcomingBirthdaySection } from "../components/UpcomingBirthday/UpcomingBirthdaySection";
+import { useBirthdayQuery } from "../hooks/useBirthdayQuery";
 
 export default function UpcomingBirthdays() {
-  const { setBirthdays } = useBirthdayApi();
-  useSetupBirthdayWithLoader();
+  const { userId } = useParams();
+  const { data: birthdays, isLoading: isBirthdaysLoading } = useBirthdayQuery({
+    queryFn: () => listUserDocFromBirthdaysCol(userId),
+    queryKey: ["birthdays", userId],
+  });
 
-  useEffect(() => {
-    const unsubscribe = enableRealtimeForBirthdaysCol(setBirthdays);
-
-    return () => unsubscribe();
-  }, []);
+  if (isBirthdaysLoading) return <div>Loading...</div>;
   return (
     <div>
-      <UpcomingBirthdaySection />
+      <UpcomingBirthdaySection birthdays={birthdays} />
       <AddBirthday />
     </div>
   );

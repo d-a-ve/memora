@@ -1,6 +1,12 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, FormEvent, SetStateAction } from "react";
 
-import useForm from "@hooks/useForm";
+import { uniqueId } from "@/appwrite/config";
+import { createDocInBirthdaysCol } from "@/appwrite/utils/database";
+import { useUserQuery } from "@/hooks/useUserQuery";
+import { ErrorType } from "@/types";
+import { getDateFromSlashSeparatedString } from "@/utils/getDate";
+import getValidFormData from "@/utils/getValidFormData";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { toastSuccess } from "@utils/toastNotifs";
 
@@ -11,6 +17,15 @@ import { FormWrapper } from "@components/Form";
 import { InputWithLabel } from "@components/Input";
 import { ModalLayout } from "@components/Layout";
 
+import useBirthdayMutation from "../../hooks/useBirthdayMutation";
+
+type MutationFnType = {
+  name: [string, FormDataEntryValue];
+  birthdayDate: [string, FormDataEntryValue];
+};
+
+type BirthdaysDataType = Awaited<ReturnType<typeof createDocInBirthdaysCol>>;
+
 export default function AddBirthdayModal({
   setModalOpen,
   isModalOpen,
@@ -18,7 +33,34 @@ export default function AddBirthdayModal({
   setModalOpen: Dispatch<SetStateAction<boolean>>;
   isModalOpen: boolean;
 }) {
-  const { addBirthdaySubmit } = useForm();
+  const { data: currentUser } = useUserQuery();
+  const query = useQueryClient();
+
+  const { mutate: addBirthday, isPending: isBirthdayAdding } =
+    useBirthdayMutation<BirthdaysDataType, ErrorType, MutationFnType>({
+      mutationFn: ({ name, birthdayDate }) =>
+        createDocInBirthdaysCol(uniqueId, {
+          user_id: currentUser?.$id,
+          person_name: name[1] as string,
+          person_birthday: getDateFromSlashSeparatedString(
+            birthdayDate[1] as string
+          ),
+          user_email: currentUser?.email,
+        }),
+      onSuccess: () => {
+        query.invalidateQueries({ queryKey: ["birthdays", currentUser?.$id] });
+        setModalOpen(false);
+        toastSuccess("Yay, birthday has been added successfully!!");
+      },
+    });
+
+  const addBirthdaySubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { formData } = getValidFormData(e);
+    const [name, birthdayDate] = formData;
+    addBirthday({ name, birthdayDate });
+  };
+
   return (
     <>
       <ModalLayout isModalOpen={isModalOpen}>
@@ -26,9 +68,7 @@ export default function AddBirthdayModal({
           <h2 className="mb-6 font-semibold text-fs-1">Add birthday </h2>
           <FormWrapper
             submitFunction={async (e) => {
-              await addBirthdaySubmit(e);
-              setModalOpen(false);
-              toastSuccess("Yay, birthday has been added successfully!!");
+              addBirthdaySubmit(e);
             }}
           >
             <InputWithLabel
@@ -49,7 +89,12 @@ export default function AddBirthdayModal({
               />
             </div>
             <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-1">
-              <PrimaryButton buttonText="Add Birthday" buttonType="submit" />
+              <PrimaryButton
+                buttonText={
+                  isBirthdayAdding ? "Adding Birthday..." : "Add Birthday"
+                }
+                buttonType="submit"
+              />
               <SecondaryButton
                 buttonText="Cancel"
                 clickFunction={() => setModalOpen(false)}

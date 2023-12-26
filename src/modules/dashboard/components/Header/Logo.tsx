@@ -1,13 +1,13 @@
 import getSVGFromString from "@utils/getSVGFromString";
 
-import { NavigationOpenPropsType } from "../../dashboard";
+import { NavOpenPropsType } from "../../dashboard";
 import DNavController from "../Nav/DNavController";
 
-export function Logo({ isNavOpen, setIsNavOpen }: NavigationOpenPropsType) {
+export function Logo({ isNavOpen, setIsNavOpen }: NavOpenPropsType) {
   return (
     <div className="flex gap-4 items-center">
       <DNavController
-        title="Hide Navigation bar"
+        title={`${isNavOpen ? "Hide" : "Show"} Navigation bar`}
         clickFunction={
           isNavOpen ? () => setIsNavOpen(false) : () => setIsNavOpen(true)
         }

@@ -1,25 +1,33 @@
 import { useState } from "react";
 
-import useBirthday from "@/modules/dashboard/hooks/useBirthday";
 import { birthdayDataType } from "@/types";
+import filterUpcomingBirthdaysFromCurrentDate from "@/utils/filterUpcomingBirthdays";
 
 import { UpcomingBirthdayCard } from "./UpcomingBirthdayCard";
 import { UpcomingBirthdaySearch } from "./UpcomingBirthdaySearch";
 
-export function UpcomingBirthdaySection() {
-  const { birthdays } = useBirthday();
+export function UpcomingBirthdaySection({
+  birthdays,
+}: {
+  birthdays: birthdayDataType | undefined;
+}) {
   const [searchedBirthday, setSearchedBirthday] = useState<birthdayDataType>();
-  console.log(birthdays);
+  const filteredBirthdays = filterUpcomingBirthdaysFromCurrentDate(
+    birthdays?.documents
+  );
+  const filteredSearchedBirthdays = filterUpcomingBirthdaysFromCurrentDate(
+    searchedBirthday?.documents
+  );
 
   return (
-    <div>
+    <>
       <div className="mb-4 flex items-center justify-between sm:flex-col sm:gap-2 sm:items-start">
         <p className="font-semibold text-fs-1">Upcoming Birthdays</p>
         <UpcomingBirthdaySearch setSearchedBirthday={setSearchedBirthday} />
       </div>
       <div>
-        {/* When user is searching, map using the birthdays that was fetched instead of the one in context */}
-        {(searchedBirthday || birthdays)?.documents.map((doc) => {
+        {/* When user is searching, map using the searchedBirthdays instead of default birthdays */}
+        {(filteredSearchedBirthdays || filteredBirthdays)?.map((doc) => {
           return (
             <UpcomingBirthdayCard
               key={doc.$id}
@@ -28,7 +36,13 @@ export function UpcomingBirthdaySection() {
             />
           );
         })}
+
+        {/* If no birthdays are found when searching, show this message */}
+        {filteredSearchedBirthdays &&
+          filteredSearchedBirthdays.length === 0 && (
+            <div>No birthdays found</div>
+          )}
       </div>
-    </div>
+    </>
   );
 }
