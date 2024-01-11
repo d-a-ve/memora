@@ -11,6 +11,7 @@ export type LinkButtonProps = ButtonProps & {
 
 export type ActionButtonProps = ButtonProps & {
   clickFunction?: () => void;
+  disabled?: boolean;
 };
 
 export type ActionButtonWithIconProps = ActionButtonProps & {

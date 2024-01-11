@@ -1,21 +1,18 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { uniqueId } from "@appwrite/config";
-import { createDocInBirthdaysCol } from "@appwrite/utils/database";
 import {
   createUserAccount,
   createUserSession,
   getUserAccount,
 } from "@appwrite/utils/userSession";
+import { useQueryClient } from "@tanstack/react-query";
 
-import { getDateFromSlashSeparatedString } from "@utils/getDate";
 import getValidFormData from "@utils/getValidFormData";
 import { toastError } from "@utils/toastNotifs";
 
 import useAuth from "./useAuth";
 import useAuthApi from "./useAuthApi";
-import { useQueryClient } from "@tanstack/react-query";
 
 export default function useForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -89,7 +86,6 @@ export default function useForm() {
       setIsLoading(false);
     }
   };
-
 
   return {
     signupSubmit,

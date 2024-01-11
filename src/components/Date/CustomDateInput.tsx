@@ -1,29 +1,35 @@
 import { forwardRef, LegacyRef } from "react";
 
-export const DateInput = forwardRef(function DateInput(
+type DateInputPropsType = {
+  value: string;
+  onClick: () => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  className: string;
+  id: string;
+  type: string;
+  name: string;
+};
+
+export const CustomDateInput = forwardRef(function DateInput(
   {
     value,
     onClick,
     onChange,
     className,
     id,
-  }: {
-    value?: string;
-    onClick?: () => void;
-    className?: string;
-    id: string;
-    onChange?: () => void;
-  },
+    type,
+    name,
+  }: Partial<DateInputPropsType>,
   ref: LegacyRef<HTMLInputElement> | undefined
 ) {
   return (
     <input
-      name="Date"
+      name={name || "Date"}
       className={className || "input"}
       value={value}
       onClick={onClick}
       onChange={onChange}
-      type="text"
+      type={type || "text"}
       id={id}
       required={true}
       ref={ref}

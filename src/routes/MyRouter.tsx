@@ -1,8 +1,13 @@
 import { Suspense } from "react";
-import { createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet, Route } from "react-router-dom";
+import {
+  Outlet,
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
 
-
-
+import Settings from "@/modules/dashboard/pages/Settings";
 import { DashboardLayout } from "@modules/dashboard";
 import Home from "@pages/Home";
 import Login from "@pages/Login";
@@ -10,15 +15,8 @@ import Signup from "@pages/Signup";
 import DashboardOverview from "@pages/dashboard/Overview";
 import DashboardUpcomingBirthdays from "@pages/dashboard/UpcomingBirthday";
 
-
-
 import { OAuthRedirectRoute } from "@components/OAuthRedirectRoute";
 import ProtectedRoute from "@components/ProtectedRoute";
-
-
-
-import { dashboardLoader } from "./dashboardLoader";
-
 
 // const Login = lazy(() => import("./pages/Login/Login"));
 // const Signup = lazy(() => import("./pages/Signup"));
@@ -48,6 +46,7 @@ const router = createBrowserRouter(
             path="/dashboard/:userId/upcoming-birthdays"
             element={<DashboardUpcomingBirthdays />}
           />
+          <Route path="/dashboard/:userId/settings" element={<Settings />} />
         </Route>
       </Route>
     </>

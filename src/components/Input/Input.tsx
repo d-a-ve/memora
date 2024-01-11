@@ -10,6 +10,8 @@ export function Input({
   placeHolder,
   displayError,
   className,
+  disabled,
+  inputRef,
 }: InputPropsType) {
   return (
     <input
@@ -20,8 +22,10 @@ export function Input({
       type={inputType}
       id={`${labelFor}-input`}
       required={required}
+      disabled={disabled}
       value={inputValue}
       placeholder={placeHolder}
+      ref={inputRef}
       aria-describedby={displayError ? `${labelFor}-error` : undefined}
     />
   );

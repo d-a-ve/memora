@@ -1,9 +1,10 @@
 import { useState } from "react";
 
+import { ShowMode } from "../../types";
 import AddBirthdayModal from "./AddBirthdayModal";
 import ShowAddBirthday from "./ShowAddBirthday";
 
-export default function AddBirthday() {
+export default function AddBirthday({ showMode }: { showMode: ShowMode }) {
   const [isBirthdayModalOpen, setIsBirthdayModalOpen] = useState(false);
   return (
     <div>
@@ -13,7 +14,10 @@ export default function AddBirthday() {
           isModalOpen={isBirthdayModalOpen}
         />
       ) : (
-        <ShowAddBirthday setModalOpen={setIsBirthdayModalOpen} />
+        <ShowAddBirthday
+          showMode={showMode}
+          setModalOpen={setIsBirthdayModalOpen}
+        />
       )}
     </div>
   );

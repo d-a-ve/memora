@@ -14,6 +14,7 @@ export function InputWithLabel({
   required,
   placeHolder,
   isPassword,
+  disabled
 }: InputWithLabelPropsType) {
   const [inputValue, setInputValue] = useState("");
   const [touched, setTouched] = useState(false);
@@ -35,6 +36,7 @@ export function InputWithLabel({
           inputValue={inputValue}
           placeHolder={placeHolder}
           displayError={displayError}
+          disabled={disabled}
         />
       ) : (
         <InputWithEyeIcon
@@ -45,6 +47,7 @@ export function InputWithLabel({
           required={true}
           inputValue={inputValue}
           displayError={displayError}
+          disabled={disabled}
         />
       )}
       {displayError && (

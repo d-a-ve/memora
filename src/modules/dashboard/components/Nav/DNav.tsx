@@ -2,14 +2,31 @@ import { NavLink, useParams } from "react-router-dom";
 
 import getSVGFromString from "@/utils/getSVGFromString";
 
-import { navLinksArray } from "../../constants";
 import { NavOpenPropsType } from "../../dashboard";
 import DNavLogoutBtn from "./DNavLogoutBtn";
 
-export default function DNav({
-  isNavOpen,
-  setIsNavOpen,
-}: NavOpenPropsType) {
+export const navLinksArray = [
+  {
+    id: 1,
+    text: "Overview",
+    icon: "overview",
+    to: "",
+  },
+  {
+    id: 2,
+    text: "Upcoming Birthdays",
+    icon: "calender",
+    to: "upcoming-birthdays",
+  },
+  {
+    id: 3,
+    text: "Settings",
+    icon: "settings",
+    to: "settings",
+  },
+];
+
+export default function DNav({ isNavOpen, setIsNavOpen }: NavOpenPropsType) {
   const { userId } = useParams();
   return (
     <div

@@ -1,16 +1,31 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+
 
 import { birthdayDataType } from "@/types";
 import filterUpcomingBirthdaysFromCurrentDate from "@/utils/filterUpcomingBirthdays";
 
+
+
 import { UpcomingBirthdayCard } from "./UpcomingBirthdayCard";
 import { UpcomingBirthdaySearch } from "./UpcomingBirthdaySearch";
 
+
+type ShowMoreBirthdays = {
+  numOfBirthdaysToShow: number;
+  linkToSeeMoreBirthdays: string;
+};
+
+type UpcomingBirthdaySectionProps = {
+  birthdays: birthdayDataType | undefined;
+  showMoreBirthdays?: ShowMoreBirthdays;
+};
+
 export function UpcomingBirthdaySection({
   birthdays,
-}: {
-  birthdays: birthdayDataType | undefined;
-}) {
+  showMoreBirthdays,
+}: UpcomingBirthdaySectionProps) {
   const [searchedBirthday, setSearchedBirthday] = useState<birthdayDataType>();
   const filteredBirthdays = filterUpcomingBirthdaysFromCurrentDate(
     birthdays?.documents
@@ -18,6 +33,16 @@ export function UpcomingBirthdaySection({
   const filteredSearchedBirthdays = filterUpcomingBirthdaysFromCurrentDate(
     searchedBirthday?.documents
   );
+
+  const shouldSeeMoreSearchedBirthdaysLinkShow =
+    filteredSearchedBirthdays &&
+    showMoreBirthdays &&
+    filteredSearchedBirthdays.length > showMoreBirthdays.numOfBirthdaysToShow;
+    
+  const shouldSeeMoreBirthdaysLinkShow =
+    filteredBirthdays &&
+    showMoreBirthdays &&
+    filteredBirthdays.length > showMoreBirthdays.numOfBirthdaysToShow;
 
   return (
     <>
@@ -27,21 +52,38 @@ export function UpcomingBirthdaySection({
       </div>
       <div>
         {/* When user is searching, map using the searchedBirthdays instead of default birthdays */}
-        {(filteredSearchedBirthdays || filteredBirthdays)?.map((doc) => {
-          return (
-            <UpcomingBirthdayCard
-              key={doc.$id}
-              name={doc.person_name}
-              birthday={doc.person_birthday}
-            />
-          );
-        })}
+        {(filteredSearchedBirthdays || filteredBirthdays)
+          ?.slice(
+            0,
+            showMoreBirthdays && showMoreBirthdays.numOfBirthdaysToShow
+          ) // if undefined, show all birthdays
+          ?.map((doc) => {
+            return (
+              <UpcomingBirthdayCard
+                key={doc.$id}
+                name={doc.person_name}
+                birthday={doc.person_birthday}
+              />
+            );
+          })}
 
         {/* If no birthdays are found when searching, show this message */}
         {filteredSearchedBirthdays &&
           filteredSearchedBirthdays.length === 0 && (
             <div>No birthdays found</div>
           )}
+
+        {(shouldSeeMoreSearchedBirthdaysLinkShow ||
+          shouldSeeMoreBirthdaysLinkShow) && (
+          <p className="mt-8 text-center">
+            <Link
+              className="btn-primary text-fs--1"
+              to={showMoreBirthdays.linkToSeeMoreBirthdays}
+            >
+              See more birthdays...
+            </Link>
+          </p>
+        )}
       </div>
     </>
   );

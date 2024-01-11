@@ -11,14 +11,4 @@ export type DatePickerHeaderPropsType = Omit<
   | "nextYearButtonDisabled"
 >;
 
-export type DatePickerHeaderSelectorPropsType = {
-  onChangeHandler: (event: ChangeEvent<HTMLSelectElement>) => void;
-  options: string[] | number[];
-  selectValue: number | string;
-};
 
-export type DatePickerButtonWithIconPropsType = {
-  clickHandler: () => void;
-  isDisabled: boolean;
-  children: ReactNode;
-};

@@ -1,10 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-import { getOAuthSession, getUserAccount } from "@/appwrite/utils/userSession";
-import useAuthApi from "@/hooks/useAuthApi";
 import { useUserQuery } from "@/hooks/useUserQuery";
-
-import useAuth from "../hooks/useAuth";
 
 export default function ProtectedRoute() {
   const {

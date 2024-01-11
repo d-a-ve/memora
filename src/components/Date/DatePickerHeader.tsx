@@ -6,6 +6,7 @@ import { calenderMonths } from "../../constants";
 import DatePickerButtonWithIcon from "./DatePickerButtonWithIcon";
 import DatePickerHeaderSelector from "./DatePickerHeaderSelector";
 import { DatePickerHeaderPropsType } from "./types";
+import { DatePickerHeaderWrapper } from "./DatePickerHeaderWrapper";
 
 const leftArrow = (
   <svg
@@ -49,7 +50,8 @@ export function DatePickerHeader({
   const years = range(1900, getYear(new Date()) + 1, 1);
 
   return (
-    <div className="w-[calc(100%-24px)] mx-auto flex items-center justify-between py-2">
+    <DatePickerHeaderWrapper className="flex items-center justify-between">
+        <p>Testing shii</p>
       <div className="flex gap-2">
         <DatePickerHeaderSelector
           selectValue={calenderMonths[getMonth(date)]}
@@ -78,6 +80,6 @@ export function DatePickerHeader({
           {rightArrow}
         </DatePickerButtonWithIcon>
       </div>
-    </div>
+    </DatePickerHeaderWrapper>
   );
 }

@@ -8,6 +8,6 @@ export type FormHeaderType = {
 };
 
 export type FormWrapperType = {
-  submitFunction: (e: FormEvent<HTMLFormElement>) => void;
+  submitFunction: ((e: FormEvent<HTMLFormElement>) => void) | undefined;
   children: ReactNode;
 };

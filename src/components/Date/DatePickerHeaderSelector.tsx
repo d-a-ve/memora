@@ -1,4 +1,10 @@
-import { DatePickerHeaderSelectorPropsType } from "./types";
+import { ChangeEvent } from "react";
+
+type DatePickerHeaderSelectorPropsType = {
+  onChangeHandler: (event: ChangeEvent<HTMLSelectElement>) => void;
+  options: string[] | number[];
+  selectValue: number | string;
+};
 
 export default function DatePickerHeaderSelector({
   onChangeHandler,

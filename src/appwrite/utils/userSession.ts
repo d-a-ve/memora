@@ -58,3 +58,11 @@ export async function getOAuthSession() {
     throw new Error(error);
   }
 }
+
+export async function updateUserName(name: string) {
+  try {
+    await authAccount.updateName(name);
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}

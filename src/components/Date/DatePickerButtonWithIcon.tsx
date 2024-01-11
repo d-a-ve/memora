@@ -1,10 +1,17 @@
-import { DatePickerButtonWithIconPropsType } from "./types";
+import { ReactNode } from "react";
 
-export default function DatePickerButtonWithIcon({
+
+type DatePickerIconPropsType = {
+  clickHandler: () => void;
+  isDisabled: boolean;
+  children: ReactNode;
+};
+
+export default function DatePickerIcon({
   clickHandler,
   isDisabled,
   children,
-}: DatePickerButtonWithIconPropsType) {
+}: DatePickerIconPropsType) {
   return (
     <button
       type="button"

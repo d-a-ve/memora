@@ -5,12 +5,14 @@ export function PrimaryButton({
   clickFunction,
   buttonType,
   classname,
+  disabled,
 }: ActionButtonProps) {
   return (
     <button
       type={buttonType}
       className={`btn-primary ${classname}`}
       onClick={clickFunction}
+      disabled={disabled}
     >
       {buttonText}
     </button>

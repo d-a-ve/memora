@@ -1,9 +1,26 @@
+import { useNavigate } from "react-router-dom";
+
+import { deleteSession } from "@/appwrite/utils/userSession";
 import useUserMutation from "@/hooks/useUserMutation";
+import { toastError } from "@/utils/toastNotifs";
+import { useQueryClient } from "@tanstack/react-query";
 
 import getSVGFromString from "@utils/getSVGFromString";
 
 export default function DNavLogoutBtn() {
-  const { mutate: logUserOut, isPending: isUserLoggingOut } = useUserMutation();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const { mutate: logUserOut, isPending: isUserLoggingOut } = useUserMutation({
+    mutationFn: deleteSession,
+    onSuccess: () => {
+      queryClient.removeQueries({ queryKey: ["current-user"] });
+      navigate("/login");
+    },
+    onError: (error) => {
+      console.log(error);
+      toastError("Something went wrong, could not log out!!!");
+    },
+  });
 
   return (
     <button onClick={() => logUserOut()} className="nav-logout-btn">
@@ -12,4 +29,4 @@ export default function DNavLogoutBtn() {
     </button>
   );
 }
-``
+``;

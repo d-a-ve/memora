@@ -1,4 +1,5 @@
-import { ReactNode, ChangeEvent } from "react";
+import { ReactNode, ChangeEvent, Ref, LegacyRef } from "react";
+
 
 // import { LOGIN_DEFAULT_VALUES_TYPE } from "../../types";
 
@@ -9,10 +10,12 @@ export type InputPropsType = {
   inputValue: string;
   placeHolder?: string;
   displayError?: boolean;
+  disabled?: boolean;
   isPassword?: boolean;
   className?: string;
   changeHandler: (e: ChangeEvent<HTMLInputElement>) => void;
   blurHandler?: () => void;
+  inputRef?: LegacyRef<HTMLInputElement>;
 };
 
 export type InputWithLabelPropsType = {
@@ -21,6 +24,7 @@ export type InputWithLabelPropsType = {
   labelFor: string;
   required: boolean;
   isPassword?: boolean;
+  disabled?: boolean;
   placeHolder?: string;
 };
 

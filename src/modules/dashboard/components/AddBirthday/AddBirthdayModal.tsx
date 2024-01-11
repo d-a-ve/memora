@@ -1,20 +1,21 @@
 import { Dispatch, FormEvent, SetStateAction } from "react";
 
-import { uniqueId } from "@/appwrite/config";
-import { createDocInBirthdaysCol } from "@/appwrite/utils/database";
-import { useUserQuery } from "@/hooks/useUserQuery";
 import { ErrorType } from "@/types";
-import { getDateFromSlashSeparatedString } from "@/utils/getDate";
-import getValidFormData from "@/utils/getValidFormData";
+import { uniqueId } from "@appwrite/config";
+import { createDocInBirthdaysCol } from "@appwrite/utils/database";
 import { useQueryClient } from "@tanstack/react-query";
 
+import { useUserQuery } from "@hooks/useUserQuery";
+
+import { getDateFromSlashSeparatedString } from "@utils/getDate";
+import getValidFormData from "@utils/getValidFormData";
 import { toastSuccess } from "@utils/toastNotifs";
 
 import { PrimaryButton, SecondaryButton } from "@components/Button";
-import { DatePickerComponent } from "@components/Date";
-import { DateInput } from "@components/Date/DateInput";
+import { CustomDateInput } from "@components/Date";
 import { FormWrapper } from "@components/Form";
 import { InputWithLabel } from "@components/Input";
+import { DateInput } from "@components/Input/DateInput";
 import { ModalLayout } from "@components/Layout";
 
 import useBirthdayMutation from "../../hooks/useBirthdayMutation";
@@ -82,11 +83,7 @@ export default function AddBirthdayModal({
               <label className="input-label" htmlFor="birthdayDate">
                 Select birthday
               </label>
-              <DatePickerComponent
-                inline={false}
-                isReadOnly={false}
-                customInput={<DateInput id="birthdayDate" />}
-              />
+              <DateInput customInput={<CustomDateInput id="birthdayDate" />} />
             </div>
             <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-1">
               <PrimaryButton

@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 
 import { listUserDocFromBirthdaysCol } from "@/appwrite/utils/database";
 
-import AddBirthday from "../components/Birthday/AddBirthday";
+import AddBirthday from "../components/AddBirthday/AddBirthday";
 import { UpcomingBirthdaySection } from "../components/UpcomingBirthday/UpcomingBirthdaySection";
 import { useBirthdayQuery } from "../hooks/useBirthdayQuery";
 
@@ -17,7 +17,7 @@ export default function UpcomingBirthdays() {
   return (
     <div>
       <UpcomingBirthdaySection birthdays={birthdays} />
-      <AddBirthday />
+      <AddBirthday showMode={{ mode: "button" }} />
     </div>
   );
 }

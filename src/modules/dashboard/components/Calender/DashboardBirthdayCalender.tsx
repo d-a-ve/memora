@@ -1,6 +1,6 @@
 import { birthdayDataType } from "@/types";
 
-import { DatePickerComponent } from "@components/Date";
+import { InlineBirthdayDatePicker } from "../BirthdayDatePicker/InlineBirthdayDatePicker";
 
 export function DashboardBirthdayCalender({
   birthdays,
@@ -13,11 +13,7 @@ export function DashboardBirthdayCalender({
 
   return (
     <div>
-      <DatePickerComponent
-        dates={birthdayDates}
-        isReadOnly={true}
-        inline={true}
-      />
+      <InlineBirthdayDatePicker dates={birthdayDates} />
     </div>
   );
 }

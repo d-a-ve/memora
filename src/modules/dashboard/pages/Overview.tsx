@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom";
 
 import { listUserDocFromBirthdaysCol } from "@/appwrite/utils/database";
 
-import AddBirthday from "../components/Birthday/AddBirthday";
+import AddBirthday from "../components/AddBirthday/AddBirthday";
 import { DashboardBirthdayCalender } from "../components/Calender/DashboardBirthdayCalender";
 import { UpcomingBirthdaySection } from "../components/UpcomingBirthday/UpcomingBirthdaySection";
 import { useBirthdayQuery } from "../hooks/useBirthdayQuery";
+import EmptyBirthdayState from "../components/EmptyBirthdayState/EmptyBirthdayState";
 
 export default function Overview() {
   const { userId } = useParams();
-  console.log({ userId });
   const {
     data: birthdays,
     isLoading: isBirthdaysLoading,
@@ -20,21 +20,26 @@ export default function Overview() {
     queryKey: ["birthdays", userId],
   });
 
-  console.log({ birthdaysError: birthdaysError?.message, birthdays });
-
   if (isBirthdaysLoading) return <div>Loading...</div>;
 
   if (birthdaysError) return <div>Something went wrong!!</div>;
 
+  if (birthdays?.documents.length === 0) return <EmptyBirthdayState />;
+
   return (
     <>
       <div className="mb-6">
-        Date section
         <DashboardBirthdayCalender birthdays={birthdays} />
       </div>
 
-      <UpcomingBirthdaySection birthdays={birthdays} />
-      <AddBirthday />
+      <UpcomingBirthdaySection
+        birthdays={birthdays}
+        showMoreBirthdays={{
+          numOfBirthdaysToShow: 10,
+          linkToSeeMoreBirthdays: `/dashboard/${userId}/upcoming-birthdays`,
+        }}
+      />
+      <AddBirthday showMode={{ mode: "button" }} />
     </>
   );
 }

@@ -1,10 +1,12 @@
 ## Todos
-1. Make the dashboard nav bar fixed and not scroll with the rest of the page.
-1. Order the birthday dates in ascending order
-1. Find a tool that can send emails for you based on data in database. It would be called everyday.
+1. Make the dashboard nav bar fixed and not scroll with the rest of the page. DONE
+1. Order the birthday dates in ascending order DONE
+1. Find a tool that can send emails for you based on data in database. It would be called everyday. DONE
 1. Settings page
-1. Back to top button
-1. Cloud function for sending mails daily
+1. Cloud function for sending mails daily DONE
+1. Create a page loader component
+1. Create a button loader component
+1. Create a serverless function for updating the year of birthdays that have passed in the database to the next year.
 
 
 ## Cloud Function Pseudo code
