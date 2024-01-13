@@ -1,11 +1,7 @@
 import { Suspense } from "react";
-import {
-  Outlet,
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
+import { Outlet, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+
+
 
 import Settings from "@/modules/dashboard/pages/Settings";
 import { DashboardLayout } from "@modules/dashboard";
@@ -17,8 +13,11 @@ import Signup from "@pages/Signup";
 import DashboardOverview from "@pages/dashboard/Overview";
 import DashboardUpcomingBirthdays from "@pages/dashboard/UpcomingBirthday";
 
+
+
 import { OAuthRedirectRoute } from "@components/OAuthRedirectRoute";
-import ProtectedRoute from "@components/ProtectedRoute";
+import { UserProtectedRoute, ProtectedRouteFromAuthenticatedUser } from "@components/ProtectedRoute";
+
 
 // const Login = lazy(() => import("./pages/Login/Login"));
 // const Signup = lazy(() => import("./pages/Signup"));
@@ -33,14 +32,16 @@ const router = createBrowserRouter(
     <>
       <Route path="/" errorElement={<div>Error Page</div>} element={<Outlet />}>
         <Route index element={<Home />} />
+        <Route element={<ProtectedRouteFromAuthenticatedUser />}>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="reset-password" element={<ResetPassword />} />
         <Route path="oauth" element={<OAuthRedirectRoute />} />
+        </Route>
       </Route>
 
-      <Route element={<ProtectedRoute />}>
+      <Route element={<UserProtectedRoute />}>
         <Route
           element={<DashboardLayout />}
           errorElement={<div>Dashboard Error Page</div>}

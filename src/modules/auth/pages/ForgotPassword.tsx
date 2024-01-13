@@ -19,19 +19,10 @@ export default function ForgotPassword() {
   const [isResetLinkSent, setIsResetLinkSent] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const { data: currentUser, isLoading: isCurrentUserLoading } =
-    useUserQuery(0);
   const { mutateAsync: forgotPasswordMutation, isPending: isSubmitting } =
     useCustomMutation<PasswordResetResponseType, MutationFnType>({
       mutationFn: ({ email }) => forgotPassword(email),
     });
-
-  if (isCurrentUserLoading) return <div>Loading...</div>;
-
-  if (currentUser) {
-    console.log("Already logged in");
-    return <Navigate to={`/dashboard/${currentUser.$id}/`} />;
-  }
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

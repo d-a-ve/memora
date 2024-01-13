@@ -31,15 +31,6 @@ export const LOGIN_INPUT_FIELDS: InputFieldType[] = [
 
 export default function Login() {
   const { loginSubmit, isLoading: isFormSubmitting } = useForm();
-  const { data: currentUser, isLoading: isCurrentUserLoading } =
-    useUserQuery(0);
-
-  if (isCurrentUserLoading) return <div>Loading...</div>;
-
-  if (currentUser) {
-    console.log("Already logged in");
-    return <Navigate to={`/dashboard/${currentUser.$id}/`} />;
-  }
 
   return (
     <AuthLayout>

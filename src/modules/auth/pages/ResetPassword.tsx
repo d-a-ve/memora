@@ -1,10 +1,9 @@
 import { FormEvent } from "react";
-import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { resetPassword } from "@/appwrite/utils/userSession";
 import { Password } from "@/components/Input/Password";
 import useCustomMutation from "@/hooks/useCustomMutation";
-import { useUserQuery } from "@/hooks/useUserQuery";
 import { toastError, toastSuccess } from "@/utils/toastNotifs";
 
 import { FormHeader, FormWrapper } from "@components/Form";
@@ -21,8 +20,7 @@ type ResetPasswordMutationFnType = {
 
 export default function ResetPassword() {
   const navigate = useNavigate();
-  const { data: currentUser, isLoading: isCurrentUserLoading } =
-    useUserQuery(0);
+  const [searchParams] = useSearchParams();
 
   // used mutateASync instead of mutate because toast notification was not working with mutate in the onSuccess and onError callback
   const { mutateAsync: resetPasswordMutate, isPending: isPasswordResetting } =
@@ -30,14 +28,6 @@ export default function ResetPassword() {
       mutationFn: ({ userId, secret, password }) =>
         resetPassword(userId, secret, password),
     });
-  const [searchParams] = useSearchParams();
-
-  if (isCurrentUserLoading) return <div>Loading...</div>;
-
-  if (currentUser) {
-    console.log("Already logged in");
-    return <Navigate to={`/dashboard/${currentUser.$id}/`} />;
-  }
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,11 +51,15 @@ export default function ResetPassword() {
     try {
       // I used this method because the toast notification was not showing up; both errors and success
       await resetPasswordMutate({ userId, secret, password });
-      toastSuccess("Password reset successfully");
+      toastSuccess(
+        "Password reset successfully, Please log in with new password"
+      );
+      navigate("/login");
     } catch (e: any) {
       toastError(e.message);
     }
   };
+
   return (
     <AuthLayout>
       <FormHeader
