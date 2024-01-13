@@ -18,6 +18,7 @@ export default function Overview() {
   } = useBirthdayQuery({
     queryFn: () => listUserDocFromBirthdaysCol(userId),
     queryKey: ["birthdays", userId],
+    refetchOnWindowFocus: false,
   });
 
   if (isBirthdaysLoading) return <div>Loading...</div>;

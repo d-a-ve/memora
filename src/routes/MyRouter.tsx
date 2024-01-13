@@ -9,8 +9,10 @@ import {
 
 import Settings from "@/modules/dashboard/pages/Settings";
 import { DashboardLayout } from "@modules/dashboard";
+import ForgotPassword from "@pages/ForgotPassword";
 import Home from "@pages/Home";
 import Login from "@pages/Login";
+import ResetPassword from "@pages/ResetPassword";
 import Signup from "@pages/Signup";
 import DashboardOverview from "@pages/dashboard/Overview";
 import DashboardUpcomingBirthdays from "@pages/dashboard/UpcomingBirthday";
@@ -33,6 +35,8 @@ const router = createBrowserRouter(
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
+        <Route path="reset-password" element={<ResetPassword />} />
         <Route path="oauth" element={<OAuthRedirectRoute />} />
       </Route>
 
@@ -41,7 +45,7 @@ const router = createBrowserRouter(
           element={<DashboardLayout />}
           errorElement={<div>Dashboard Error Page</div>}
         >
-          <Route path="/dashboard/:userId/" element={<DashboardOverview />} />
+          <Route path="/dashboard/:userId" element={<DashboardOverview />} />
           <Route
             path="/dashboard/:userId/upcoming-birthdays"
             element={<DashboardUpcomingBirthdays />}

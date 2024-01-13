@@ -41,10 +41,7 @@ export default function useForm() {
           emailField[1] as string,
           passwordField[1] as string
         );
-        console.log(setCurrentUser);
         const userAccount = await getUserAccount();
-        console.log("User Account", userAccount);
-        setCurrentUser(userAccount);
         navigate(`/dashboard/${userAccount.$id}?query_limit=15`);
       } else {
         toastError(

@@ -11,6 +11,7 @@ export default function UpcomingBirthdays() {
   const { data: birthdays, isLoading: isBirthdaysLoading } = useBirthdayQuery({
     queryFn: () => listUserDocFromBirthdaysCol(userId),
     queryKey: ["birthdays", userId],
+    refetchOnWindowFocus: false,
   });
 
   if (isBirthdaysLoading) return <div>Loading...</div>;

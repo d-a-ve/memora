@@ -1,3 +1,5 @@
+import { InputFieldType } from "@/types";
+
 import useForm from "@hooks/useForm";
 
 import { FormFooter, FormHeader, FormWrapper } from "@components/Form";
@@ -6,7 +8,24 @@ import { Password } from "@components/Input/Password";
 import { AuthLayout } from "@components/Layout";
 import ToastNotif from "@components/Toast";
 
-import { SIGNUP_INPUT_FIELDS } from "../constants";
+export const SIGNUP_INPUT_FIELDS: InputFieldType[] = [
+  {
+    id: 1,
+    labelText: "Name",
+    labelFor: "name",
+    inputType: "text",
+    isRequired: true,
+    placeHolder: "John Doe",
+  },
+  {
+    id: 2,
+    labelText: "Email",
+    labelFor: "email",
+    inputType: "email",
+    isRequired: true,
+    placeHolder: "example@gmail.com",
+  },
+];
 
 // import { authAccount } from "../../appwrite/config";
 

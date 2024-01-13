@@ -1,6 +1,6 @@
 import getSVGFromString from "@utils/getSVGFromString";
 
-import { NavOpenPropsType } from "../../dashboard";
+import { NavOpenPropsType } from "../../types";
 import DNavController from "../Nav/DNavController";
 
 export function Logo({ isNavOpen, setIsNavOpen }: NavOpenPropsType) {

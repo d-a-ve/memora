@@ -61,7 +61,38 @@ export async function getOAuthSession() {
 
 export async function updateUserName(name: string) {
   try {
-    await authAccount.updateName(name);
+    const userName = await authAccount.updateName(name);
+    return userName;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}
+
+export async function forgotPassword(
+  email: string,
+  redirectUrl = "http://localhost:5173/reset-password"
+) {
+  // try {
+  const res = await authAccount.createRecovery(email, redirectUrl);
+  return res;
+  // } catch (error: any) {
+  //   throw error;
+  // }
+}
+
+export async function resetPassword(
+  userId: string,
+  secretKey: string,
+  password: string
+) {
+  try {
+    const res = await authAccount.updateRecovery(
+      userId,
+      secretKey,
+      password,
+      password
+    );
+    return res;
   } catch (error: any) {
     throw new Error(error);
   }

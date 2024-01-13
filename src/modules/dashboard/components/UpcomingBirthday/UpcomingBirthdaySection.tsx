@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-
-
 import { birthdayDataType } from "@/types";
 import filterUpcomingBirthdaysFromCurrentDate from "@/utils/filterUpcomingBirthdays";
 
-
-
 import { UpcomingBirthdayCard } from "./UpcomingBirthdayCard";
 import { UpcomingBirthdaySearch } from "./UpcomingBirthdaySearch";
-
 
 type ShowMoreBirthdays = {
   numOfBirthdaysToShow: number;
@@ -34,15 +29,18 @@ export function UpcomingBirthdaySection({
     searchedBirthday?.documents
   );
 
+  // If the number of searched birthdays is greater than the number of birthdays to show, show the "See more birthdays" link
   const shouldSeeMoreSearchedBirthdaysLinkShow =
     filteredSearchedBirthdays &&
     showMoreBirthdays &&
     filteredSearchedBirthdays.length > showMoreBirthdays.numOfBirthdaysToShow;
-    
+
   const shouldSeeMoreBirthdaysLinkShow =
     filteredBirthdays &&
     showMoreBirthdays &&
     filteredBirthdays.length > showMoreBirthdays.numOfBirthdaysToShow;
+
+  console.log({ filteredBirthdays, filteredSearchedBirthdays });
 
   return (
     <>
@@ -55,8 +53,9 @@ export function UpcomingBirthdaySection({
         {(filteredSearchedBirthdays || filteredBirthdays)
           ?.slice(
             0,
+            // if undefined, show all birthdays
             showMoreBirthdays && showMoreBirthdays.numOfBirthdaysToShow
-          ) // if undefined, show all birthdays
+          )
           ?.map((doc) => {
             return (
               <UpcomingBirthdayCard
@@ -72,6 +71,11 @@ export function UpcomingBirthdaySection({
           filteredSearchedBirthdays.length === 0 && (
             <div>No birthdays found</div>
           )}
+
+        {/* If no birthdays are found when searching, show this message */}
+        {filteredBirthdays && filteredBirthdays.length === 0 && (
+          <div>No birthdays found</div>
+        )}
 
         {(shouldSeeMoreSearchedBirthdaysLinkShow ||
           shouldSeeMoreBirthdaysLinkShow) && (

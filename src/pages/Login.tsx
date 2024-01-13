@@ -1,4 +1,4 @@
-import { LoginModule } from "@/modules/login";
+import { LoginModule } from "@/modules/auth";
 
 function Login() {
   return (

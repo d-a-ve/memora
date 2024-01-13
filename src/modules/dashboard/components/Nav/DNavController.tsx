@@ -1,4 +1,11 @@
-import { DNavControllerPropsType } from "../../dashboard";
+import { ReactNode } from "react";
+
+
+export type DNavControllerPropsType = {
+  clickFunction: () => void;
+  title: string;
+  icon: ReactNode;
+};
 
 export default function DNavController({
   clickFunction,
