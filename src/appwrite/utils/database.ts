@@ -20,8 +20,8 @@ export async function createDocInBirthdaysCol(
   data: databaseDocType
 ) {
   const doc = await createDoc(
-    "64d963a67fe72a47c072",
-    "64ecf3a38e08816df4a0",
+    import.meta.env.VITE_APPWRITE_DB_ID,
+    import.meta.env.VITE_APPWRITE_BIRTHDAYS_COLLECTION_ID,
     docId,
     data
   );
@@ -36,8 +36,8 @@ export async function listUserDocFromBirthdaysCol(
     if (!userId) throw new Error("User Id is not defined");
 
     const docs = await db.listDocuments(
-      "64d963a67fe72a47c072",
-      "64ecf3a38e08816df4a0",
+      import.meta.env.VITE_APPWRITE_DB_ID,
+      import.meta.env.VITE_APPWRITE_BIRTHDAYS_COLLECTION_ID,
       [
         query.equal("user_id", userId),
         query.limit(Number(queryLimit)),
@@ -61,8 +61,8 @@ export async function searchForBirthday(name: string) {
     if (name.length === 0) return;
 
     const docs = await db.listDocuments(
-      "64d963a67fe72a47c072",
-      "64ecf3a38e08816df4a0",
+      import.meta.env.VITE_APPWRITE_DB_ID,
+      import.meta.env.VITE_APPWRITE_BIRTHDAYS_COLLECTION_ID,
       [query.search("person_name", name), query.orderAsc("person_birthday")]
     );
 

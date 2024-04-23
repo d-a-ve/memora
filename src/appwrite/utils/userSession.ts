@@ -1,3 +1,5 @@
+import { BASE_URL } from "@/config";
+
 import { authAccount, uniqueId } from "../config";
 
 export async function createUserSession(email: string, password: string) {
@@ -41,8 +43,8 @@ export function signInWithOAuth(providerName: "facebook" | "google") {
   try {
     authAccount.createOAuth2Session(
       providerName,
-      "http://localhost:5173/oauth",
-      "http://localhost:5173/login"
+      `${BASE_URL}/oauth`,
+      `${BASE_URL}/login`
     );
   } catch (error: any) {
     throw new Error(error);
@@ -69,7 +71,7 @@ export async function updateUserName(name: string) {
 
 export async function forgotPassword(
   email: string,
-  redirectUrl = "http://localhost:5173/reset-password"
+  redirectUrl = `${BASE_URL}/reset-password`
 ) {
   // try {
   const res = await authAccount.createRecovery(email, redirectUrl);

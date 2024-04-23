@@ -8,7 +8,9 @@ export function enableRealtimeForBirthdaysCol(
   set: Dispatch<SetStateAction<birthdayDataType | undefined>>
 ) {
   return client.subscribe<documentType>(
-    "databases.64d963a67fe72a47c072.collections.64ecf3a38e08816df4a0.documents",
+    `databases.${import.meta.env.VITE_APPWRITE_DB_ID}.collections.${
+      import.meta.env.VITE_APPWRITE_BIRTHDAYS_COLLECTION_ID
+    }.documents`,
     (response) => {
       if (response.events[1].includes("create")) {
         set((prev) => {
