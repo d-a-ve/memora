@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import {
   Outlet,
   Route,
@@ -7,15 +7,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-import Settings from "@/modules/dashboard/pages/Settings";
-import { DashboardLayout } from "@modules/dashboard";
-import ForgotPassword from "@pages/ForgotPassword";
-import Home from "@pages/Home";
-import Login from "@pages/Login";
-import ResetPassword from "@pages/ResetPassword";
-import Signup from "@pages/Signup";
-import DashboardOverview from "@pages/dashboard/Overview";
-import DashboardUpcomingBirthdays from "@pages/dashboard/UpcomingBirthday";
+import { DashboardLayout } from "@/modules/dashboard";
 
 import { OAuthRedirectRoute } from "@components/OAuthRedirectRoute";
 import {
@@ -23,13 +15,16 @@ import {
   UserProtectedRoute,
 } from "@components/ProtectedRoute";
 
-// const Login = lazy(() => import("./pages/Login/Login"));
-// const Signup = lazy(() => import("./pages/Signup"));
-// const Overview = lazy(() => import("./pages/Dashboard/pages/Overview"));
-// const UpcomingBirthdays = lazy(
-// 	() => import("./pages/Dashboard/pages/UpcomingBirthdays")
-// );
-// const Dashboard = lazy(() => import("./pages/Dashboard/pages/Dashboard"));
+const Login = lazy(() => import("@/pages/Login"));
+const Signup = lazy(() => import("@/pages/Signup"));
+const DashboardOverview = lazy(() => import("@/pages/dashboard/Overview"));
+const DashboardUpcomingBirthdays = lazy(
+  () => import("@/pages/dashboard/UpcomingBirthday")
+);
+const ForgotPassword = lazy(() => import("@/pages/ForgotPassword"));
+const ResetPassword = lazy(() => import("@/pages/ResetPassword"));
+const Home = lazy(() => import("@/pages/Home"));
+const Settings = lazy(() => import("@/pages/dashboard/Settings"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
