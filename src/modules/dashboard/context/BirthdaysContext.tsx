@@ -1,12 +1,12 @@
 import {
-  useState,
-  createContext,
-  ReactNode,
   Dispatch,
+  ReactNode,
   SetStateAction,
+  createContext,
+  useState,
 } from "react";
 
-import { birthdayDataType } from "../../../types";
+import { birthdayDataType } from "../../../myTypes";
 
 export const BirthdaysContext = createContext(
   {} as birthdayDataType | undefined

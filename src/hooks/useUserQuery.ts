@@ -1,4 +1,4 @@
-import { getUserAccount } from "@/appwrite/utils/userSession";
+import { getUserAccount } from "@appwrite/utils/userSession";
 import { useQuery } from "@tanstack/react-query";
 
 export const useUserQuery = (retry?: boolean | number) => {

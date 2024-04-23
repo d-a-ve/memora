@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import { listUserDocFromBirthdaysCol } from "@/appwrite/utils/database";
+import { listUserDocFromBirthdaysCol } from "@appwrite/utils/database";
 
 import AddBirthday from "../components/AddBirthday/AddBirthday";
 import { UpcomingBirthdaySection } from "../components/UpcomingBirthday/UpcomingBirthdaySection";

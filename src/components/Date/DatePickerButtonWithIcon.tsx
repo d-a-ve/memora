@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 
-
 type DatePickerIconPropsType = {
   clickHandler: () => void;
   isDisabled: boolean;

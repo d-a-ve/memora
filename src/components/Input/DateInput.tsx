@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { calenderMonths } from "@/constants";
-import range from "@/utils/range";
+import { calenderMonths } from "@constants";
 import { getMonth, getYear } from "date-fns";
+
+import range from "@utils/range";
 
 import {
   DatePickerHeaderSelector,

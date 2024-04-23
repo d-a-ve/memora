@@ -1,5 +1,6 @@
-import { ErrorType } from "@/types";
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
+
+import { ErrorType } from "@myTypes/index";
 
 const useCustomMutation = <
   TData = unknown,

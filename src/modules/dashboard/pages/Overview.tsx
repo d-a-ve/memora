@@ -1,7 +1,7 @@
 // import { listUserDocFromBirthdaysCol } from "@appwrite/utils/database";
 import { useParams } from "react-router-dom";
 
-import { listUserDocFromBirthdaysCol } from "@/appwrite/utils/database";
+import { listUserDocFromBirthdaysCol } from "@appwrite/utils/database";
 
 import AddBirthday from "../components/AddBirthday/AddBirthday";
 import { DashboardBirthdayCalender } from "../components/Calender/DashboardBirthdayCalender";

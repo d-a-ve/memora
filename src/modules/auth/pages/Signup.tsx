@@ -1,6 +1,6 @@
-import { InputFieldType } from "@/types";
-
 import useForm from "@hooks/useForm";
+
+import { InputFieldType } from "@myTypes/index";
 
 import { FormFooter, FormHeader, FormWrapper } from "@components/Form";
 import { InputWithLabel } from "@components/Input";

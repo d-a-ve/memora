@@ -63,4 +63,4 @@ export type ErrorType = {
   message: string;
   type: string;
   code: number;
-}; 
+};

@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
-import BirthdaysContextProvider from "@/modules/dashboard/context/BirthdaysContext";
+import BirthdaysContextProvider from "@modules/dashboard/context/BirthdaysContext";
 
 import DLayout from "../components/Layout/DLayout";
 

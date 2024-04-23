@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import getSVGFromString from "@/utils/getSVGFromString";
+import getSVGFromString from "@utils/getSVGFromString";
 
 import { Input } from "./Input";
 import { InputPropsType } from "./types";

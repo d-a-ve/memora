@@ -10,5 +10,3 @@ export type DatePickerHeaderPropsType = Omit<
   | "prevYearButtonDisabled"
   | "nextYearButtonDisabled"
 >;
-
-

@@ -1,14 +1,19 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
-import { updateUserName } from "@/appwrite/utils/userSession";
-import { PrimaryButton, SecondaryButton } from "@/components/Button";
-import { FormWrapper } from "@/components/Form";
-import { Input } from "@/components/Input/Input";
-import useUserMutation from "@/hooks/useUserMutation";
-import { useUserQuery } from "@/hooks/useUserQuery";
-import { ErrorType } from "@/types";
-import { toastError } from "@/utils/toastNotifs";
 import { useQueryClient } from "@tanstack/react-query";
+
+import useUserMutation from "@hooks/useUserMutation";
+import { useUserQuery } from "@hooks/useUserQuery";
+
+import { updateUserName } from "@appwrite/utils/userSession";
+
+import { toastError } from "@utils/toastNotifs";
+
+import { ErrorType } from "@myTypes/index";
+
+import { PrimaryButton, SecondaryButton } from "@components/Button";
+import { FormWrapper } from "@components/Form";
+import { Input } from "@components/Input/Input";
 
 type UpdateCurrentUserNameMutationFn = { name: string };
 

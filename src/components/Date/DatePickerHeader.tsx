@@ -1,5 +1,6 @@
-import range from "@/utils/range";
 import { getMonth, getYear } from "date-fns";
+
+import range from "@utils/range";
 
 import { calenderMonths } from "../../constants";
 import DatePickerButtonWithIcon from "./DatePickerButtonWithIcon";

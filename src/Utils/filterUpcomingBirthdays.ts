@@ -1,5 +1,6 @@
-import { documentType } from "@/types";
 import { isFuture, isToday } from "date-fns";
+
+import { documentType } from "@myTypes/index";
 
 export default function filterUpcomingBirthdaysFromCurrentDate(
   arr: documentType[] | undefined

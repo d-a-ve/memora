@@ -1,4 +1,4 @@
-import { HomeModule } from "@/modules/home";
+import { HomeModule } from "@modules/home";
 
 function Home() {
   return (

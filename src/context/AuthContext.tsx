@@ -1,12 +1,12 @@
 import {
-  useState,
-  createContext,
-  ReactNode,
   Dispatch,
+  ReactNode,
   SetStateAction,
+  createContext,
+  useState,
 } from "react";
 
-import { UserType } from "../types";
+import { UserType } from "../myTypes";
 
 export const AuthContext = createContext({} as UserType | undefined);
 export const AuthSetterContext = createContext<

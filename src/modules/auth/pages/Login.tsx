@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import { InputFieldType } from "@/types";
-
 import useForm from "@hooks/useForm";
+
+import { InputFieldType } from "@myTypes/index";
 
 import { FormFooter, FormHeader, FormWrapper } from "@components/Form";
 import { InputWithLabel, InputWithLabelWrapper } from "@components/Input";

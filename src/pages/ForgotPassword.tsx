@@ -1,4 +1,4 @@
-import { ForgotPasswordModule } from "@/modules/auth";
+import { ForgotPasswordModule } from "@modules/auth";
 
 function ForgotPassword() {
   return (

@@ -1,4 +1,4 @@
-import { databaseDocType } from "../../types";
+import { databaseDocType } from "../../myTypes";
 import { db, query } from "../config";
 
 export async function createDoc(

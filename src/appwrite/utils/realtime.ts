@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-import { birthdayDataType, documentType } from "@/types";
+import { birthdayDataType, documentType } from "@myTypes/index";
 
 import client from "../config";
 

@@ -1,4 +1,4 @@
-import { IconPropsType } from "../../types";
+import { IconPropsType } from "../../myTypes";
 
 export default function OverviewIcon({ width, height }: IconPropsType) {
   return (

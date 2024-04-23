@@ -1,4 +1,4 @@
-import { DashboardSettings } from "@/modules/dashboard";
+import { DashboardSettings } from "@modules/dashboard";
 
 function Settings() {
   return <DashboardSettings />;

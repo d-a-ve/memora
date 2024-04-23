@@ -1,4 +1,4 @@
-import { DashboardUpcomingBirthdaysModule } from "@/modules/dashboard";
+import { DashboardUpcomingBirthdaysModule } from "@modules/dashboard";
 
 function UpcomingBirthday() {
   return (

@@ -1,4 +1,4 @@
-import { DashboardOverviewModule } from "@/modules/dashboard";
+import { DashboardOverviewModule } from "@modules/dashboard";
 
 function Overview() {
   return (

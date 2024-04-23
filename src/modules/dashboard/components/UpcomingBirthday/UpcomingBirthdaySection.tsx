@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { birthdayDataType } from "@/types";
-import filterUpcomingBirthdaysFromCurrentDate from "@/utils/filterUpcomingBirthdays";
+import filterUpcomingBirthdaysFromCurrentDate from "@utils/filterUpcomingBirthdays";
+
+import { birthdayDataType } from "@myTypes/index";
 
 import { UpcomingBirthdayCard } from "./UpcomingBirthdayCard";
 import { UpcomingBirthdaySearch } from "./UpcomingBirthdaySearch";

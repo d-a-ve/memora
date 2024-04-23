@@ -1,6 +1,6 @@
 import "react-datepicker/dist/react-datepicker.css";
 
-import { DatePickerWrapper } from "@/components/Date";
+import { DatePickerWrapper } from "@components/Date";
 
 import { InlineBirthdayDatePickerHeader } from "./InlineBirthdayDatePickerHeader";
 

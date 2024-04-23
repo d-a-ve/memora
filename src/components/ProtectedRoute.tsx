@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-import { useUserQuery } from "@/hooks/useUserQuery";
+import { useUserQuery } from "@hooks/useUserQuery";
 
 export function UserProtectedRoute() {
   const { data: currentUser, isLoading: isCurrentUserLoading } =

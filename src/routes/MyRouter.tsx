@@ -7,7 +7,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-import { DashboardLayout } from "@/modules/dashboard";
+import { DashboardLayout } from "@modules/dashboard";
 
 import { OAuthRedirectRoute } from "@components/OAuthRedirectRoute";
 import {
@@ -15,16 +15,16 @@ import {
   UserProtectedRoute,
 } from "@components/ProtectedRoute";
 
-const Login = lazy(() => import("@/pages/Login"));
-const Signup = lazy(() => import("@/pages/Signup"));
-const DashboardOverview = lazy(() => import("@/pages/dashboard/Overview"));
+const Login = lazy(() => import("@pages/Login"));
+const Signup = lazy(() => import("@pages/Signup"));
+const DashboardOverview = lazy(() => import("@pages/dashboard/Overview"));
 const DashboardUpcomingBirthdays = lazy(
-  () => import("@/pages/dashboard/UpcomingBirthday")
+  () => import("@pages/dashboard/UpcomingBirthday")
 );
-const ForgotPassword = lazy(() => import("@/pages/ForgotPassword"));
-const ResetPassword = lazy(() => import("@/pages/ResetPassword"));
-const Home = lazy(() => import("@/pages/Home"));
-const Settings = lazy(() => import("@/pages/dashboard/Settings"));
+const ForgotPassword = lazy(() => import("@pages/ForgotPassword"));
+const ResetPassword = lazy(() => import("@pages/ResetPassword"));
+const Home = lazy(() => import("@pages/Home"));
+const Settings = lazy(() => import("@pages/dashboard/Settings"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(

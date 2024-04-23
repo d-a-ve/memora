@@ -1,12 +1,14 @@
 import { FormEvent } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { resetPassword } from "@/appwrite/utils/userSession";
-import { Password } from "@/components/Input/Password";
-import useCustomMutation from "@/hooks/useCustomMutation";
-import { toastError, toastSuccess } from "@/utils/toastNotifs";
+import { resetPassword } from "@appwrite/utils/userSession";
+
+import useCustomMutation from "@hooks/useCustomMutation";
+
+import { toastError, toastSuccess } from "@utils/toastNotifs";
 
 import { FormHeader, FormWrapper } from "@components/Form";
+import { Password } from "@components/Input/Password";
 import { AuthLayout } from "@components/Layout";
 import ToastNotif from "@components/Toast";
 

@@ -1,4 +1,4 @@
-import { ResetPasswordModule } from "@/modules/auth";
+import { ResetPasswordModule } from "@modules/auth";
 
 function ResetPassword() {
   return (

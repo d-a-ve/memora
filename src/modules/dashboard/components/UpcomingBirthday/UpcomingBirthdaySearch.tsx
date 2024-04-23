@@ -1,14 +1,17 @@
 import {
-  useState, // FormEvent,
-  useEffect,
   Dispatch,
-  SetStateAction,
+  SetStateAction, // FormEvent,
+  useEffect,
+  useState, // FormEvent,
 } from "react";
 
-import { searchForBirthday } from "@/appwrite/utils/database";
-import useDebounce from "@/hooks/useDebounce";
-import { birthdayDataType } from "@/types";
-import getSVGFromString from "@/utils/getSVGFromString";
+import useDebounce from "@hooks/useDebounce";
+
+import { searchForBirthday } from "@appwrite/utils/database";
+
+import getSVGFromString from "@utils/getSVGFromString";
+
+import { birthdayDataType } from "@myTypes/index";
 
 import { Input } from "@components/Input/Input";
 

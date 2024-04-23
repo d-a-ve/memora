@@ -1,6 +1,6 @@
 import { NavLink, useParams } from "react-router-dom";
 
-import getSVGFromString from "@/utils/getSVGFromString";
+import getSVGFromString from "@utils/getSVGFromString";
 
 import { NavOpenPropsType } from "../../types";
 import DNavLogoutBtn from "./DNavLogoutBtn";

@@ -1,4 +1,4 @@
-import { birthdayDataType } from "@/types";
+import { birthdayDataType } from "@myTypes/index";
 
 import { InlineBirthdayDatePicker } from "../BirthdayDatePicker/InlineBirthdayDatePicker";
 

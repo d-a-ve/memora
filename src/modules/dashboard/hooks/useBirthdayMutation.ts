@@ -1,9 +1,10 @@
-import { ErrorType } from "@/types";
 import {
   QueryClient,
   UseMutationOptions,
   useMutation,
 } from "@tanstack/react-query";
+
+import { ErrorType } from "@myTypes/index";
 
 const useBirthdayMutation = <
   TData = unknown,

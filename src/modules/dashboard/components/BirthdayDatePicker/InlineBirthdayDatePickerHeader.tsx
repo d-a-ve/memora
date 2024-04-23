@@ -1,11 +1,12 @@
 import { ReactDatePickerCustomHeaderProps } from "react-datepicker";
 
+import { calenderMonths } from "@constants";
+import { getMonth } from "date-fns";
+
 import {
   DatePickerHeaderSelector,
   DatePickerHeaderWrapper,
-} from "@/components/Date";
-import { calenderMonths } from "@/constants";
-import { getMonth } from "date-fns";
+} from "@components/Date";
 
 type InlineBirthdayDatePickerHeaderPropsType = Pick<
   ReactDatePickerCustomHeaderProps,

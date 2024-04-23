@@ -1,10 +1,11 @@
-import { ErrorType } from "@/types";
 import {
   QueryClient,
   QueryKey,
   UseQueryOptions,
   useQuery,
 } from "@tanstack/react-query";
+
+import { ErrorType } from "@myTypes/index";
 
 export const useBirthdayQuery = <
   TQueryFnData = unknown,

@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 
-import { toastError } from "@/utils/toastNotifs";
+import { toastError } from "@utils/toastNotifs";
 
-import { UserType } from "../../types";
+import { UserType } from "../../myTypes";
 import { authAccount } from "../config";
 
 export default async function logout(
