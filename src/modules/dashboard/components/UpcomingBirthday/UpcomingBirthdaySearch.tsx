@@ -5,11 +5,11 @@ import {
   useState, // FormEvent,
 } from "react";
 
+import getSVGFromString from "helpers/getSVGFromString";
+
 import useDebounce from "@hooks/useDebounce";
 
 import { searchForBirthday } from "@appwrite/utils/database";
-
-import getSVGFromString from "@utils/getSVGFromString";
 
 import { birthdayDataType } from "@myTypes/index";
 

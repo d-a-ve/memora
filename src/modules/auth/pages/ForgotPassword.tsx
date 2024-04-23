@@ -1,11 +1,11 @@
 import { FormEvent, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { toastError, toastSuccess } from "helpers/toastNotifs";
+
 import useCustomMutation from "@hooks/useCustomMutation";
 
 import { forgotPassword } from "@appwrite/utils/userSession";
-
-import { toastError, toastSuccess } from "@utils/toastNotifs";
 
 import { FormHeader, FormWrapper } from "@components/Form";
 import { InputWithLabel } from "@components/Input";

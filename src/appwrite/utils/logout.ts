@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-import { toastError } from "@utils/toastNotifs";
+import { toastError } from "helpers/toastNotifs";
 
 import { UserType } from "../../myTypes";
 import { authAccount } from "../config";

@@ -23,7 +23,7 @@
     "^@modules/(.*)$",
     "^@hooks/(.*)$",
     "^@appwrite/(.*)$",
-    "^@utils/(.*)$",
+    "^@helpers/(.*)$",
     "^@constants/(.*)$",
     "^@myTypes/(.*)$",
     "^@components/(.*)$",

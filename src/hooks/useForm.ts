@@ -2,15 +2,14 @@ import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useQueryClient } from "@tanstack/react-query";
+import getValidFormData from "helpers/getValidFormData";
+import { toastError } from "helpers/toastNotifs";
 
 import {
   createUserAccount,
   createUserSession,
   getUserAccount,
 } from "@appwrite/utils/userSession";
-
-import getValidFormData from "@utils/getValidFormData";
-import { toastError } from "@utils/toastNotifs";
 
 import useAuthApi from "./useAuthApi";
 

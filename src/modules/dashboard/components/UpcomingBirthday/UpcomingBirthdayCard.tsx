@@ -1,6 +1,6 @@
-import { getInitials } from "@appwrite/utils/avatar";
+import { getDateFromDateString, getDaysLeft } from "helpers/getDate";
 
-import { getDateFromDateString, getDaysLeft } from "@utils/getDate";
+import { getInitials } from "@appwrite/utils/avatar";
 
 export function UpcomingBirthdayCard({
   name,

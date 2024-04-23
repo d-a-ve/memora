@@ -1,13 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
 import { useQueryClient } from "@tanstack/react-query";
+import { toastError } from "helpers/toastNotifs";
 
 import useUserMutation from "@hooks/useUserMutation";
 import { useUserQuery } from "@hooks/useUserQuery";
 
 import { updateUserName } from "@appwrite/utils/userSession";
-
-import { toastError } from "@utils/toastNotifs";
 
 import { ErrorType } from "@myTypes/index";
 

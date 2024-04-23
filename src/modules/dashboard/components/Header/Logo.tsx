@@ -1,4 +1,4 @@
-import getSVGFromString from "@utils/getSVGFromString";
+import getSVGFromString from "helpers/getSVGFromString";
 
 import { NavOpenPropsType } from "../../types";
 import DNavController from "../Nav/DNavController";

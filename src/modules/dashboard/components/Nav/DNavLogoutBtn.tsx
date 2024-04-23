@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
 import { useQueryClient } from "@tanstack/react-query";
+import getSVGFromString from "helpers/getSVGFromString";
+import { toastError } from "helpers/toastNotifs";
 
 import useUserMutation from "@hooks/useUserMutation";
 
 import { deleteSession } from "@appwrite/utils/userSession";
-
-import getSVGFromString from "@utils/getSVGFromString";
-import { toastError } from "@utils/toastNotifs";
 
 export default function DNavLogoutBtn() {
   const navigate = useNavigate();
