@@ -2,17 +2,17 @@
 This project makes use of pnpm as the package manager.
 
 ## Todos 
-[x] Make the dashboard nav bar fixed and not scroll with the rest of the page. DONE
-[x] Order the birthday dates in ascending order DONE
-[x] Find a tool that can send emails for you based on data in database. It would be called everyday. DONE
-[] Settings page
-[x] Cloud function for sending mails daily DONE
-[] Create a page loader component
-[] Create a button loader component
-[x] Create a serverless function for updating the year of birthdays that have passed in the database to the next year.
-[] add error handling on form submission
-[] focus on password input on eye icon click
-[] edit birthdays
+- [x] Make the dashboard nav bar fixed and not scroll with the rest of the page.
+- [x] Order the birthday dates in ascending order
+- [x] Find a tool that can send emails for you based on data in database. It would be called everyday.
+- [] Settings page
+- [x] Cloud function for sending mails daily
+- [] Create a page loader component
+- [] Create a button loader component
+- [x] Create a serverless function for updating the year of birthdays that have passed in the database to the next year.
+- [] add error handling on form submission
+- [] focus on password input on eye icon click
+- [] edit birthdays
 
 ## Cloud Function Pseudo code
 1. Get today's date
