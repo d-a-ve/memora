@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import getInputError from "@utils/getInputError";
+import getInputError from "@/utils/getInputError";
 
 import { Input } from "./Input";
 import InputError from "./InputError";
@@ -14,7 +14,7 @@ export function InputWithLabel({
   required,
   placeHolder,
   isPassword,
-  disabled
+  disabled,
 }: InputWithLabelPropsType) {
   const [inputValue, setInputValue] = useState("");
   const [touched, setTouched] = useState(false);
