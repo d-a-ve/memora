@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { Navigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import { forgotPassword } from "@/appwrite/utils/userSession";
 import { FormHeader, FormWrapper } from "@/components/Form";
@@ -7,7 +7,6 @@ import { InputWithLabel } from "@/components/Input";
 import { AuthLayout } from "@/components/Layout";
 import ToastNotif from "@/components/Toast";
 import useCustomMutation from "@/hooks/useCustomMutation";
-import { useUserQuery } from "@/hooks/useUserQuery";
 import { toastError, toastSuccess } from "@/utils/toastNotifs";
 
 import { PasswordResetResponseType } from "../authTypes";

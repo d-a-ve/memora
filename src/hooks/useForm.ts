@@ -11,13 +11,12 @@ import { useQueryClient } from "@tanstack/react-query";
 import getValidFormData from "@utils/getValidFormData";
 import { toastError } from "@utils/toastNotifs";
 
-import useAuth from "./useAuth";
 import useAuthApi from "./useAuthApi";
 
 export default function useForm() {
   const [isLoading, setIsLoading] = useState(false);
   const { setCurrentUser } = useAuthApi();
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
   const queryClient = useQueryClient();
 
   const navigate = useNavigate();
@@ -48,8 +47,8 @@ export default function useForm() {
           "Cannot submit the form. Please check the highlighted fields for errors and try again."
         );
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toastError(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -68,7 +67,6 @@ export default function useForm() {
           passwordField[1] as string
         );
         const userAccount = await getUserAccount();
-        console.log("User Account", userAccount);
         queryClient.invalidateQueries({ queryKey: ["current-user"] });
         setCurrentUser(userAccount);
         navigate(`/dashboard/${userAccount.$id}/`);
@@ -77,8 +75,8 @@ export default function useForm() {
           "Cannot submit the form. Please check the highlighted fields for errors and try again."
         );
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toastError(error.message);
     } finally {
       setIsLoading(false);
     }

@@ -1,12 +1,12 @@
-import { getYear, getMonth } from "date-fns";
+import { getMonth, getYear } from "date-fns";
 
 import range from "@utils/range";
 
 import { calenderMonths } from "../../constants";
 import DatePickerButtonWithIcon from "./DatePickerButtonWithIcon";
 import DatePickerHeaderSelector from "./DatePickerHeaderSelector";
-import { DatePickerHeaderPropsType } from "./types";
 import { DatePickerHeaderWrapper } from "./DatePickerHeaderWrapper";
+import { DatePickerHeaderPropsType } from "./types";
 
 const leftArrow = (
   <svg
@@ -51,7 +51,7 @@ export function DatePickerHeader({
 
   return (
     <DatePickerHeaderWrapper className="flex items-center justify-between">
-        <p>Testing shii</p>
+      <p>Testing shii</p>
       <div className="flex gap-2">
         <DatePickerHeaderSelector
           selectValue={calenderMonths[getMonth(date)]}

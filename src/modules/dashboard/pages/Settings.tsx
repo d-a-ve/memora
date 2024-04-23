@@ -24,13 +24,11 @@ export default function Settings() {
     isPending: isCurrentUserNameUpdating,
   } = useUserMutation<unknown, ErrorType, UpdateCurrentUserNameMutationFn>({
     mutationFn: ({ name }) => updateUserName(name),
-    onSuccess: (response) => {
-      console.log({ response });
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["current-user"] });
       setIsFormEditable(false);
     },
-    onError: (error) => {
-      console.log(error);
+    onError: () => {
       toastError("Something went wrong, please try again");
     },
   });

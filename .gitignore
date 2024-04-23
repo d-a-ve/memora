@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Lock files, only pnpm is allowed
+package-lock.json
+yarn.lock
+
 appwrite.json
 
 # Editor directories and files

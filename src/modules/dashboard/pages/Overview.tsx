@@ -5,9 +5,9 @@ import { listUserDocFromBirthdaysCol } from "@/appwrite/utils/database";
 
 import AddBirthday from "../components/AddBirthday/AddBirthday";
 import { DashboardBirthdayCalender } from "../components/Calender/DashboardBirthdayCalender";
+import EmptyBirthdayState from "../components/EmptyBirthdayState/EmptyBirthdayState";
 import { UpcomingBirthdaySection } from "../components/UpcomingBirthday/UpcomingBirthdaySection";
 import { useBirthdayQuery } from "../hooks/useBirthdayQuery";
-import EmptyBirthdayState from "../components/EmptyBirthdayState/EmptyBirthdayState";
 
 export default function Overview() {
   const { userId } = useParams();

@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 
-
 export type DNavControllerPropsType = {
   clickFunction: () => void;
   title: string;

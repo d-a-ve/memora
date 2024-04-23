@@ -1,6 +1,5 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { useUserQuery } from "@/hooks/useUserQuery";
 import { InputFieldType } from "@/types";
 
 import useForm from "@hooks/useForm";

@@ -11,11 +11,9 @@ export default async function logout(
 ) {
   try {
     await authAccount.deleteSession("current");
-    console.log("Logged out successful");
     setCurrentUser(undefined);
     navigateFunction();
   } catch (error) {
     toastError("Something went wrong. Could not log out!");
-    console.log(error);
   }
 }

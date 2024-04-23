@@ -30,7 +30,7 @@ export const SIGNUP_INPUT_FIELDS: InputFieldType[] = [
 // import { authAccount } from "../../appwrite/config";
 
 export default function Signup() {
-  const { signupSubmit } = useForm();
+  const { signupSubmit, isLoading } = useForm();
   return (
     <AuthLayout>
       <FormHeader
@@ -56,7 +56,9 @@ export default function Signup() {
         )}
         <Password />
         <div className="mt-2">
-          <button className="btn-primary w-full">Sign up</button>
+          <button className="btn-primary w-full">
+            {isLoading ? "Signing up..." : "Sign up"}
+          </button>
         </div>
       </FormWrapper>
       <FormFooter />

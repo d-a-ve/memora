@@ -38,7 +38,6 @@ export function DatePickerComponent({
       customInput={customInput}
       // calendarClassName="bg-red-500"
       // dayClassName={(date) => {
-      // 	console.log(date);
       // 	return isSameMonth(date, new Date()) ? "text-black" : "text-gray-300";
       // }}
       renderCustomHeader={({

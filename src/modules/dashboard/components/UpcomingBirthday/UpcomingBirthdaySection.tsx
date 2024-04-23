@@ -40,8 +40,6 @@ export function UpcomingBirthdaySection({
     showMoreBirthdays &&
     filteredBirthdays.length > showMoreBirthdays.numOfBirthdaysToShow;
 
-  console.log({ filteredBirthdays, filteredSearchedBirthdays });
-
   return (
     <>
       <div className="mb-4 flex items-center justify-between sm:flex-col sm:gap-2 sm:items-start">

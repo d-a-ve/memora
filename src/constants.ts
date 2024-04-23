@@ -7,12 +7,6 @@ export const AUTHMETHODS = [
     icon: "./assets/google.svg",
     clickFunction: () => signInWithOAuth("google"),
   },
-  {
-    id: 2,
-    name: "Facebook",
-    icon: "./assets/facebook.svg",
-    clickFunction: () => signInWithOAuth("facebook"),
-  },
 ];
 
 export const LOGIN_DEFAULT_VALUES = {

@@ -17,7 +17,6 @@ export default function DNavLogoutBtn() {
       navigate("/login");
     },
     onError: (error) => {
-      console.log(error);
       toastError("Something went wrong, could not log out!!!");
     },
   });

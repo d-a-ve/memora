@@ -1,10 +1,7 @@
-import { getOAuthSession } from "@appwrite/utils/userSession";
-
 export function OAuthRedirectRoute() {
-  const OAuthUserSession = async () => {
-    return await getOAuthSession();
-  };
-
-  console.log(OAuthUserSession());
-  return <div>OAuthRedirectRoute</div>;
+  return (
+    <div className="h-screen flex items-center justify-center">
+      Redirecting...
+    </div>
+  );
 }

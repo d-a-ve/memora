@@ -21,7 +21,6 @@ export async function createUserAccount(
 }
 export async function getUserAccount() {
   try {
-    console.log("running");
     const userAccount = await authAccount.get();
 
     return userAccount;
