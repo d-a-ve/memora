@@ -1,6 +1,6 @@
-import { getInitials } from "@appwrite/utils/avatar";
-
 import { useUserQuery } from "@hooks/useUserQuery";
+
+import { getInitials } from "@appwrite/utils/avatar";
 
 export default function User() {
   const { data: currentUser, isLoading: isCurrentUserLoading } = useUserQuery();

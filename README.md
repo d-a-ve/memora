@@ -13,6 +13,7 @@ This project makes use of pnpm as the package manager.
 - [] add error handling on form submission
 - [] focus on password input on eye icon click
 - [] edit birthdays
+- [ ] make the opaque bg cover everything when the sidebar is open
 
 ## Cloud Function Pseudo code
 1. Get today's date

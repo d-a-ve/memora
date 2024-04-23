@@ -1,4 +1,4 @@
-import { AUTHMETHODS } from "@constants";
+import { AUTHMETHODS } from "@constants/index";
 
 import { ActionButtonWithIcon } from "../Button/ActionButtonWithIcon";
 

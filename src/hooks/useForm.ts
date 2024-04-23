@@ -1,12 +1,13 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useQueryClient } from "@tanstack/react-query";
+
 import {
   createUserAccount,
   createUserSession,
   getUserAccount,
 } from "@appwrite/utils/userSession";
-import { useQueryClient } from "@tanstack/react-query";
 
 import getValidFormData from "@utils/getValidFormData";
 import { toastError } from "@utils/toastNotifs";

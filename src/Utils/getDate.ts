@@ -1,4 +1,3 @@
-import { calenderMonths } from "@constants";
 import {
   formatDistanceToNowStrict,
   formatISO,
@@ -9,6 +8,8 @@ import {
   isToday,
   isTomorrow,
 } from "date-fns";
+
+import { calenderMonths } from "@constants/index";
 
 export function getDateFromSlashSeparatedString(birthdayDate: string) {
   const d = new Date();

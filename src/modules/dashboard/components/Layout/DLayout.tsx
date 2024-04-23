@@ -10,7 +10,7 @@ export default function DLayout({ children }: { children: ReactNode }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <div>
+    <div className="min-h-screen">
       <Header
         logoComponent={
           <Logo isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
@@ -19,7 +19,7 @@ export default function DLayout({ children }: { children: ReactNode }) {
       <div className="dashboard">
         <DNav isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
         <div className={`dashboard-main pb-16 ${isNavOpen ? "lg:opaque" : ""}`}>
-          <div className="max-w-3xl mx-auto mt-4 min-h-screen">{children}</div>
+          <div className="max-w-3xl mx-auto mt-4">{children}</div>
         </div>
       </div>
       <ToastNotif />

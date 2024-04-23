@@ -1,9 +1,9 @@
 import { FormEvent } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { resetPassword } from "@appwrite/utils/userSession";
-
 import useCustomMutation from "@hooks/useCustomMutation";
+
+import { resetPassword } from "@appwrite/utils/userSession";
 
 import { toastError, toastSuccess } from "@utils/toastNotifs";
 

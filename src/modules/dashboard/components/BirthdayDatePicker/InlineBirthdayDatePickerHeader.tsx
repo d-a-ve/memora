@@ -1,7 +1,8 @@
 import { ReactDatePickerCustomHeaderProps } from "react-datepicker";
 
-import { calenderMonths } from "@constants";
 import { getMonth } from "date-fns";
+
+import { calenderMonths } from "@constants/index";
 
 import {
   DatePickerHeaderSelector,
