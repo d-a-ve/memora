@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ElementRef, useRef, useState } from "react";
 
 import getSVGFromString from "helpers/getSVGFromString";
 
@@ -19,7 +19,14 @@ export function InputWithEyeIcon({
   placeHolder,
   displayError,
 }: InputPropsType) {
+  const ref = useRef<ElementRef<"input">>(null);
   const [isShown, setIsShown] = useState(false);
+
+  const handleIconToggle = () => {
+    setIsShown((prev) => !prev);
+    ref?.current?.focus();
+  };
+
   return (
     <div className="w-full h-full relative">
       <Input
@@ -31,14 +38,16 @@ export function InputWithEyeIcon({
         inputValue={inputValue}
         placeHolder={placeHolder}
         displayError={displayError}
+        inputRef={ref}
       />
-      <span
-        className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-black focus:outline-primary-500"
-        onClick={() => setIsShown((prev) => !prev)}
+      <button
+        type="button"
+        className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-black focus-visible:outline-primary-500"
+        onClick={handleIconToggle}
         title={isShown ? "Password shown" : "Password hidden"}
       >
         {isShown ? eyeIcon : eyeWithSlashIcon}
-      </span>
+      </button>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import useForm from "@hooks/useForm";
 
 import { InputFieldType } from "@myTypes/index";
 
+import { PrimaryButton } from "@components/Button";
 import { FormFooter, FormHeader, FormWrapper } from "@components/Form";
 import { InputWithLabel, InputWithLabelWrapper } from "@components/Input";
 import { AuthLayout } from "@components/Layout";
@@ -84,9 +85,12 @@ export default function Login() {
           }
         )}
         <div className="mt-2">
-          <button type="submit" className="btn-primary w-full">
-            {isFormSubmitting ? "Logging in..." : "Login"}
-          </button>
+          <PrimaryButton
+            buttonType="submit"
+            className="btn-primary w-full"
+            isLoading={isFormSubmitting}
+            buttonText={isFormSubmitting ? "Logging in..." : "Login"}
+          />
         </div>
       </FormWrapper>
       <FormFooter />

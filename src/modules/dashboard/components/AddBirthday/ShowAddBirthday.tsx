@@ -1,5 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
+import { PrimaryButton } from "@components/Button";
+
 import { ShowMode } from "../../types";
 
 export default function ShowAddBirthday({
@@ -26,14 +28,11 @@ export default function ShowAddBirthday({
     case "button":
       return (
         <div className="fixed right-8 bottom-8">
-          <button
-            type="button"
-            title="Add Birthday"
-            className="btn-primary"
-            onClick={() => setModalOpen(true)}
-          >
-            +
-          </button>
+          <PrimaryButton
+            buttonType="button"
+            clickFunction={() => setModalOpen(true)}
+            buttonText="+"
+          />
         </div>
       );
 

@@ -36,8 +36,8 @@ export function DatePickerComponent({
       fixedHeight={true}
       scrollableYearDropdown={true}
       customInput={customInput}
-      // calendarClassName="bg-red-500"
-      // dayClassName={(date) => {
+      // calendarclassName="bg-red-500"
+      // dayclassName={(date) => {
       // 	return isSameMonth(date, new Date()) ? "text-black" : "text-gray-300";
       // }}
       renderCustomHeader={({

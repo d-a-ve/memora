@@ -7,6 +7,9 @@ import useCustomMutation from "@hooks/useCustomMutation";
 
 import { forgotPassword } from "@appwrite/utils/userSession";
 
+import { extractErrorMessage } from "@helpers/index";
+
+import { PrimaryButton } from "@components/Button";
 import { FormHeader, FormWrapper } from "@components/Form";
 import { InputWithLabel } from "@components/Input";
 import { AuthLayout } from "@components/Layout";
@@ -35,7 +38,7 @@ export default function ForgotPassword() {
       await forgotPasswordMutation({ email: userEmail });
       setIsResetLinkSent(true);
     } catch (error: any) {
-      toastError(error.message);
+      toastError(extractErrorMessage(error.message));
     }
   };
 
@@ -70,9 +73,12 @@ export default function ForgotPassword() {
               required={true}
             />
             <div className="mt-2">
-              <button type="submit" className="btn-primary w-full">
-                {isSubmitting ? "Submitting..." : "Submit"}
-              </button>
+              <PrimaryButton
+                buttonType="submit"
+                className="btn-primary w-full"
+                isLoading={isSubmitting}
+                buttonText={isSubmitting ? "Submitting..." : "Submit"}
+              />
             </div>
           </FormWrapper>
         </>

@@ -4,12 +4,12 @@ export function SecondaryButton({
   buttonText,
   clickFunction,
   buttonType,
-  classname,
+  className,
 }: ActionButtonProps) {
   return (
     <button
       type={buttonType}
-      className={`btn-secondary ${classname}`}
+      className={`btn-secondary ${className}`}
       onClick={clickFunction}
     >
       {buttonText}

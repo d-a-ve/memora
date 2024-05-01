@@ -9,6 +9,7 @@ import {
 
 import { DashboardLayout } from "@modules/dashboard";
 
+import { PageLoader } from "@components/Loader";
 import { OAuthRedirectRoute } from "@components/OAuthRedirectRoute";
 import {
   ProtectedRouteFromAuthenticatedUser,
@@ -59,7 +60,7 @@ const router = createBrowserRouter(
 
 function MyRouter() {
   return (
-    <Suspense fallback="Loading...">
+    <Suspense fallback={<PageLoader />}>
       <RouterProvider router={router} />
     </Suspense>
   );

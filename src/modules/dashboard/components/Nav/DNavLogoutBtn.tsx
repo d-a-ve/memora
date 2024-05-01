@@ -17,7 +17,7 @@ export default function DNavLogoutBtn() {
       queryClient.removeQueries({ queryKey: ["current-user"] });
       navigate("/login");
     },
-    onError: (error) => {
+    onError: () => {
       toastError("Something went wrong, could not log out!!!");
     },
   });

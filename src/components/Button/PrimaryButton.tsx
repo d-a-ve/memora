@@ -1,20 +1,29 @@
+import { cn } from "@helpers/cn";
+
+import { InlineLoader } from "@components/Loader";
+
 import { ActionButtonProps } from "./types";
 
 export function PrimaryButton({
   buttonText,
   clickFunction,
   buttonType,
-  classname,
+  className,
   disabled,
+  isLoading,
 }: ActionButtonProps) {
   return (
     <button
       type={buttonType}
-      className={`btn-primary ${classname}`}
+      className={cn(
+        "btn-primary flex items-center gap-2 justify-center",
+        className
+      )}
       onClick={clickFunction}
       disabled={disabled}
     >
-      {buttonText}
+      {isLoading && <InlineLoader />}
+      <span>{buttonText}</span>
     </button>
   );
 }

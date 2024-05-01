@@ -6,7 +6,7 @@ export function ActionButtonWithIcon({
   iconUrl,
   buttonType,
 }: ActionButtonWithIconProps) {
-  // const buttonClassName = isPrimary ? "btn-primary" : "btn-secondary";
+  // const buttonclassName = isPrimary ? "btn-primary" : "btn-secondary";
 
   return (
     <div>

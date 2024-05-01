@@ -19,13 +19,17 @@ export async function createDocInBirthdaysCol(
   docId: string,
   data: databaseDocType
 ) {
-  const doc = await createDoc(
-    import.meta.env.VITE_APPWRITE_DB_ID,
-    import.meta.env.VITE_APPWRITE_BIRTHDAYS_COLLECTION_ID,
-    docId,
-    data
-  );
-  return doc;
+  try {
+    const doc = await createDoc(
+      import.meta.env.VITE_APPWRITE_DB_ID,
+      import.meta.env.VITE_APPWRITE_BIRTHDAYS_COLLECTION_ID,
+      docId,
+      data
+    );
+    return doc;
+  } catch (error: any) {
+    throw new Error(error);
+  }
 }
 
 export async function listUserDocFromBirthdaysCol(

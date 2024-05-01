@@ -7,6 +7,9 @@ import useCustomMutation from "@hooks/useCustomMutation";
 
 import { resetPassword } from "@appwrite/utils/userSession";
 
+import { extractErrorMessage } from "@helpers/index";
+
+import { PrimaryButton } from "@components/Button";
 import { FormHeader, FormWrapper } from "@components/Form";
 import { Password } from "@components/Input/Password";
 import { AuthLayout } from "@components/Layout";
@@ -57,8 +60,8 @@ export default function ResetPassword() {
         "Password reset successfully, Please log in with new password"
       );
       navigate("/login");
-    } catch (e: any) {
-      toastError(e.message);
+    } catch (error: any) {
+      toastError(extractErrorMessage(error.message));
     }
   };
 
@@ -73,9 +76,12 @@ export default function ResetPassword() {
       <FormWrapper submitFunction={submitHandler}>
         <Password />
         <div className="mt-2">
-          <button type="submit" className="btn-primary w-full">
-            {isPasswordResetting ? "Resetting..." : "Reset"}
-          </button>
+          <PrimaryButton
+            buttonType="submit"
+            className="btn-primary w-full"
+            isLoading={isPasswordResetting}
+            buttonText={isPasswordResetting ? "Resetting..." : "Reset"}
+          />
         </div>
       </FormWrapper>
       <ToastNotif />

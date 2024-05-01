@@ -1,7 +1,9 @@
-export type ButtonProps = {
+import { ButtonHTMLAttributes } from "react";
+
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   buttonText: string;
   buttonType?: "button" | "submit" | "reset";
-  classname?: string;
+  className?: string;
 };
 
 export type LinkButtonProps = ButtonProps & {
@@ -12,6 +14,7 @@ export type LinkButtonProps = ButtonProps & {
 export type ActionButtonProps = ButtonProps & {
   clickFunction?: () => void;
   disabled?: boolean;
+  isLoading?: boolean;
 };
 
 export type ActionButtonWithIconProps = ActionButtonProps & {

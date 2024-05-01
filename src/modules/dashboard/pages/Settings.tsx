@@ -8,6 +8,8 @@ import { useUserQuery } from "@hooks/useUserQuery";
 
 import { updateUserName } from "@appwrite/utils/userSession";
 
+import { extractErrorMessage } from "@helpers/index";
+
 import { ErrorType } from "@myTypes/index";
 
 import { PrimaryButton, SecondaryButton } from "@components/Button";
@@ -32,8 +34,8 @@ export default function Settings() {
       queryClient.invalidateQueries({ queryKey: ["current-user"] });
       setIsFormEditable(false);
     },
-    onError: () => {
-      toastError("Something went wrong, please try again");
+    onError: (error) => {
+      toastError(extractErrorMessage(error.message));
     },
   });
 
@@ -77,7 +79,7 @@ export default function Settings() {
             </div>
             <div className="flex gap-2">
               <PrimaryButton
-                classname="disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="disabled:bg-gray-400 disabled:cursor-not-allowed"
                 buttonType={"submit"}
                 buttonText={
                   isFormEditable

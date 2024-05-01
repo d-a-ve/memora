@@ -7,14 +7,15 @@ This project makes use of pnpm as the package manager.
 - [x] Find a tool that can send emails for you based on data in database. It would be called everyday.
 - [x] Settings page
 - [x] Cloud function for sending mails daily
-- [] Create a page loader component
-- [] Create a button loader component
+- [x] Create a page loader component
+- [x] Create a button loader component
 - [x] Create a serverless function for updating the year of birthdays that have passed in the database to the next year.
 - [] add error handling on form submission
-- [] focus on password input on eye icon click
+- [x] focus on password input on eye icon click
 - [] edit birthdays
 - [] make the opaque bg cover everything when the sidebar is open
 - [] work on a brithday template for mailing and add to courier dashboard
+- [] find logo for app
 
 ## Cloud Function Pseudo code
 1. Get today's date
