@@ -55,7 +55,6 @@ export async function listUserDocFromBirthdaysCol(
     );
     return docs;
   } catch (error: any) {
-    console.error(error);
     throw new Error(error);
   }
 }

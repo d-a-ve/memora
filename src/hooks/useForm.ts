@@ -25,20 +25,20 @@ export default function useForm() {
       formData;
     const doesPasswordMatch = passwordField[1] === confirmPasswordField[1];
 
-    console.log({ formData });
     try {
       if (isFormValid && doesPasswordMatch) {
         setIsLoading(true);
-        await createUserAccount(
+        const account = await createUserAccount(
           emailField[1] as string,
           passwordField[1] as string,
           nameField[1] as string
         );
-        const session = await createUserSession(
+        await createUserSession(
           emailField[1] as string,
           passwordField[1] as string
         );
-        navigate(`/dashboard/${session.userId}?query_limit=15`);
+        queryClient.invalidateQueries({ queryKey: ["current-user"] });
+        navigate(`/dashboard/${account.$id}?query_limit=15`);
       } else {
         toastError(
           "Cannot submit the form. Please check the highlighted fields for errors and try again."
