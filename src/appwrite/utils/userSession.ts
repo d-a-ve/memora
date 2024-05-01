@@ -4,7 +4,8 @@ import { authAccount, uniqueId } from "../config";
 
 export async function createUserSession(email: string, password: string) {
   try {
-    await authAccount.createEmailSession(email, password);
+    const res = await authAccount.createEmailSession(email, password);
+    return res;
   } catch (error: any) {
     throw new Error(error);
   }
@@ -16,7 +17,8 @@ export async function createUserAccount(
   name: string
 ) {
   try {
-    await authAccount.create(uniqueId, email, password, name);
+    const res = await authAccount.create(uniqueId, email, password, name);
+    return res;
   } catch (error: any) {
     throw new Error(error);
   }
@@ -33,7 +35,8 @@ export async function getUserAccount() {
 
 export async function deleteSession() {
   try {
-    await authAccount.deleteSession("current");
+    const res = await authAccount.deleteSession("current");
+    return res;
   } catch (error: any) {
     throw new Error(error);
   }
@@ -41,11 +44,13 @@ export async function deleteSession() {
 
 export function signInWithOAuth(providerName: "facebook" | "google") {
   try {
-    authAccount.createOAuth2Session(
+    const oAuth = authAccount.createOAuth2Session(
       providerName,
       `${BASE_URL}/oauth`,
       `${BASE_URL}/login`
     );
+
+    return oAuth;
   } catch (error: any) {
     throw new Error(error);
   }
@@ -73,12 +78,12 @@ export async function forgotPassword(
   email: string,
   redirectUrl = `${BASE_URL}/reset-password`
 ) {
-  // try {
-  const res = await authAccount.createRecovery(email, redirectUrl);
-  return res;
-  // } catch (error: any) {
-  //   throw error;
-  // }
+  try {
+    const res = await authAccount.createRecovery(email, redirectUrl);
+    return res;
+  } catch (error: any) {
+    throw new Error(error);
+  }
 }
 
 export async function resetPassword(

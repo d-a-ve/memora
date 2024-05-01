@@ -8,15 +8,12 @@ import { toastError } from "helpers/toastNotifs";
 import {
   createUserAccount,
   createUserSession,
-  getUserAccount,
 } from "@appwrite/utils/userSession";
 
-import useAuthApi from "./useAuthApi";
+import { extractErrorMessage } from "@helpers/index";
 
 export default function useForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { setCurrentUser } = useAuthApi();
-  // const { currentUser } = useAuth();
   const queryClient = useQueryClient();
 
   const navigate = useNavigate();
@@ -28,6 +25,7 @@ export default function useForm() {
       formData;
     const doesPasswordMatch = passwordField[1] === confirmPasswordField[1];
 
+    console.log({ formData });
     try {
       if (isFormValid && doesPasswordMatch) {
         setIsLoading(true);
@@ -36,19 +34,18 @@ export default function useForm() {
           passwordField[1] as string,
           nameField[1] as string
         );
-        await createUserSession(
+        const session = await createUserSession(
           emailField[1] as string,
           passwordField[1] as string
         );
-        const userAccount = await getUserAccount();
-        navigate(`/dashboard/${userAccount.$id}?query_limit=15`);
+        navigate(`/dashboard/${session.userId}?query_limit=15`);
       } else {
         toastError(
           "Cannot submit the form. Please check the highlighted fields for errors and try again."
         );
       }
     } catch (error: any) {
-      toastError(error.message);
+      toastError(extractErrorMessage(error.message));
     } finally {
       setIsLoading(false);
     }
@@ -62,21 +59,19 @@ export default function useForm() {
     try {
       if (isFormValid) {
         setIsLoading(true);
-        await createUserSession(
+        const session = await createUserSession(
           emailField[1] as string,
           passwordField[1] as string
         );
-        const userAccount = await getUserAccount();
         queryClient.invalidateQueries({ queryKey: ["current-user"] });
-        setCurrentUser(userAccount);
-        navigate(`/dashboard/${userAccount.$id}/`);
+        navigate(`/dashboard/${session.userId}/`);
       } else {
         toastError(
           "Cannot submit the form. Please check the highlighted fields for errors and try again."
         );
       }
     } catch (error: any) {
-      toastError(error.message);
+      toastError(extractErrorMessage(error.message));
     } finally {
       setIsLoading(false);
     }

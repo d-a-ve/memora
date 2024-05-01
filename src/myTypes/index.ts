@@ -1,3 +1,5 @@
+import { generateErrorObjFromAppwrite } from "@helpers/index";
+
 type Preferences = {
   [key: string]: any;
 };
@@ -64,3 +66,5 @@ export type ErrorType = {
   type: string;
   code: number;
 };
+
+export type ErrorReturnObj = ReturnType<typeof generateErrorObjFromAppwrite>;

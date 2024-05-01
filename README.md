@@ -5,7 +5,7 @@ This project makes use of pnpm as the package manager.
 - [x] Make the dashboard nav bar fixed and not scroll with the rest of the page.
 - [x] Order the birthday dates in ascending order
 - [x] Find a tool that can send emails for you based on data in database. It would be called everyday.
-- [] Settings page
+- [x] Settings page
 - [x] Cloud function for sending mails daily
 - [] Create a page loader component
 - [] Create a button loader component
@@ -13,7 +13,8 @@ This project makes use of pnpm as the package manager.
 - [] add error handling on form submission
 - [] focus on password input on eye icon click
 - [] edit birthdays
-- [ ] make the opaque bg cover everything when the sidebar is open
+- [] make the opaque bg cover everything when the sidebar is open
+- [] work on a brithday template for mailing and add to courier dashboard
 
 ## Cloud Function Pseudo code
 1. Get today's date

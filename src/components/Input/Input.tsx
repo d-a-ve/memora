@@ -1,3 +1,5 @@
+import { cn } from "@helpers/cn";
+
 import { InputPropsType } from "./types";
 
 export function Input({
@@ -18,7 +20,7 @@ export function Input({
       onChange={changeHandler}
       onBlur={blurHandler}
       name={labelFor}
-      className={className || "input"}
+      className={cn("input", { className, "border-red-500": displayError })}
       type={inputType}
       id={`${labelFor}-input`}
       required={required}
