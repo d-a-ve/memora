@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 export type DNavControllerPropsType = {
-  clickFunction: () => void;
+  clickFunction?: () => void;
   title: string;
   icon: ReactNode;
 };
@@ -12,12 +12,12 @@ export default function DNavController({
   icon,
 }: DNavControllerPropsType) {
   return (
-    <span
+    <button
       onClick={clickFunction}
       title={title}
       className="cursor-pointer hidden lg:inline"
     >
       {icon}
-    </span>
+    </button>
   );
 }

@@ -1,14 +1,12 @@
-import { Dispatch, SetStateAction } from "react";
-
 import { PrimaryButton } from "@components/Button";
 
 import { ShowMode } from "../../types";
 
 export default function ShowAddBirthday({
-  setModalOpen,
+  modal,
   showMode,
 }: {
-  setModalOpen: Dispatch<SetStateAction<boolean>>;
+  modal: { open: () => void };
   showMode: ShowMode;
 }) {
   switch (showMode.mode) {
@@ -17,7 +15,7 @@ export default function ShowAddBirthday({
         <p>
           {showMode.text}{" "}
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={() => modal.open()}
             className="text-primary-500 cursor-pointer hover:underline"
           >
             {showMode.openModalText}
@@ -30,7 +28,7 @@ export default function ShowAddBirthday({
         <div className="fixed right-8 bottom-8">
           <PrimaryButton
             buttonType="button"
-            clickFunction={() => setModalOpen(true)}
+            clickFunction={() => modal.open()}
             buttonText="+"
           />
         </div>

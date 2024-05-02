@@ -1,10 +1,11 @@
-import { Dispatch, FormEvent, SetStateAction } from "react";
+import { FormEvent, useEffect, useRef } from "react";
 
 import { useQueryClient } from "@tanstack/react-query";
 import { getDateFromSlashSeparatedString } from "helpers/getDate";
 import getValidFormData from "helpers/getValidFormData";
 import { toastSuccess } from "helpers/toastNotifs";
 
+import useBodyOverflow from "@hooks/useBodyOverflow";
 import { useUserQuery } from "@hooks/useUserQuery";
 
 import { uniqueId } from "@appwrite/config";
@@ -29,14 +30,36 @@ type MutationFnType = {
 type BirthdaysDataType = Awaited<ReturnType<typeof createDocInBirthdaysCol>>;
 
 export default function AddBirthdayModal({
-  setModalOpen,
-  isModalOpen,
+  modal,
 }: {
-  setModalOpen: Dispatch<SetStateAction<boolean>>;
-  isModalOpen: boolean;
+  modal: {
+    isOpen: boolean;
+    open: () => void;
+    close: () => void;
+  };
 }) {
   const { data: currentUser } = useUserQuery();
   const query = useQueryClient();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { resetBodyOverflow } = useBodyOverflow();
+
+  useEffect(() => {
+    const handleClickOutside = (event: PointerEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node) &&
+        modal.isOpen
+      ) {
+        modal.close();
+        resetBodyOverflow();
+      }
+    };
+
+    document.addEventListener("pointerup", handleClickOutside);
+    return () => {
+      document.removeEventListener("pointerup", handleClickOutside);
+    };
+  }, [modal.isOpen, resetBodyOverflow]);
 
   const { mutate: addBirthday, isPending: isBirthdayAdding } =
     useBirthdayMutation<BirthdaysDataType, ErrorType, MutationFnType>({
@@ -51,7 +74,7 @@ export default function AddBirthdayModal({
         }),
       onSuccess: () => {
         query.invalidateQueries({ queryKey: ["birthdays", currentUser?.$id] });
-        setModalOpen(false);
+        modal.close();
         toastSuccess("Yay, birthday has been added successfully!!");
       },
     });
@@ -64,44 +87,43 @@ export default function AddBirthdayModal({
   };
 
   return (
-    <>
-      <ModalLayout isModalOpen={isModalOpen}>
-        <div className="bg-white py-12 px-8 rounded-lg">
-          <h2 className="mb-6 font-semibold text-fs-1">Add birthday </h2>
-          <FormWrapper
-            submitFunction={async (e) => {
-              addBirthdaySubmit(e);
-            }}
-          >
-            <InputWithLabel
-              labelText="Name"
-              labelFor="bday name"
-              inputType="text"
-              required={true}
-              placeHolder="John Doe"
+    <ModalLayout isModalOpen={modal.isOpen}>
+      <div className="bg-white py-12 px-8 rounded-lg" ref={containerRef}>
+        <h2 className="mb-6 font-semibold text-fs-1">Add birthday </h2>
+        <FormWrapper
+          submitFunction={async (e) => {
+            addBirthdaySubmit(e);
+          }}
+        >
+          <InputWithLabel
+            labelText="Name"
+            labelFor="bday name"
+            inputType="text"
+            required={true}
+            placeHolder="John Doe"
+          />
+          <div className="flex flex-col gap-2">
+            <label className="input-label" htmlFor="birthdayDate">
+              Select birthday
+            </label>
+            <DateInput customInput={<CustomDateInput id="birthdayDate" />} />
+          </div>
+          <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-1">
+            <PrimaryButton
+              isLoading={isBirthdayAdding}
+              buttonText={
+                isBirthdayAdding ? "Adding Birthday..." : "Add Birthday"
+              }
+              buttonType="submit"
             />
-            <div className="flex flex-col gap-2">
-              <label className="input-label" htmlFor="birthdayDate">
-                Select birthday
-              </label>
-              <DateInput customInput={<CustomDateInput id="birthdayDate" />} />
-            </div>
-            <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-1">
-              <PrimaryButton
-                buttonText={
-                  isBirthdayAdding ? "Adding Birthday..." : "Add Birthday"
-                }
-                buttonType="submit"
-              />
-              <SecondaryButton
-                buttonText="Cancel"
-                clickFunction={() => setModalOpen(false)}
-                buttonType="button"
-              />
-            </div>
-          </FormWrapper>
-        </div>
-      </ModalLayout>
-    </>
+            <SecondaryButton
+              buttonText="Cancel"
+              clickFunction={() => modal.close()}
+              buttonType="button"
+            />
+          </div>
+        </FormWrapper>
+      </div>
+    </ModalLayout>
   );
 }

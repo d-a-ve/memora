@@ -4,6 +4,7 @@
 
 :root {
 	--fs-0: clamp(1rem, calc(0.91rem + 0.43vw), 1.25rem);
+	--dashboard-content-height: calc(100vh - (4rem));
 
 	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 	font-size: var(--fs-0);
@@ -17,10 +18,6 @@
 html,
 body {
 	overscroll-behavior: none;
-}
-
-.nav-height {
-	height: calc(100vh - (4rem));
 }
 
 @layer components {
@@ -39,15 +36,6 @@ body {
 	.search-input {
 		@apply input text-fs--1 sm:py-1 sm:px-3;
 	}
-	.dashboard {
-		@apply grid grid-cols-[300px,_1fr];
-	}
-	.dashboard-nav {
-		@apply col-span-1 fixed bg-secondary-200 px-4 transition lg:top-0 lg:left-0 lg:bottom-0 lg:max-w-[300px];
-	}
-	.dashboard-main {
-		@apply col-start-2 col-end-3 px-4 lg:col-start-1;
-	}
 	.nav-link {
 		@apply grid grid-flow-col gap-4 items-center justify-start w-full p-4 rounded-xl hover:bg-secondary-500 hover:text-black;
 	}
@@ -61,8 +49,8 @@ body {
 /* @media (prefers-color-scheme: light) {
 
 } */
-@media screen and (max-width: 1023px) {
+/* @media screen and (max-width: 1023px) {
 	.nav-height {
 		margin-top: 4rem;
 	}
-}
+} */

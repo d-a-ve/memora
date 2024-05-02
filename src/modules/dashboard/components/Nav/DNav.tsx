@@ -2,6 +2,8 @@ import { NavLink, useParams } from "react-router-dom";
 
 import getSVGFromString from "helpers/getSVGFromString";
 
+import { cn } from "@helpers/cn";
+
 import { NavOpenPropsType } from "../../types";
 import DNavLogoutBtn from "./DNavLogoutBtn";
 
@@ -26,21 +28,31 @@ export const navLinksArray = [
   },
 ];
 
-export default function DNav({ isNavOpen, setIsNavOpen }: NavOpenPropsType) {
+export default function DNav({
+  isNavOpen,
+  closeNav,
+  navRef,
+}: NavOpenPropsType) {
   const { userId } = useParams();
+
   return (
     <div
-      className={`dashboard-nav nav-height ${
-        isNavOpen ? "lg:z-10" : "lg:-translate-x-full"
-      }`}
+      className={cn(
+        "col-span-1 fixed bg-secondary-200 px-4 transition lg:top-0 lg:left-0 lg:bottom-0 lg:max-w-[300px] h-dashboard-content lg:mt-16",
+        {
+          "lg:z-10": isNavOpen,
+          "lg:-translate-x-full": !isNavOpen,
+        }
+      )}
+      ref={navRef}
     >
-      <nav className="py-8 flex flex-col h-4/5 justify-between">
-        <ul className="flex flex-col">
+      <nav className="py-2 flex flex-col h-4/5 justify-between">
+        <ul className="flex flex-col space-y-2">
           {navLinksArray.map(({ id, to, icon, text }) => {
             return (
               <li key={id}>
                 <NavLink
-                  to={`/dashboard/${userId || "64e447cebb60d0ff0bd"}/${to}`}
+                  to={`/dashboard/${userId}/${to}`}
                   className={({ isActive, isPending }) =>
                     isActive
                       ? "nav-link bg-primary-500 text-white"
@@ -48,7 +60,7 @@ export default function DNav({ isNavOpen, setIsNavOpen }: NavOpenPropsType) {
                       ? "nav-link bg-secondary-500 text-black"
                       : "nav-link"
                   }
-                  onClick={() => setIsNavOpen(false)}
+                  onClick={closeNav}
                 >
                   {getSVGFromString(icon, 20, 20)}
                   <span>{text}</span>

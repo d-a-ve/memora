@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     screens: {
       xl: { max: "1279px" },
@@ -58,6 +58,12 @@ module.exports = {
         "fs-3": "clamp(1.73rem, calc(1.48rem + 1.24vw), 2.44rem)",
         "fs-4": "clamp(2.07rem, calc(1.73rem + 1.7vw), 3.05rem)",
         "fs-5": "clamp(2.49rem, calc(2.03rem + 2.31vw), 3.82rem)",
+      },
+      spacing: {
+        "dashboard-content": "var(--dashboard-content-height)",
+      },
+      minHeight: {
+        "dashboard-content": "var(--dashboard-content-height)",
       },
     },
   },

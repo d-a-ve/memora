@@ -1,8 +1,9 @@
-import { Dispatch, SetStateAction } from "react";
-
 export type NavOpenPropsType = {
   isNavOpen: boolean;
-  setIsNavOpen: Dispatch<SetStateAction<boolean>>;
+  openNav?: () => void;
+  closeNav?: () => void;
+  setIsNavOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  navRef?: React.RefObject<HTMLDivElement>;
 };
 
 export type ShowModeText = {

@@ -10,11 +10,15 @@ This project makes use of pnpm as the package manager.
 - [x] Create a page loader component
 - [x] Create a button loader component
 - [x] Create a serverless function for updating the year of birthdays that have passed in the database to the next year.
-- [] add error handling on form submission
 - [x] focus on password input on eye icon click
+- [x] clicking outside navbar closes the navbar
+- [x] make the opaque bg cover everything when the sidebar is open
+- [x] main content cannot move when navbar is open
+- [x] remove body overflow when modal is clicked
+- [] find new colors and use the 60/30/10 rule
 - [] edit birthdays
-- [] make the opaque bg cover everything when the sidebar is open
 - [] work on a brithday template for mailing and add to courier dashboard
+- [] add error handling on form submission
 - [] find logo for app
 
 ## Cloud Function Pseudo code
