@@ -61,11 +61,12 @@ export default function DLayout({ children }: { children: ReactNode }) {
       <div className="grid grid-cols-[300px,_1fr] min-h-dashboard-content">
         <DNav isNavOpen={isNavOpen} closeNav={closeNav} navRef={navRef} />
         <div
-          className={cn("col-start-2 col-end-3 px-4 lg:col-start-1 pb-16", {
-            "lg:opaque": isNavOpen,
-          })}
+          className={cn(
+            "col-start-2 relative col-end-3 px-4 lg:col-start-1 pb-16 isolate"
+          )}
         >
-          <div className="max-w-3xl mx-auto mt-4 h-[300vh]">{children}</div>
+          {isNavOpen && <div className="inset-0 absolute bg-black/30 z-10" />}
+          <div className="max-w-3xl mx-auto mt-4">{children}</div>
         </div>
       </div>
       <ToastNotif />

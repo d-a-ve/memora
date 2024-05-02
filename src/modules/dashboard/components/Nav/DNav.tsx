@@ -38,9 +38,8 @@ export default function DNav({
   return (
     <div
       className={cn(
-        "col-span-1 fixed bg-secondary-200 px-4 transition lg:top-0 lg:left-0 lg:bottom-0 lg:max-w-[300px] h-dashboard-content lg:mt-16",
+        "col-span-1 fixed bg-secondary-200 px-4 transition lg:top-0 lg:left-0 lg:bottom-0 lg:max-w-[300px] h-dashboard-content lg:mt-16 isolate lg:z-10",
         {
-          "lg:z-10": isNavOpen,
           "lg:-translate-x-full": !isNavOpen,
         }
       )}
