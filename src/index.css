@@ -3,45 +3,61 @@
 @tailwind utilities;
 
 :root {
-	--fs-0: clamp(1rem, calc(0.91rem + 0.43vw), 1.25rem);
-	--dashboard-content-height: calc(100vh - (4rem));
+  --dashboard-content-height: calc(100vh - (4rem));
 
-	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-	font-size: var(--fs-0);
-	line-height: 24px;
-	font-weight: 400;
-	color: var(--text);
-	box-sizing: border-box;
-	/* color-scheme: light dark; */
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--text);
+  box-sizing: border-box;
+  /* color-scheme: light dark; */
+
+  /* for styles that cannot use the tailwindcss JIT mode */
+  --text: #04020d;
+  --background: #f4f2fd;
+  --primary: #472ce2;
+  --secondary: #e781ee;
+  --accent: #ea62da;
 }
 
 html,
 body {
-	overscroll-behavior: none;
+  overscroll-behavior: none;
+}
+
+@layer base {
+  :root {
+    --text: 251 73, 3%;
+    --background: 251 73% 97%;
+    --primary: 249 76% 53%;
+    --secondary: 296 76% 72%;
+    --accent: 307 76% 65%;
+  }
 }
 
 @layer components {
-	.btn-primary {
-		@apply bg-primary-500 py-2 px-4 text-white font-semibold rounded border-transparent transition-all hover:bg-secondary-500 hover:text-black focus:outline-secondary-500 focus:border-transparent;
-	}
-	.btn-secondary {
-		@apply bg-secondary-500 py-2 px-4 text-black font-semibold rounded transition-all hover:bg-primary-500 hover:text-white;
-	}
-	.input-label {
-		@apply text-base font-medium;
-	}
-	.input {
-		@apply w-full bg-transparent py-2 px-4 rounded-md border border-slate-400 shadow caret-primary-500 outline-none focus:border-primary-500;
-	}
-	.search-input {
-		@apply input text-fs--1 sm:py-1 sm:px-3;
-	}
-	.nav-link {
-		@apply grid grid-flow-col gap-4 items-center justify-start w-full p-4 rounded-xl hover:bg-secondary-500 hover:text-black;
-	}
-	.nav-logout-btn {
-		@apply grid grid-flow-col gap-4 items-center justify-start w-full p-4 rounded-xl hover:bg-red-500 hover:text-white focus:bg-red-500 focus:text-white;
-	}
+  .btn-primary {
+    @apply rounded border-transparent bg-primary-500 py-2 px-4 font-semibold text-white transition-all hover:bg-secondary-500 hover:text-black focus:border-transparent focus:outline-secondary-500;
+  }
+  .btn-secondary {
+    @apply rounded bg-secondary-500 py-2 px-4 font-semibold text-black transition-all hover:bg-primary-500 hover:text-white;
+  }
+  .input-label {
+    @apply text-base font-medium;
+  }
+  .input {
+    @apply w-full rounded-md border border-slate-400 bg-transparent py-2 px-4 caret-primary-500 shadow outline-none focus:border-primary-500;
+  }
+  .search-input {
+    @apply input text-fs--1 sm:py-1 sm:px-3;
+  }
+  .nav-link {
+    @apply grid w-full grid-flow-col items-center justify-start gap-4 rounded-xl p-4 hover:bg-secondary-500 hover:text-black;
+  }
+  .nav-logout-btn {
+    @apply grid w-full grid-flow-col items-center justify-start gap-4 rounded-xl p-4 hover:bg-red-500 hover:text-white focus:bg-red-500 focus:text-white;
+  }
 }
 /* @media (prefers-color-scheme: light) {
 
