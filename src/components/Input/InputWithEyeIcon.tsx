@@ -42,7 +42,7 @@ export function InputWithEyeIcon({
       />
       <button
         type="button"
-        className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-black focus-visible:outline-primary-500"
+        className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-black focus-visible:outline-primary"
         onClick={handleIconToggle}
         title={isShown ? "Password shown" : "Password hidden"}
       >

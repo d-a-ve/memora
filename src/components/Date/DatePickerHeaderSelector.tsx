@@ -14,7 +14,7 @@ export default function DatePickerHeaderSelector({
   return (
     <div>
       <select
-        className="text-fs--1 font-medium bg-transparent text-primary-500 border-b-2 border-b-primary-500 focus:outline-primary-500 focus:border-transparent"
+        className="text-fs--1 font-medium bg-transparent text-primary border-b-2 border-b-primary focus:outline-primary focus:border-transparent"
         value={selectValue}
         onChange={onChangeHandler}
       >

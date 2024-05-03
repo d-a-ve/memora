@@ -38,7 +38,7 @@ export default function DNav({
   return (
     <div
       className={cn(
-        "col-span-1 fixed bg-secondary-200 px-4 transition lg:top-0 lg:left-0 lg:bottom-0 lg:max-w-[300px] h-dashboard-content lg:mt-16 isolate lg:z-10",
+        "col-span-1 fixed bg-secondary px-4 transition lg:top-0 lg:left-0 lg:bottom-0 lg:max-w-[300px] h-dashboard-content lg:mt-16 isolate lg:z-10",
         {
           "lg:-translate-x-full": !isNavOpen,
         }
@@ -54,9 +54,9 @@ export default function DNav({
                   to={`/dashboard/${userId}/${to}`}
                   className={({ isActive, isPending }) =>
                     isActive
-                      ? "nav-link bg-primary-500 text-white"
+                      ? "nav-link bg-primary text-white"
                       : isPending
-                      ? "nav-link bg-secondary-500 text-black"
+                      ? "nav-link bg-secondary text-black"
                       : "nav-link"
                   }
                   onClick={closeNav}

@@ -14,7 +14,7 @@ export function UpcomingBirthdayCard({
   const initials = getInitials(name);
 
   return (
-    <div className="flex items-center justify-between bg-secondary-400 rounded-xl p-3 pr-4 text-fs--1 mb-3">
+    <div className="flex items-center justify-between bg-secondary rounded-xl p-3 pr-4 text-fs--1 mb-3">
       <div className="flex items-center">
         <div className="w-12 h-12 rounded-lg overflow-hidden">
           <img src={initials.href} alt={`${name} initials`} />

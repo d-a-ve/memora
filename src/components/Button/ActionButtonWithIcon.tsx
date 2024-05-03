@@ -12,7 +12,7 @@ export function ActionButtonWithIcon({
     <div>
       <button
         type={buttonType}
-        className="w-full flex justify-center border-transparent border bg-secondary-500 text-black py-2 rounded hover:border-primary-500"
+        className="w-full flex justify-center border-transparent border bg-secondary text-black py-2 rounded hover:border-primary"
         onClick={clickFunction}
       >
         <span className="grid grid-cols-[30px_1fr] justify-center">

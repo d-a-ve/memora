@@ -2,6 +2,7 @@ import getSVGFromString from "helpers/getSVGFromString";
 
 import { NavOpenPropsType } from "../../types";
 import DNavController from "../Nav/DNavController";
+import { FullNameLogo } from "@components/Logo";
 
 export function Logo({
   isNavOpen,
@@ -19,7 +20,9 @@ export function Logo({
         clickFunction={() => (isNavOpen ? closeNav() : openNav())}
         icon={getSVGFromString(isNavOpen ? "close" : "menu", 20, 20)}
       />
-      <div>Logo Image</div>
+      <div className="w-32">
+        <FullNameLogo />
+      </div>
     </div>
   );
 }

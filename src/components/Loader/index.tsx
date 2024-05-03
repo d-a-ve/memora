@@ -3,7 +3,7 @@ export function InlineLoader() {
     <div role="status">
       <svg
         aria-hidden="true"
-        className="w-4 h-4 text-white animate-spin fill-primary-500"
+        className="w-4 h-4 text-white animate-spin fill-primary"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

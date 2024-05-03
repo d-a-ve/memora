@@ -64,7 +64,7 @@ export default function Login() {
                   isPassword={isPassword}
                 >
                   <Link
-                    className="text-fs--2 text-right text-primary-500 font-medium hover:text-primary-300 focus:outline-primary-300"
+                    className="text-fs--2 text-right text-primary font-medium hover:text-primary focus:outline-primary"
                     to="/forgot-password"
                   >
                     Forgot password?

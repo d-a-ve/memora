@@ -16,7 +16,7 @@ export default function ShowAddBirthday({
           {showMode.text}{" "}
           <button
             onClick={() => modal.open()}
-            className="text-primary-500 cursor-pointer hover:underline"
+            className="text-primary cursor-pointer hover:underline"
           >
             {showMode.openModalText}
           </button>

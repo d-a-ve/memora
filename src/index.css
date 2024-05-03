@@ -38,22 +38,22 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply rounded border-transparent bg-primary-500 py-2 px-4 font-semibold text-white transition-all hover:bg-secondary-500 hover:text-black focus:border-transparent focus:outline-secondary-500;
+    @apply hover:bg-secondary focus:outline-secondary rounded border-transparent bg-primary py-2 px-4 font-semibold text-white transition-all hover:text-black focus:border-transparent;
   }
   .btn-secondary {
-    @apply rounded bg-secondary-500 py-2 px-4 font-semibold text-black transition-all hover:bg-primary-500 hover:text-white;
+    @apply bg-secondary rounded py-2 px-4 font-semibold text-black transition-all hover:bg-primary hover:text-white;
   }
   .input-label {
     @apply text-base font-medium;
   }
   .input {
-    @apply w-full rounded-md border border-slate-400 bg-transparent py-2 px-4 caret-primary-500 shadow outline-none focus:border-primary-500;
+    @apply w-full rounded-md border border-slate-400 bg-transparent py-2 px-4 caret-primary shadow outline-none focus:border-primary;
   }
   .search-input {
     @apply input text-fs--1 sm:py-1 sm:px-3;
   }
   .nav-link {
-    @apply grid w-full grid-flow-col items-center justify-start gap-4 rounded-xl p-4 hover:bg-secondary-500 hover:text-black;
+    @apply hover:bg-secondary grid w-full grid-flow-col items-center justify-start gap-4 rounded-xl p-4 hover:text-black;
   }
   .nav-logout-btn {
     @apply grid w-full grid-flow-col items-center justify-start gap-4 rounded-xl p-4 hover:bg-red-500 hover:text-white focus:bg-red-500 focus:text-white;

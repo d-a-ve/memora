@@ -15,11 +15,14 @@ This project makes use of pnpm as the package manager.
 - [x] make the opaque bg cover everything when the sidebar is open
 - [x] main content cannot move when navbar is open
 - [x] remove body overflow when modal is clicked
-- [] find new colors and use the 60/30/10 rule
+- [x] find new colors and use the 60/30/10 rule
+- [x] find logo for app
+- [] merge all variants of button to one file using cva
+- [] put the logo everywhere needed
+- [] use the new color palette and fix app
 - [] edit birthdays
 - [] work on a brithday template for mailing and add to courier dashboard
 - [] add error handling on form submission
-- [] find logo for app
 
 ## Cloud Function Pseudo code
 1. Get today's date

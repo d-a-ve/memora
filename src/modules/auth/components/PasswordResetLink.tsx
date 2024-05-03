@@ -34,7 +34,7 @@ const PasswordResetLinkSent = ({ resendLink }: { resendLink: () => void }) => {
           <span
             className={`${
               isCountdownOver
-                ? "text-primary-500 cursor-pointer"
+                ? "text-primary cursor-pointer"
                 : "text-gray-400 cursor-not-allowed"
             } font-bold`}
             onClick={
