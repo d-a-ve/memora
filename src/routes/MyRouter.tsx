@@ -15,22 +15,23 @@ import {
   ProtectedRouteFromAuthenticatedUser,
   UserProtectedRoute,
 } from "@components/ProtectedRoute";
+import Error404Page from "@pages/Error404Page";
 
 const Login = lazy(() => import("@pages/Login"));
 const Signup = lazy(() => import("@pages/Signup"));
+const ForgotPassword = lazy(() => import("@pages/ForgotPassword"));
+const ResetPassword = lazy(() => import("@pages/ResetPassword"));
 const DashboardOverview = lazy(() => import("@pages/dashboard/Overview"));
 const DashboardUpcomingBirthdays = lazy(
   () => import("@pages/dashboard/UpcomingBirthday")
 );
-const ForgotPassword = lazy(() => import("@pages/ForgotPassword"));
-const ResetPassword = lazy(() => import("@pages/ResetPassword"));
 const Home = lazy(() => import("@pages/Home"));
 const Settings = lazy(() => import("@pages/dashboard/Settings"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route path="/" errorElement={<div>Error Page</div>} element={<Outlet />}>
+    <Route errorElement={<Error404Page />}>
+      <Route path="/" element={<Outlet />}>
         <Route index element={<Home />} />
         <Route element={<ProtectedRouteFromAuthenticatedUser />}>
           <Route path="login" element={<Login />} />
@@ -42,10 +43,7 @@ const router = createBrowserRouter(
       </Route>
 
       <Route element={<UserProtectedRoute />}>
-        <Route
-          element={<DashboardLayout />}
-          errorElement={<div>Dashboard Error Page</div>}
-        >
+        <Route element={<DashboardLayout />}>
           <Route path="/dashboard/:userId" element={<DashboardOverview />} />
           <Route
             path="/dashboard/:userId/upcoming-birthdays"
@@ -54,7 +52,7 @@ const router = createBrowserRouter(
           <Route path="/dashboard/:userId/settings" element={<Settings />} />
         </Route>
       </Route>
-    </>
+    </Route>
   )
 );
 

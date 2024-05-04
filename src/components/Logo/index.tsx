@@ -1,19 +1,27 @@
+import { Link } from "react-router-dom";
+
 export function FullNameLogo() {
   return (
-    <div className="w-full h full -my-10 -mx-1.5">
+    <Link
+      to="/"
+      className="w-full h full focus-ring-visible outline-none focus-visible:ring-offset-0 block focus-visible:rounded"
+    >
       <img
         src="/assets/logo/full-name.png"
         alt="Memora"
         className="w-full z-full"
       />
-    </div>
+    </Link>
   );
 }
 
 export function IconOnlyLogo() {
   return (
-    <div className="w-full h-full">
+    <Link
+      to="/"
+      className="w-full h-full block focus-ring-visible outline-none focus-visible:ring-offset-0 focus-visible:rounded"
+    >
       <img src="/assets/logo/icon.png" alt="Memora" className="w-full z-full" />
-    </div>
+    </Link>
   );
 }

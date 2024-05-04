@@ -14,7 +14,7 @@ export default function DatePickerIcon({
   return (
     <button
       type="button"
-      className="w-4"
+      className="w-4 outline-none focus-ring-visible focus-visible:ring-offset-0 focus-visible:rounded"
       onClick={clickHandler}
       disabled={isDisabled}
     >

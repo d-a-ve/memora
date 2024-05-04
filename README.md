@@ -21,7 +21,9 @@ This project makes use of pnpm as the package manager.
 - [x] put the logo everywhere needed
 - [x] add an underline to the normal line and on hover remove it
 - [x] add image/content beside form on auth pages
-- [] use the new color palette and fix app
+- [x] use the new color palette and fix app
+- [x] add 404 error page
+- [] add error component for data fetching
 - [] edit birthdays
 - [] work on a brithday template for mailing and add to courier dashboard
 - [] add error handling on form submission

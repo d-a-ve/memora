@@ -38,14 +38,14 @@ export default function DNav({
   return (
     <div
       className={cn(
-        "col-span-1 fixed bg-secondary px-4 transition lg:top-0 lg:left-0 lg:bottom-0 lg:max-w-[300px] h-dashboard-content lg:mt-16 isolate lg:z-10",
+        "col-span-1 transition sticky top-16 bg-white border-r border-r-gray-300 lg:fixed lg:top-0 lg:left-0 lg:bottom-0 lg:w-[250px] h-dashboard-content lg:mt-16 isolate lg:z-10 lg:border-0",
         {
           "lg:-translate-x-full": !isNavOpen,
         }
       )}
       ref={navRef}
     >
-      <nav className="py-2 flex flex-col h-4/5 justify-between">
+      <nav className="py-4 flex flex-col justify-between">
         <ul className="flex flex-col space-y-2">
           {navLinksArray.map(({ id, to, icon, text }) => {
             return (
@@ -53,22 +53,28 @@ export default function DNav({
                 <NavLink
                   to={`/dashboard/${userId}/${to}`}
                   className={({ isActive, isPending }) =>
-                    isActive
-                      ? "nav-link bg-primary text-white"
-                      : isPending
-                      ? "nav-link bg-secondary text-black"
-                      : "nav-link"
+                    cn(
+                      "grid grid-flow-col items-center justify-start gap-3 px-4 py-2 text-foreground relative before:absolute before:w-1 before:h-full before:bg-transparent outline-none focus-ring-visible focus-visible:ring-offset-0",
+                      {
+                        "bg-background text-primary before:bg-primary":
+                          isActive,
+                        "animate-pulse": isPending,
+                        "hover:text-primary": !isActive,
+                      }
+                    )
                   }
                   onClick={closeNav}
                 >
-                  {getSVGFromString(icon, 20, 20)}
+                  {getSVGFromString(icon, 16, 16)}
                   <span>{text}</span>
                 </NavLink>
               </li>
             );
           })}
         </ul>
-        <DNavLogoutBtn />
+        <div className="mt-4 border-t border-t-gray-300 pt-4">
+          <DNavLogoutBtn />
+        </div>
       </nav>
     </div>
   );

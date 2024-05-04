@@ -60,7 +60,7 @@ export default function Settings() {
     <>
       <h1 className="text-fs-1 mb-1">Profile</h1>
       <p className="text-fs--2">Manage settings for your account</p>
-      <div className="mt-8 relative before:w-full before:h-[1px] before:bg-gray-400 before:absolute before:-top-4">
+      <div className="mt-8 relative before:w-full before:h-[1px] before:bg-gray-300 before:absolute before:-top-4">
         <div className="max-w-lg">
           <FormWrapper submitFunction={submitHandler}>
             <div className="flex flex-col gap-2">
@@ -80,11 +80,12 @@ export default function Settings() {
             </div>
             <div className="flex gap-2">
               <Button
+                size="sm"
                 className={cn(
                   "disabled:bg-gray-400 disabled:cursor-not-allowed",
                   {
                     "hover:border-transparent hover:text-white":
-                      !hasUserNameChanged,
+                      isFormEditable && !hasUserNameChanged,
                   }
                 )}
                 type="submit"
@@ -99,6 +100,7 @@ export default function Settings() {
               />
               {isFormEditable && (
                 <Button
+                  size="sm"
                   intent="secondary"
                   label="Cancel"
                   onClick={() => setIsFormEditable(false)}

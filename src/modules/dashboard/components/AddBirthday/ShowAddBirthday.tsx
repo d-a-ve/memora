@@ -26,7 +26,7 @@ export default function ShowAddBirthday({
     case "button":
       return (
         <div className="fixed right-8 bottom-8">
-          <Button label="+" onClick={() => modal.open()} />
+          <Button size="sm" label="+" onClick={() => modal.open()} />
         </div>
       );
 

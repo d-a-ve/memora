@@ -23,8 +23,12 @@ export default function DNavLogoutBtn() {
   });
 
   return (
-    <button onClick={() => logUserOut()} className="nav-logout-btn">
-      {getSVGFromString("logout", 20, 20)}
+    <button
+      disabled={isUserLoggingOut}
+      onClick={() => logUserOut()}
+      className="grid grid-flow-col items-center justify-start gap-3 w-full text-red-500 py-2 px-4 outline-none hover:text-white hover:bg-red-500 focus-ring-visible focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50"
+    >
+      {getSVGFromString("logout", 16, 16)}
       <span>{isUserLoggingOut ? "Logging out..." : "Log out"}</span>
     </button>
   );

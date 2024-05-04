@@ -24,7 +24,7 @@ export function InlineLoader() {
 
 export function PageLoader() {
   return (
-    <div className="flex items-center justify-center w-full h-screen text-foreground">
+    <div className="bg-background flex items-center justify-center w-full h-screen text-foreground">
       <p className="text-2xl font-bold flex items-center tracking-widest">
         L
         <svg

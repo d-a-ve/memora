@@ -7,8 +7,7 @@ import { cn } from "@helpers/cn";
 import MaxContainer from "@components/Container/MaxContainer";
 import ToastNotif from "@components/Toast";
 
-import Header from "../Header/Header";
-import { Logo } from "../Header/Logo";
+import Header from "../Header";
 import DNav from "../Nav/DNav";
 
 export default function DLayout({ children }: { children: ReactNode }) {
@@ -48,28 +47,26 @@ export default function DLayout({ children }: { children: ReactNode }) {
 
   return (
     <MaxContainer>
-      <Header
-        logoComponent={
-          <Logo
-            isNavOpen={isNavOpen}
-            openNav={openNav}
-            closeNav={closeNav}
-            logoRef={logoRef}
-          />
-        }
-      />
-      <div className="grid grid-cols-[300px,_1fr] min-h-dashboard-content">
-        <DNav isNavOpen={isNavOpen} closeNav={closeNav} navRef={navRef} />
-        <div
-          className={cn(
-            "col-start-2 relative col-end-3 px-4 lg:col-start-1 pb-16 isolate"
-          )}
-        >
-          {isNavOpen && <div className="inset-0 absolute bg-black/30 z-10" />}
-          <div className="max-w-3xl mx-auto mt-4">{children}</div>
+      <div className="bg-background">
+        <Header
+          isNavOpen={isNavOpen}
+          openNav={openNav}
+          closeNav={closeNav}
+          logoRef={logoRef}
+        />
+        <div className="grid grid-cols-[300px,_1fr] min-h-dashboard-content">
+          <DNav isNavOpen={isNavOpen} closeNav={closeNav} navRef={navRef} />
+          <div
+            className={cn(
+              "col-start-2 relative col-end-3 px-4 lg:col-start-1 pb-16 isolate"
+            )}
+          >
+            {isNavOpen && <div className="inset-0 absolute bg-black/30 z-10" />}
+            <div className="max-w-3xl mx-auto md:mt-4 mt-6">{children}</div>
+          </div>
         </div>
+        <ToastNotif />
       </div>
-      <ToastNotif />
     </MaxContainer>
   );
 }

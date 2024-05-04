@@ -50,7 +50,6 @@ export function DatePickerHeader({
 
   return (
     <DatePickerHeaderWrapper className="flex items-center justify-between">
-      <p>Testing shii</p>
       <div className="flex gap-2">
         <DatePickerHeaderSelector
           selectValue={calenderMonths[getMonth(date)]}
