@@ -14,7 +14,7 @@
   /* color-scheme: light dark; */
 
   /* for styles that cannot use the tailwindcss JIT mode */
-  --text: #04020d;
+  --foreground: #04020d;
   --background: #f4f2fd;
   --primary: #472ce2;
   --secondary: #e781ee;
@@ -28,11 +28,11 @@ body {
 
 @layer base {
   :root {
-    --text: 251 73, 3%;
-    --background: 251 73% 97%;
-    --primary: 249 76% 53%;
-    --secondary: 296 76% 72%;
-    --accent: 307 76% 65%;
+    --tw-text: 251 73, 3%;
+    --tw-background: 251 73% 97%;
+    --tw-primary: 249 76% 53%;
+    --tw-secondary: 296 76% 72%;
+    --tw-accent: 307 76% 65%;
   }
 }
 
@@ -57,6 +57,18 @@ body {
   }
   .nav-logout-btn {
     @apply grid w-full grid-flow-col items-center justify-start gap-4 rounded-xl p-4 hover:bg-red-500 hover:text-white focus:bg-red-500 focus:text-white;
+  }
+
+  .focus-ring-visible {
+    @apply focus-visible:ring focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
+  }
+
+  .focus-ring {
+    @apply focus:ring focus:ring-2 focus:ring-accent focus:ring-offset-2
+  }
+
+  .focus-ring-within {
+    @apply focus-within:ring focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2
   }
 }
 /* @media (prefers-color-scheme: light) {

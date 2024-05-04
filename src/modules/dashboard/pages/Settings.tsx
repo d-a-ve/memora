@@ -12,7 +12,7 @@ import { extractErrorMessage } from "@helpers/index";
 
 import { ErrorType } from "@myTypes/index";
 
-import { PrimaryButton, SecondaryButton } from "@components/Button";
+import Button from "@components/Button";
 import { FormWrapper } from "@components/Form";
 import { Input } from "@components/Input/Input";
 
@@ -78,10 +78,10 @@ export default function Settings() {
               />
             </div>
             <div className="flex gap-2">
-              <PrimaryButton
+              <Button
                 className="disabled:bg-gray-400 disabled:cursor-not-allowed"
-                buttonType={"submit"}
-                buttonText={
+                type={"submit"}
+                label={
                   isFormEditable
                     ? isCurrentUserNameUpdating
                       ? "Saving..."
@@ -91,10 +91,10 @@ export default function Settings() {
                 disabled={isFormEditable && !hasUserNameChanged}
               />
               {isFormEditable && (
-                <SecondaryButton
-                  buttonType="button"
-                  buttonText="Cancel"
-                  clickFunction={() => setIsFormEditable(false)}
+                <Button
+                  intent="secondary"
+                  label="Cancel"
+                  onClick={() => setIsFormEditable(false)}
                 />
               )}
             </div>

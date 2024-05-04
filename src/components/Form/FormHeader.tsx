@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-
+import { NormalLink } from "@components/Link";
 import { FullNameLogo } from "@components/Logo";
 
 import { FormHeaderType } from "./types";
@@ -12,7 +11,7 @@ export function FormHeader({
 }: FormHeaderType) {
   return (
     <>
-      <div className="w-32">
+      <div className="w-32 mb-6 lg:mb-4">
         <FullNameLogo />
       </div>
       <div className="mb-8 md:mb-6">
@@ -21,12 +20,7 @@ export function FormHeader({
         </h1>
         <p className="text-fs--1">
           {subTitle}
-          <Link
-            className="text-primary font-medium hover:text-primary focus:text-primary focus:outline-primary"
-            to={ctaLinkTo}
-          >
-            {subTitleCta}
-          </Link>
+          <NormalLink label={subTitleCta} href={ctaLinkTo} />
         </p>
       </div>
     </>

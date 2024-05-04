@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom";
-
 import useForm from "@hooks/useForm";
 
 import { InputFieldType } from "@myTypes/index";
 
-import { PrimaryButton } from "@components/Button";
+import Button from "@components/Button";
 import { FormFooter, FormHeader, FormWrapper } from "@components/Form";
 import { InputWithLabel, InputWithLabelWrapper } from "@components/Input";
 import { AuthLayout } from "@components/Layout";
+import { NormalLink } from "@components/Link";
 import ToastNotif from "@components/Toast";
 
 export const LOGIN_INPUT_FIELDS: InputFieldType[] = [
@@ -33,7 +32,13 @@ export default function Login() {
   const { loginSubmit, isLoading: isFormSubmitting } = useForm();
 
   return (
-    <AuthLayout>
+    <AuthLayout
+      sidePanel={{
+        title: "Welcome back!",
+        subtitle:
+          "For birthdays you adore, Memora keeps you on track for sure!",
+      }}
+    >
       <FormHeader
         headerTitle="Login to your account"
         subTitle="Don't have an account? "
@@ -63,12 +68,11 @@ export default function Login() {
                   required={isRequired}
                   isPassword={isPassword}
                 >
-                  <Link
-                    className="text-fs--2 text-right text-primary font-medium hover:text-primary focus:outline-primary"
-                    to="/forgot-password"
-                  >
-                    Forgot password?
-                  </Link>
+                  <NormalLink
+                    href="/forgot-password"
+                    label="Forgot password?"
+                    className="text-sm"
+                  />
                 </InputWithLabelWrapper>
               );
             }
@@ -84,13 +88,8 @@ export default function Login() {
             );
           }
         )}
-        <div className="mt-2">
-          <PrimaryButton
-            buttonType="submit"
-            className="btn-primary w-full"
-            isLoading={isFormSubmitting}
-            buttonText={isFormSubmitting ? "Logging in..." : "Login"}
-          />
+        <div className="mt-2 grid gap-4">
+          <Button type="submit" isLoading={isFormSubmitting} label="Login" />
         </div>
       </FormWrapper>
       <FormFooter />

@@ -1,6 +1,6 @@
 import { AUTHMETHODS } from "@constants/index";
 
-import { ActionButtonWithIcon } from "../Button/ActionButtonWithIcon";
+import Button from "@components/Button";
 
 export function FormFooter() {
   return (
@@ -12,11 +12,18 @@ export function FormFooter() {
       </div>
       <div className="flex flex-col gap-4">
         {AUTHMETHODS.map((method) => (
-          <ActionButtonWithIcon
+          <Button
             key={method.id}
-            buttonText={method.name}
-            clickFunction={method.clickFunction}
-            iconUrl={method.icon}
+            intent="secondary"
+            label={method.name}
+            onClick={method.clickFunction}
+            leftIcon={
+              <img
+                className="w-5 h-5"
+                src={method.icon}
+                alt={`${method.name}-icon`}
+              />
+            }
           />
         ))}
       </div>

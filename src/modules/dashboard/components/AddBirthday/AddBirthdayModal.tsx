@@ -13,7 +13,7 @@ import { createDocInBirthdaysCol } from "@appwrite/utils/database";
 
 import { ErrorType } from "@myTypes/index";
 
-import { PrimaryButton, SecondaryButton } from "@components/Button";
+import Button from "@components/Button";
 import { CustomDateInput } from "@components/Date";
 import { FormWrapper } from "@components/Form";
 import { InputWithLabel } from "@components/Input";
@@ -109,17 +109,15 @@ export default function AddBirthdayModal({
             <DateInput customInput={<CustomDateInput id="birthdayDate" />} />
           </div>
           <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-1">
-            <PrimaryButton
+            <Button
               isLoading={isBirthdayAdding}
-              buttonText={
-                isBirthdayAdding ? "Adding Birthday..." : "Add Birthday"
-              }
-              buttonType="submit"
+              label="Add Birthday"
+              type="submit"
             />
-            <SecondaryButton
-              buttonText="Cancel"
-              clickFunction={() => modal.close()}
-              buttonType="button"
+            <Button
+              intent="secondary"
+              label="Cancel"
+              onClick={() => modal.close()}
             />
           </div>
         </FormWrapper>

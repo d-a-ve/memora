@@ -1,8 +1,9 @@
 import getSVGFromString from "helpers/getSVGFromString";
 
+import { FullNameLogo } from "@components/Logo";
+
 import { NavOpenPropsType } from "../../types";
 import DNavController from "../Nav/DNavController";
-import { FullNameLogo } from "@components/Logo";
 
 export function Logo({
   isNavOpen,

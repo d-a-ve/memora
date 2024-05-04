@@ -9,7 +9,7 @@ import { forgotPassword } from "@appwrite/utils/userSession";
 
 import { extractErrorMessage } from "@helpers/index";
 
-import { PrimaryButton } from "@components/Button";
+import Button from "@components/Button";
 import { FormHeader, FormWrapper } from "@components/Form";
 import { InputWithLabel } from "@components/Input";
 import { AuthLayout } from "@components/Layout";
@@ -54,7 +54,12 @@ export default function ForgotPassword() {
   };
 
   return (
-    <AuthLayout>
+    <AuthLayout
+      sidePanel={{
+        title: "Trouble logging in?",
+        subtitle: "Reset your password and jump back into the memories.",
+      }}
+    >
       {isResetLinkSent ? (
         <PasswordResetLinkSent resendLink={resendLink} />
       ) : (
@@ -73,12 +78,7 @@ export default function ForgotPassword() {
               required={true}
             />
             <div className="mt-2">
-              <PrimaryButton
-                buttonType="submit"
-                className="btn-primary w-full"
-                isLoading={isSubmitting}
-                buttonText={isSubmitting ? "Submitting..." : "Submit"}
-              />
+              <Button type="submit" isLoading={isSubmitting} label="Submit" />
             </div>
           </FormWrapper>
         </>

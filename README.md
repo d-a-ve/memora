@@ -17,12 +17,15 @@ This project makes use of pnpm as the package manager.
 - [x] remove body overflow when modal is clicked
 - [x] find new colors and use the 60/30/10 rule
 - [x] find logo for app
-- [] merge all variants of button to one file using cva
-- [] put the logo everywhere needed
+- [x] merge all variants of button to one file using cva
+- [x] put the logo everywhere needed
+- [x] add an underline to the normal line and on hover remove it
+- [x] add image/content beside form on auth pages
 - [] use the new color palette and fix app
 - [] edit birthdays
 - [] work on a brithday template for mailing and add to courier dashboard
 - [] add error handling on form submission
+- [] feedback page with 3 options (request feat, report bug, holla the dev)
 
 ## Cloud Function Pseudo code
 1. Get today's date

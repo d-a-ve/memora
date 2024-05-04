@@ -11,11 +11,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        text: "hsl(var(--text) / <alpha-value>)",
-        background: "hsl(var(--background) / <alpha-value>)",
-        primary: "hsl(var(--primary) / <alpha-value>)",
-        secondary: "hsl(var(--secondary) / <alpha-value>)",
-        accent: "hsl(var(--accent) / <alpha-value>)",
+        foreground: "hsl(var(--tw-foreground) / <alpha-value>)",
+        background: "hsl(var(--tw-background) / <alpha-value>)",
+        primary: "hsl(var(--tw-primary) / <alpha-value>)",
+        secondary: "hsl(var(--tw-secondary) / <alpha-value>)",
+        accent: "hsl(var(--tw-accent) / <alpha-value>)",
       },
 
       fontSize: {
@@ -33,6 +33,9 @@ module.exports = {
       },
       minHeight: {
         "dashboard-content": "var(--dashboard-content-height)",
+      },
+      backgroundImage: {
+        "auth-gradient": "url('/assets/auth-bg.svg')",
       },
     },
   },

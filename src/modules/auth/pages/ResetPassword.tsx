@@ -9,7 +9,7 @@ import { resetPassword } from "@appwrite/utils/userSession";
 
 import { extractErrorMessage } from "@helpers/index";
 
-import { PrimaryButton } from "@components/Button";
+import Button from "@components/Button";
 import { FormHeader, FormWrapper } from "@components/Form";
 import { Password } from "@components/Input/Password";
 import { AuthLayout } from "@components/Layout";
@@ -66,7 +66,12 @@ export default function ResetPassword() {
   };
 
   return (
-    <AuthLayout>
+    <AuthLayout
+      sidePanel={{
+        title: "Set a new password",
+        subtitle: "Choose a strong password and continue your Memora journey.",
+      }}
+    >
       <FormHeader
         headerTitle="Reset your Password"
         subTitle=""
@@ -76,12 +81,7 @@ export default function ResetPassword() {
       <FormWrapper submitFunction={submitHandler}>
         <Password />
         <div className="mt-2">
-          <PrimaryButton
-            buttonType="submit"
-            className="btn-primary w-full"
-            isLoading={isPasswordResetting}
-            buttonText={isPasswordResetting ? "Resetting..." : "Reset"}
-          />
+          <Button type="submit" isLoading={isPasswordResetting} label="Reset" />
         </div>
       </FormWrapper>
       <ToastNotif />

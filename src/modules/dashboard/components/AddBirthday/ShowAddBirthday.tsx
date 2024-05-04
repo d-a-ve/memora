@@ -1,4 +1,4 @@
-import { PrimaryButton } from "@components/Button";
+import Button from "@components/Button";
 
 import { ShowMode } from "../../types";
 
@@ -26,11 +26,7 @@ export default function ShowAddBirthday({
     case "button":
       return (
         <div className="fixed right-8 bottom-8">
-          <PrimaryButton
-            buttonType="button"
-            clickFunction={() => modal.open()}
-            buttonText="+"
-          />
+          <Button label="+" onClick={() => modal.open()} />
         </div>
       );
 

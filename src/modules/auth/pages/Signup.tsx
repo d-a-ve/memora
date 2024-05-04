@@ -2,7 +2,7 @@ import useForm from "@hooks/useForm";
 
 import { InputFieldType } from "@myTypes/index";
 
-import { PrimaryButton } from "@components/Button";
+import Button from "@components/Button";
 import { FormFooter, FormHeader, FormWrapper } from "@components/Form";
 import { InputWithLabel } from "@components/Input";
 import { Password } from "@components/Input/Password";
@@ -33,7 +33,13 @@ export const SIGNUP_INPUT_FIELDS: InputFieldType[] = [
 export default function Signup() {
   const { signupSubmit, isLoading } = useForm();
   return (
-    <AuthLayout>
+    <AuthLayout
+      sidePanel={{
+        title: "Welcome to Memora!",
+        subtitle:
+          "For birthdays you adore, Memora keeps you on track for sure!",
+      }}
+    >
       <FormHeader
         headerTitle="Sign up for an account"
         subTitle="Already have an account? "
@@ -57,12 +63,7 @@ export default function Signup() {
         )}
         <Password />
         <div className="mt-2">
-          <PrimaryButton
-            buttonType="submit"
-            className="btn-primary w-full"
-            isLoading={isLoading}
-            buttonText={isLoading ? "Signing up..." : "Sign up"}
-          />
+          <Button type="submit" isLoading={isLoading} label="Sign up" />
         </div>
       </FormWrapper>
       <FormFooter />
