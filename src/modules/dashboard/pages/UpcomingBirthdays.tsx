@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 
 import { listUserDocFromBirthdaysCol } from "@appwrite/utils/database";
 
+import { PageLoader } from "@components/Loader";
+
 import AddBirthday from "../components/AddBirthday/AddBirthday";
 import { UpcomingBirthdaySection } from "../components/UpcomingBirthday/UpcomingBirthdaySection";
 import { useBirthdayQuery } from "../hooks/useBirthdayQuery";
@@ -14,7 +16,8 @@ export default function UpcomingBirthdays() {
     refetchOnWindowFocus: false,
   });
 
-  if (isBirthdaysLoading) return <div>Loading...</div>;
+  if (isBirthdaysLoading) return <PageLoader />;
+
   return (
     <div>
       <UpcomingBirthdaySection birthdays={birthdays} />

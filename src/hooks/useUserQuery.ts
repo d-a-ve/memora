@@ -10,6 +10,8 @@ export const useUserQuery = (retry?: boolean | number) => {
     retry: retry === undefined ? 3 : retry,
     retryOnMount: false,
     refetchOnWindowFocus: false,
+    refetchInterval: 1000 * 60 * 15,
+    refetchIntervalInBackground: true,
   });
 
   return userQuery;

@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 
 import { listUserDocFromBirthdaysCol } from "@appwrite/utils/database";
 
+import { PageLoader } from "@components/Loader";
+
 import AddBirthday from "../components/AddBirthday/AddBirthday";
 import { DashboardBirthdayCalender } from "../components/Calender/DashboardBirthdayCalender";
 import EmptyBirthdayState from "../components/EmptyBirthdayState/EmptyBirthdayState";
@@ -21,7 +23,7 @@ export default function Overview() {
     refetchOnWindowFocus: false,
   });
 
-  if (isBirthdaysLoading) return <div>Loading...</div>;
+  if (isBirthdaysLoading) return <PageLoader />;
 
   if (birthdaysError) return <div>Something went wrong!!</div>;
 

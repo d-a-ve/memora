@@ -78,7 +78,12 @@ export default function ForgotPassword() {
               required={true}
             />
             <div className="mt-2">
-              <Button type="submit" isLoading={isSubmitting} label="Submit" />
+              <Button
+                type="submit"
+                isLoading={isSubmitting}
+                label="Submit"
+                className="w-full"
+              />
             </div>
           </FormWrapper>
         </>

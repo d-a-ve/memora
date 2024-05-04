@@ -15,9 +15,7 @@ export function FormHeader({
         <FullNameLogo />
       </div>
       <div className="mb-8 md:mb-6">
-        <h1 className="text-fs-1 font-semibold text-black mb-2">
-          {headerTitle}
-        </h1>
+        <h1 className="text-fs-1 font-semibold mb-2">{headerTitle}</h1>
         <p className="text-fs--1">
           {subTitle}
           <NormalLink label={subTitleCta} href={ctaLinkTo} />

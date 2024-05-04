@@ -8,6 +8,7 @@ import { useUserQuery } from "@hooks/useUserQuery";
 
 import { updateUserName } from "@appwrite/utils/userSession";
 
+import { cn } from "@helpers/cn";
 import { extractErrorMessage } from "@helpers/index";
 
 import { ErrorType } from "@myTypes/index";
@@ -79,8 +80,14 @@ export default function Settings() {
             </div>
             <div className="flex gap-2">
               <Button
-                className="disabled:bg-gray-400 disabled:cursor-not-allowed"
-                type={"submit"}
+                className={cn(
+                  "disabled:bg-gray-400 disabled:cursor-not-allowed",
+                  {
+                    "hover:border-transparent hover:text-white":
+                      !hasUserNameChanged,
+                  }
+                )}
+                type="submit"
                 label={
                   isFormEditable
                     ? isCurrentUserNameUpdating

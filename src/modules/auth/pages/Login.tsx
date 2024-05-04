@@ -88,8 +88,13 @@ export default function Login() {
             );
           }
         )}
-        <div className="mt-2 grid gap-4">
-          <Button type="submit" isLoading={isFormSubmitting} label="Login" />
+        <div className="mt-2">
+          <Button
+            type="submit"
+            isLoading={isFormSubmitting}
+            label="Login"
+            className="w-full"
+          />
         </div>
       </FormWrapper>
       <FormFooter />

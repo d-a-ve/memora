@@ -81,7 +81,12 @@ export default function ResetPassword() {
       <FormWrapper submitFunction={submitHandler}>
         <Password />
         <div className="mt-2">
-          <Button type="submit" isLoading={isPasswordResetting} label="Reset" />
+          <Button
+            type="submit"
+            isLoading={isPasswordResetting}
+            label="Reset"
+            className="w-full"
+          />
         </div>
       </FormWrapper>
       <ToastNotif />

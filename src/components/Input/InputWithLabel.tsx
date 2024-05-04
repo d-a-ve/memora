@@ -23,7 +23,7 @@ export function InputWithLabel({
 
   return (
     <div className="flex flex-col gap-2">
-      <label className="input-label" htmlFor={`${labelFor}-input`}>
+      <label className="text-base font-medium" htmlFor={`${labelFor}-input`}>
         {labelText}
       </label>
       {!isPassword ? (

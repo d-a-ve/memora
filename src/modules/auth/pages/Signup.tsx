@@ -63,7 +63,12 @@ export default function Signup() {
         )}
         <Password />
         <div className="mt-2">
-          <Button type="submit" isLoading={isLoading} label="Sign up" />
+          <Button
+            type="submit"
+            isLoading={isLoading}
+            label="Sign up"
+            className="w-full"
+          />
         </div>
       </FormWrapper>
       <FormFooter />

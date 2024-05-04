@@ -12,7 +12,7 @@ import { cn } from "@helpers/cn";
 import { InlineLoader } from "@components/Loader";
 
 export const buttonVariants = cva(
-  "relative py-2 border disabled:bg-opacity-60 disabled:cursor-not-allowed transition-all duration-150 ease-in flex items-center gap-2 justify-center w-full rounded font-medium outline-none",
+  "relative border disabled:bg-opacity-60 disabled:cursor-not-allowed transition-all duration-150 ease-in flex items-center gap-2 justify-center rounded font-medium outline-none",
   {
     variants: {
       intent: {
@@ -22,9 +22,9 @@ export const buttonVariants = cva(
           "border-transparent bg-secondary/30 text-foreground fill-white hover:bg-secondary/60 focus-ring-visible",
       },
       size: {
-        sm: "text-sm py-2",
-        md: "text-base py-2.5",
-        lg: "text-lg py-3",
+        sm: "text-sm px-4 py-2",
+        md: "text-base px-5 py-2.5",
+        lg: "text-lg px-6 py-3",
       },
     },
     defaultVariants: {
