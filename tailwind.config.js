@@ -37,6 +37,9 @@ module.exports = {
       backgroundImage: {
         "auth-gradient": "url('/assets/auth-bg.svg')",
       },
+      zIndex: {
+        1: "1",
+      },
     },
   },
   plugins: [],

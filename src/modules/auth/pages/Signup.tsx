@@ -3,7 +3,7 @@ import useForm from "@hooks/useForm";
 import { InputFieldType } from "@myTypes/index";
 
 import Button from "@components/Button";
-import { FormFooter, FormHeader, FormWrapper } from "@components/Form";
+import { FormHeader, FormWrapper } from "@components/Form";
 import { InputWithLabel } from "@components/Input";
 import { Password } from "@components/Input/Password";
 import { AuthLayout } from "@components/Layout";
@@ -45,6 +45,7 @@ export default function Signup() {
         subTitle="Already have an account? "
         subTitleCta="Login"
         ctaLinkTo="/login"
+        showFooter
       />
       <FormWrapper submitFunction={signupSubmit}>
         {SIGNUP_INPUT_FIELDS.map(
@@ -71,7 +72,6 @@ export default function Signup() {
           />
         </div>
       </FormWrapper>
-      <FormFooter />
       <ToastNotif />
     </AuthLayout>
   );

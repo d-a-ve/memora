@@ -1,6 +1,7 @@
 import { NormalLink } from "@components/Link";
 import { FullNameLogo } from "@components/Logo";
 
+import { FormFooter } from "./FormFooter";
 import { FormHeaderType } from "./types";
 
 export function FormHeader({
@@ -8,9 +9,12 @@ export function FormHeader({
   subTitle,
   subTitleCta,
   ctaLinkTo,
-}: FormHeaderType) {
+  showFooter,
+}: FormHeaderType & {
+  showFooter?: boolean;
+}) {
   return (
-    <>
+    <div className="mb-4">
       <div className="w-32 mb-6 lg:mb-4">
         <FullNameLogo />
       </div>
@@ -21,6 +25,7 @@ export function FormHeader({
           <NormalLink label={subTitleCta} href={ctaLinkTo} />
         </p>
       </div>
-    </>
+      {showFooter && <FormFooter />}
+    </div>
   );
 }

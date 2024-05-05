@@ -15,7 +15,7 @@ export default function Header({
   logoRef?: React.RefObject<HTMLDivElement>;
 }) {
   return (
-    <div className="sticky top-0 left-0 z-10 col-start-1 col-end-13 h-16 border-b border-b-gray-300 px-4 bg-white">
+    <div className="sticky top-0 left-0 z-1 col-start-1 col-end-13 h-16 border-b border-b-gray-300 px-4 bg-white isolate">
       <div className="h-full grid grid-cols-[284px,_1fr] items-center justify-between lg:flex">
         <div
           className="flex gap-4 items-center border-r border-r-gray-300 h-full lg:border-0"

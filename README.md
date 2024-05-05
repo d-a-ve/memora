@@ -23,10 +23,15 @@ This project makes use of pnpm as the package manager.
 - [x] add image/content beside form on auth pages
 - [x] use the new color palette and fix app
 - [x] add 404 error page
+- [x] move continue with google for auth up
+- [x] change name to be able to use only a single name e.g Dave and nore Dave aronmwan
+- [x] add error handling on form submission
+- [x] add a loading spinner when searching, toegther with the debounce
+- [x] fix dashboard header showing up when add birthday modal is open
+- [] do home page
 - [] add error component for data fetching
 - [] edit birthdays
 - [] work on a brithday template for mailing and add to courier dashboard
-- [] add error handling on form submission
 - [] feedback page with 3 options (request feat, report bug, holla the dev)
 
 ## Cloud Function Pseudo code

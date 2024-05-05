@@ -17,17 +17,26 @@ import { Input } from "@components/Input/Input";
 
 export function UpcomingBirthdaySearch({
   setSearchedBirthday,
+  setIsSearching,
 }: {
   setSearchedBirthday: Dispatch<SetStateAction<birthdayDataType | undefined>>;
+  setIsSearching: Dispatch<SetStateAction<boolean>>;
 }) {
   const [searchValue, setSearchValue] = useState("");
   const debouncedValue = useDebounce<string>(searchValue);
+
+  useEffect(() => {
+    if (searchValue.length > 0) {
+      setIsSearching(true);
+    }
+  }, [searchValue]);
 
   useEffect(() => {
     const searchBirthdays = async () => {
       const birthdays = await searchForBirthday(debouncedValue);
 
       setSearchedBirthday(birthdays);
+      setIsSearching(false);
     };
 
     searchBirthdays();

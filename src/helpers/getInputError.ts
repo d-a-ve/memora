@@ -3,9 +3,9 @@ export default function getInputError(inputType: string, value: string) {
   let pattern: RegExp;
   switch (inputType) {
     case "name":
-      pattern = /^[A-Za-z]+ [A-Za-z]+$/;
+      pattern = /^[a-zA-Z0-9\s]{2,}$/;
       errorMessage =
-        "Please enter your first name and last name separated by a space.";
+        "Name should only contain letters, numbers, and spaces, and must be at least 2 characters long.";
       break;
     case "email":
       pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

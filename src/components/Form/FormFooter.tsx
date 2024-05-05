@@ -5,12 +5,7 @@ import Button from "@components/Button";
 export function FormFooter() {
   return (
     <div>
-      <div className="flex justify-between items-center mb-4">
-        <span className="w-1/5 h-[1px] bg-gray-400"></span>
-        <p className="text-fs--1 text-center font-medium">Or continue with</p>
-        <span className="w-1/5 h-[1px] bg-gray-400"></span>
-      </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 mb-6">
         {AUTHMETHODS.map((method) => (
           <Button
             key={method.id}
@@ -26,6 +21,11 @@ export function FormFooter() {
             }
           />
         ))}
+      </div>
+      <div className="flex justify-between items-center">
+        <span className="w-1/5 h-[1px] bg-gray-400"></span>
+        <p className="text-fs--1 text-center font-medium">Or continue with</p>
+        <span className="w-1/5 h-[1px] bg-gray-400"></span>
       </div>
     </div>
   );
