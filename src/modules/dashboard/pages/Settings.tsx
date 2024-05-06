@@ -17,6 +17,8 @@ import Button from "@components/Button";
 import { FormWrapper } from "@components/Form";
 import { Input } from "@components/Input/Input";
 
+import CardSectionLayout from "../components/Layout/CardSectionLayout";
+
 type UpdateCurrentUserNameMutationFn = { name: string };
 
 export default function Settings() {
@@ -57,7 +59,7 @@ export default function Settings() {
   };
 
   return (
-    <>
+    <CardSectionLayout>
       <h1 className="text-fs-1 mb-1">Profile</h1>
       <p className="text-fs--2">Manage settings for your account</p>
       <div className="mt-8 relative before:w-full before:h-[1px] before:bg-gray-300 before:absolute before:-top-4">
@@ -110,6 +112,6 @@ export default function Settings() {
           </FormWrapper>
         </div>
       </div>
-    </>
+    </CardSectionLayout>
   );
 }

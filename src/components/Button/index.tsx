@@ -20,6 +20,8 @@ export const buttonVariants = cva(
           "border-transparent bg-primary text-white hover:bg-transparent hover:border-primary hover:text-primary hover:fill-background focus-ring-visible",
         secondary:
           "border-transparent bg-secondary/30 text-foreground fill-white hover:bg-secondary/60 focus-ring-visible",
+        danger:
+          "bg-red-500 text-white hover:bg-red-600 fill-red-500 hover:fill-red-600 focus-ring-visible",
       },
       size: {
         sm: "text-sm px-4 py-2",

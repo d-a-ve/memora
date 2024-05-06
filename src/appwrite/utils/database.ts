@@ -1,31 +1,17 @@
+import type { birthdaysAttrType } from "@myTypes/index";
+
 import { databaseDocType } from "../../myTypes";
 import { db, query } from "../config";
 
-export async function createDoc(
-  dbId: string,
-  colId: string,
-  docId: string,
-  data: databaseDocType
-) {
-  try {
-    const createDoc = await db.createDocument(dbId, colId, docId, data);
-    return createDoc;
-  } catch (error: any) {
-    throw new Error(error);
-  }
-}
+const DB_ID = import.meta.env.VITE_APPWRITE_DB_ID;
+const BIRTHDAYS_COL_ID = import.meta.env.VITE_APPWRITE_BIRTHDAYS_COLLECTION_ID;
 
 export async function createDocInBirthdaysCol(
   docId: string,
   data: databaseDocType
 ) {
   try {
-    const doc = await createDoc(
-      import.meta.env.VITE_APPWRITE_DB_ID,
-      import.meta.env.VITE_APPWRITE_BIRTHDAYS_COLLECTION_ID,
-      docId,
-      data
-    );
+    const doc = await db.createDocument(DB_ID, BIRTHDAYS_COL_ID, docId, data);
     return doc;
   } catch (error: any) {
     throw new Error(error);
@@ -40,8 +26,8 @@ export async function listUserDocFromBirthdaysCol(
     if (!userId) throw new Error("User Id is not defined");
 
     const docs = await db.listDocuments(
-      import.meta.env.VITE_APPWRITE_DB_ID,
-      import.meta.env.VITE_APPWRITE_BIRTHDAYS_COLLECTION_ID,
+      DB_ID,
+      BIRTHDAYS_COL_ID,
       [
         query.equal("user_id", userId),
         query.limit(Number(queryLimit)),
@@ -63,13 +49,31 @@ export async function searchForBirthday(name: string) {
   try {
     if (name.length === 0) return;
 
-    const docs = await db.listDocuments(
-      import.meta.env.VITE_APPWRITE_DB_ID,
-      import.meta.env.VITE_APPWRITE_BIRTHDAYS_COLLECTION_ID,
-      [query.search("person_name", name), query.orderAsc("person_birthday")]
-    );
+    const docs = await db.listDocuments(DB_ID, BIRTHDAYS_COL_ID, [
+      query.search("person_name", name),
+      query.orderAsc("person_birthday"),
+    ]);
 
     return docs;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}
+
+export async function updateBirthdayDocument(
+  docId: string,
+  data: { [k in keyof Omit<birthdaysAttrType, "user_id">]: string }
+) {
+  try {
+    return await db.updateDocument(DB_ID, BIRTHDAYS_COL_ID, docId, data);
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}
+
+export async function deleteBirthdayDocument(docId: string) {
+  try {
+    return await db.deleteDocument(DB_ID, BIRTHDAYS_COL_ID, docId);
   } catch (error: any) {
     throw new Error(error);
   }

@@ -25,6 +25,7 @@ export type InputWithLabelPropsType = {
   isPassword?: boolean;
   disabled?: boolean;
   placeHolder?: string;
+  defaultValue?: string;
 };
 
 export type InputWithLabelWrapperPropsType = InputWithLabelPropsType & {

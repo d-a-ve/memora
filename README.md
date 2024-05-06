@@ -28,9 +28,11 @@ This project makes use of pnpm as the package manager.
 - [x] add error handling on form submission
 - [x] add a loading spinner when searching, toegther with the debounce
 - [x] fix dashboard header showing up when add birthday modal is open
+- [x] edit and delete birthdays
+- [] send a welcome email when signing up for the first time
 - [] do home page
+- [] add meta tags
 - [] add error component for data fetching
-- [] edit birthdays
 - [] work on a brithday template for mailing and add to courier dashboard
 - [] feedback page with 3 options (request feat, report bug, holla the dev)
 

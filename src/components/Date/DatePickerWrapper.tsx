@@ -17,13 +17,15 @@ type DatePickerWrapperProps = Omit<
   | "scrollableYearDropdown"
 > & {
   isReadOnly: boolean;
+  selectedDate?: Date;
 };
 
 export function DatePickerWrapper({
   isReadOnly,
+  selectedDate = new Date(),
   ...props
 }: DatePickerWrapperProps) {
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
+  const [startDate, setStartDate] = useState<Date | null>(selectedDate);
 
   return (
     <DatePicker

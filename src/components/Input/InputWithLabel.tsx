@@ -15,8 +15,9 @@ export function InputWithLabel({
   placeHolder,
   isPassword,
   disabled,
+  defaultValue = "",
 }: InputWithLabelPropsType) {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(defaultValue);
   const [touched, setTouched] = useState(false);
   const { isValid, errorMessage } = getInputError(labelFor, inputValue);
   const displayError = touched && !isValid;

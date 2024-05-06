@@ -46,9 +46,11 @@ const rightArrow = (
 export function DateInput({
   isReadOnly,
   customInput,
+  selectedDate,
 }: {
   isReadOnly?: boolean;
   customInput?: ReactNode;
+  selectedDate?: Date;
 }) {
   const years = range(1900, getYear(new Date()) + 1, 1);
 
@@ -56,6 +58,7 @@ export function DateInput({
     <DatePickerWrapper
       isReadOnly={isReadOnly || false}
       customInput={customInput}
+      selectedDate={selectedDate}
       renderCustomHeader={({
         date,
         changeYear,
