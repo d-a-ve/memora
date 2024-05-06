@@ -8,8 +8,8 @@ import { getInitials } from "@appwrite/utils/avatar";
 
 import { cn } from "@helpers/cn";
 
-import EditBirthdayModal from "../EditBirthday/EditBirthdayModal";
 import DeleteBirthdayModal from "../DeleteBirthday/DeleteBirthdayModal";
+import EditBirthdayModal from "../EditBirthday/EditBirthdayModal";
 
 type OptionsType = "edit" | "delete";
 
@@ -27,11 +27,11 @@ export function UpcomingBirthdayCard({
   const buttonRef = useRef<ElementRef<"button">>(null);
   const { hideBodyOveflow, resetBodyOverflow } = useBodyOverflow();
 
-  const openOptions = (opt: OptionsType) => {
+  const openSelectedOptionsModal = (opt: OptionsType) => {
     setOptions(opt);
     hideBodyOveflow();
   };
-  const closeOptions = () => {
+  const closeSelectedOptionsModal = () => {
     setOptions(null);
     resetBodyOverflow();
   };
@@ -108,7 +108,7 @@ export function UpcomingBirthdayCard({
               <li>
                 <button
                   className="px-2 py-1 w-full text-left outline-none rounded hover:bg-primary/20 focus-ring-visible focus-visible:rounded focus-visible:ring-offset-0"
-                  onClick={() => openOptions("edit")}
+                  onClick={() => openSelectedOptionsModal("edit")}
                 >
                   Edit
                 </button>
@@ -116,7 +116,7 @@ export function UpcomingBirthdayCard({
               <li>
                 <button
                   className="text-red-500 px-2 py-1 rounded outline-none hover:text-white hover:bg-red-500 focus-ring-visible focus-visible:ring-offset-0"
-                  onClick={() => openOptions("delete")}
+                  onClick={() => openSelectedOptionsModal("delete")}
                 >
                   Delete
                 </button>
@@ -128,7 +128,10 @@ export function UpcomingBirthdayCard({
 
       {options === "edit" && (
         <EditBirthdayModal
-          modal={{ isOpen: options === "edit", close: closeOptions }}
+          modal={{
+            isOpen: options === "edit",
+            close: closeSelectedOptionsModal,
+          }}
           oldValue={{ name, birthday }}
           docId={docId}
         />
@@ -136,7 +139,10 @@ export function UpcomingBirthdayCard({
 
       {options === "delete" && (
         <DeleteBirthdayModal
-          modal={{ isOpen: options === "delete", close: closeOptions }}
+          modal={{
+            isOpen: options === "delete",
+            close: closeSelectedOptionsModal,
+          }}
           docId={docId}
         />
       )}

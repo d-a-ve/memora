@@ -8,7 +8,7 @@ export default function User() {
 
   return (
     <div className="flex items-center">
-      <p className="text-fs--1 md:text-fs--2">
+      <p className="text-base md:text-fs--1 sm:text-fs--2">
         Welcome
         {!isCurrentUserLoading && (
           <span className="sm:hidden">, {currentUser?.name || "Guest"}</span>

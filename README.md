@@ -29,7 +29,7 @@ This project makes use of pnpm as the package manager.
 - [x] add a loading spinner when searching, toegther with the debounce
 - [x] fix dashboard header showing up when add birthday modal is open
 - [x] edit and delete birthdays
-- [] send a welcome email when signing up for the first time
+- [x] send a welcome email when signing up for the first time
 - [] do home page
 - [] add meta tags
 - [] add error component for data fetching
