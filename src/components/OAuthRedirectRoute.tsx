@@ -13,7 +13,7 @@ export function OAuthRedirectRoute() {
       </div>
     );
 
-  if (!currentUser) return <Navigate to="/login" />;
+  if (currentUser) return <Navigate to={`/dashboard/${currentUser.$id}/`} />;
 
-  return <Navigate to={`/dashboard/${currentUser.$id}/`} />;
+  return <Navigate to="/login" />;
 }
