@@ -1,17 +1,11 @@
 import { useEffect, useRef } from "react";
 
-import { useQueryClient } from "@tanstack/react-query";
-import { toastSuccess } from "helpers/toastNotifs";
+import useDeleteBirthdayMutation from "@modules/dashboard/hooks/useDeleteBirthdayMutation";
 
 import useBodyOverflow from "@hooks/useBodyOverflow";
-import { useUserQuery } from "@hooks/useUserQuery";
-
-import { deleteBirthdayDocument } from "@appwrite/utils/database";
 
 import Button from "@components/Button";
 import { ModalLayout } from "@components/Layout";
-
-import useBirthdayMutation from "../../hooks/useBirthdayMutation";
 
 type DeleteBirthdayModalProps = {
   docId: string;
@@ -24,9 +18,10 @@ export default function DeleteBirthdayModal({
   modal,
   docId,
 }: DeleteBirthdayModalProps) {
-  const { data: currentUser } = useUserQuery();
-  const query = useQueryClient();
   const containerRef = useRef<HTMLDivElement>(null);
+  const {
+    mutationResult: { mutate: deleteBirthday },
+  } = useDeleteBirthdayMutation();
   const { resetBodyOverflow } = useBodyOverflow();
 
   useEffect(() => {
@@ -47,15 +42,10 @@ export default function DeleteBirthdayModal({
     };
   }, [modal.isOpen, resetBodyOverflow]);
 
-  const { mutate: handleDelete, isPending: isBirthdayDeleting } =
-    useBirthdayMutation({
-      mutationFn: () => deleteBirthdayDocument(docId),
-      onSuccess: () => {
-        query.invalidateQueries({ queryKey: ["birthdays", currentUser?.$id] });
-        modal.close();
-        toastSuccess("Birthday has been deleted successfully!!");
-      },
-    });
+  const handleDelete = () => {
+    deleteBirthday({ docId });
+    modal.close();
+  };
 
   return (
     <ModalLayout isModalOpen={modal.isOpen}>
@@ -68,7 +58,6 @@ export default function DeleteBirthdayModal({
         <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-1">
           <Button
             intent="danger"
-            isLoading={isBirthdayDeleting}
             label="Delete"
             onClick={() => handleDelete()}
           />

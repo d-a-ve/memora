@@ -3,11 +3,15 @@ import {
   Outlet,
   Route,
   RouterProvider,
+  ScrollRestoration,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
 
+import Error404Page from "@pages/Error404Page";
+
 import { DashboardLayout } from "@modules/dashboard";
+import DashboardErrorBoundary from "@modules/dashboard/components/Error";
 
 import { PageLoader } from "@components/Loader";
 import { OAuthRedirectRoute } from "@components/OAuthRedirectRoute";
@@ -15,7 +19,6 @@ import {
   ProtectedRouteFromAuthenticatedUser,
   UserProtectedRoute,
 } from "@components/ProtectedRoute";
-import Error404Page from "@pages/Error404Page";
 
 const Login = lazy(() => import("@pages/Login"));
 const Signup = lazy(() => import("@pages/Signup"));
@@ -30,7 +33,19 @@ const Settings = lazy(() => import("@pages/dashboard/Settings"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route errorElement={<Error404Page />}>
+    <Route
+      element={
+        <>
+          <ScrollRestoration
+            getKey={(location) => {
+              return location.pathname;
+            }}
+          />
+          <Outlet />
+        </>
+      }
+      errorElement={<Error404Page />}
+    >
       <Route path="/" element={<Outlet />}>
         <Route index element={<Home />} />
         <Route element={<ProtectedRouteFromAuthenticatedUser />}>
@@ -44,12 +59,15 @@ const router = createBrowserRouter(
 
       <Route element={<UserProtectedRoute />}>
         <Route element={<DashboardLayout />}>
-          <Route path="/dashboard/:userId" element={<DashboardOverview />} />
-          <Route
-            path="/dashboard/:userId/upcoming-birthdays"
-            element={<DashboardUpcomingBirthdays />}
-          />
-          <Route path="/dashboard/:userId/settings" element={<Settings />} />
+          {/* I did it this way so that the dashboard layout shows even when an error occurs */}
+          <Route errorElement={<DashboardErrorBoundary />}>
+            <Route path="/dashboard/:userId" element={<DashboardOverview />} />
+            <Route
+              path="/dashboard/:userId/upcoming-birthdays"
+              element={<DashboardUpcomingBirthdays />}
+            />
+            <Route path="/dashboard/:userId/settings" element={<Settings />} />
+          </Route>
         </Route>
       </Route>
     </Route>

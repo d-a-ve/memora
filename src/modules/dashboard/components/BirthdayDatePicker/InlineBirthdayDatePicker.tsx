@@ -3,6 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { DatePickerWrapper } from "@components/Date";
 
 import { InlineBirthdayDatePickerHeader } from "./InlineBirthdayDatePickerHeader";
+import "./inline-date.css";
 
 export function InlineBirthdayDatePicker({
   dates,
@@ -10,13 +11,18 @@ export function InlineBirthdayDatePicker({
   dates: Date[] | undefined;
 }) {
   return (
-    <DatePickerWrapper
-      highlightDates={dates}
-      isReadOnly={true}
-      inline={true}
-      renderCustomHeader={({ date, changeMonth }) => (
-        <InlineBirthdayDatePickerHeader date={date} changeMonth={changeMonth} />
-      )}
-    />
+    <div className="inline-wrapper">
+      <DatePickerWrapper
+        highlightDates={dates}
+        isReadOnly={true}
+        inline={true}
+        renderCustomHeader={({ date, changeMonth }) => (
+          <InlineBirthdayDatePickerHeader
+            date={date}
+            changeMonth={changeMonth}
+          />
+        )}
+      />
+    </div>
   );
 }

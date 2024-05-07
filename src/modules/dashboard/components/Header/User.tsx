@@ -18,6 +18,7 @@ export default function User() {
         <img
           src={userAvatar.href}
           alt={`${currentUser?.name || "Guest"} initials`}
+          className="w-full h-full object-cover object-center"
         />
       </div>
     </div>

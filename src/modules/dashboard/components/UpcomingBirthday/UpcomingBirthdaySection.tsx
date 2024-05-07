@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import filterUpcomingBirthdaysFromCurrentDate from "helpers/filterUpcomingBirthdays";
 
+import useAddBirthdayMutation from "@modules/dashboard/hooks/useAddBirthdayMutation";
+
 import { birthdayDataType } from "@myTypes/index";
 
 import { LinkButton } from "@components/Link";
@@ -34,6 +36,7 @@ export function UpcomingBirthdaySection({
     searchedBirthday?.documents
   );
 
+  const { mutationVariables } = useAddBirthdayMutation();
   // If the number of searched birthdays is greater than the number of birthdays to show, show the "See more birthdays" link
   const shouldSeeMoreSearchedBirthdaysLinkShow =
     filteredSearchedBirthdays &&
@@ -44,7 +47,6 @@ export function UpcomingBirthdaySection({
     filteredBirthdays &&
     showMoreBirthdays &&
     filteredBirthdays.length > showMoreBirthdays.numOfBirthdaysToShow;
-
   return (
     <CardSectionLayout>
       <section>
@@ -65,6 +67,20 @@ export function UpcomingBirthdaySection({
         {!isSearching && (
           <div>
             <div className="space-y-3 divide-y divide-y-grey-300">
+              {/* to optimistically show new birthday added to the list immediately */}
+              {mutationVariables.length > 0 && (
+                <div className="opacity-50">
+                  <UpcomingBirthdayCard
+                    key={mutationVariables[0].name[1] as string}
+                    docId={mutationVariables[0].name[1] as string}
+                    name={mutationVariables[0].name[1] as string}
+                    birthday={`${
+                      mutationVariables[0].birthdayDate[1]
+                    }/${new Date().getFullYear()}`}
+                  />
+                </div>
+              )}
+
               {/* When user is searching, map using the searchedBirthdays instead of default birthdays */}
               {(filteredSearchedBirthdays || filteredBirthdays)
                 ?.slice(

@@ -8,6 +8,7 @@ import {
 import getSVGFromString from "helpers/getSVGFromString";
 
 import useDebounce from "@hooks/useDebounce";
+import { useUserQuery } from "@hooks/useUserQuery";
 
 import { searchForBirthday } from "@appwrite/utils/database";
 
@@ -22,6 +23,7 @@ export function UpcomingBirthdaySearch({
   setSearchedBirthday: Dispatch<SetStateAction<birthdayDataType | undefined>>;
   setIsSearching: Dispatch<SetStateAction<boolean>>;
 }) {
+  const { data } = useUserQuery();
   const [searchValue, setSearchValue] = useState("");
   const debouncedValue = useDebounce<string>(searchValue);
 
@@ -33,14 +35,22 @@ export function UpcomingBirthdaySearch({
 
   useEffect(() => {
     const searchBirthdays = async () => {
-      const birthdays = await searchForBirthday(debouncedValue);
+      if (!data?.$id) {
+        setIsSearching(false);
+        return;
+      }
+
+      const birthdays = await searchForBirthday({
+        name: debouncedValue,
+        userId: data?.$id,
+      });
 
       setSearchedBirthday(birthdays);
       setIsSearching(false);
     };
 
     searchBirthdays();
-  }, [debouncedValue, setSearchedBirthday]);
+  }, [debouncedValue, setSearchedBirthday, data?.$id]);
 
   return (
     <div>
@@ -58,7 +68,10 @@ export function UpcomingBirthdaySearch({
           <button
             className="absolute top-1/2 -translate-y-1/2 right-3 cursor-pointer outline-none focus-ring-visible focus-visible:rounded"
             title="Clear search input"
-            onClick={() => setSearchValue("")}
+            onClick={() => {
+              setSearchValue("");
+              setIsSearching(true);
+            }}
           >
             {getSVGFromString("close", 12, 12)}
           </button>

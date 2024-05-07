@@ -2,6 +2,8 @@ import { ElementRef, useEffect, useRef, useState } from "react";
 
 import { getDateFromDateString, getDaysLeft } from "helpers/getDate";
 
+import useEditBirthdayMutation from "@modules/dashboard/hooks/useEditBirthdayMutation";
+
 import useBodyOverflow from "@hooks/useBodyOverflow";
 
 import { getInitials } from "@appwrite/utils/avatar";
@@ -25,6 +27,7 @@ export function UpcomingBirthdayCard({
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [options, setOptions] = useState<OptionsType | null>(null);
   const buttonRef = useRef<ElementRef<"button">>(null);
+  const { mutationVariables } = useEditBirthdayMutation();
   const { hideBodyOveflow, resetBodyOverflow } = useBodyOverflow();
 
   const openSelectedOptionsModal = (opt: OptionsType) => {
@@ -63,6 +66,9 @@ export function UpcomingBirthdayCard({
         "flex items-center justify-between gap-2 text-fs--1 pt-4 px-3",
         {
           "bg-accent text-background rounded-md": timeLeft === "Today 🎉",
+          "animate-pulse":
+            mutationVariables.length > 0 &&
+            mutationVariables[0].docId === docId,
         }
       )}
     >
@@ -106,20 +112,22 @@ export function UpcomingBirthdayCard({
           {isOptionsOpen && (
             <ul className="absolute w-fit right-0 p-1 bg-white rounded border border-gray-300 z-1 text-left">
               <li>
-                <button
-                  className="px-2 py-1 w-full text-left outline-none rounded hover:bg-primary/20 focus-ring-visible focus-visible:rounded focus-visible:ring-offset-0"
+                <span
+                  className="block px-2 py-1 w-full text-left outline-none rounded hover:bg-primary/20 focus-ring-visible focus-visible:rounded focus-visible:ring-offset-0"
                   onClick={() => openSelectedOptionsModal("edit")}
+                  tabIndex={0}
                 >
                   Edit
-                </button>
+                </span>
               </li>
               <li>
-                <button
-                  className="text-red-500 px-2 py-1 rounded outline-none hover:text-white hover:bg-red-500 focus-ring-visible focus-visible:ring-offset-0"
+                <span
+                  className="block text-red-500 px-2 py-1 rounded outline-none hover:text-white hover:bg-red-500 focus-ring-visible focus-visible:ring-offset-0"
                   onClick={() => openSelectedOptionsModal("delete")}
+                  tabIndex={0}
                 >
                   Delete
-                </button>
+                </span>
               </li>
             </ul>
           )}

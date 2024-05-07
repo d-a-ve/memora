@@ -45,13 +45,20 @@ export async function listUserDocFromBirthdaysCol(
   }
 }
 
-export async function searchForBirthday(name: string) {
+export async function searchForBirthday({
+  name,
+  userId,
+}: {
+  name: string;
+  userId: string;
+}) {
   try {
     if (name.length === 0) return;
 
     const docs = await db.listDocuments(DB_ID, BIRTHDAYS_COL_ID, [
       query.search("person_name", name),
       query.orderAsc("person_birthday"),
+      query.equal("user_id", userId),
     ]);
 
     return docs;

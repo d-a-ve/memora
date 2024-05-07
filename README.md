@@ -9,7 +9,6 @@ This project makes use of pnpm as the package manager.
 - [x] Cloud function for sending mails daily
 - [x] Create a page loader component
 - [x] Create a button loader component
-- [x] Create a serverless function for updating the year of birthdays that have passed in the database to the next year.
 - [x] focus on password input on eye icon click
 - [x] clicking outside navbar closes the navbar
 - [x] make the opaque bg cover everything when the sidebar is open
@@ -30,9 +29,16 @@ This project makes use of pnpm as the package manager.
 - [x] fix dashboard header showing up when add birthday modal is open
 - [x] edit and delete birthdays
 - [x] send a welcome email when signing up for the first time
+- [x] fix the search birthday function returning peoples' birthday not belonging to the specific user
+- [x] fix clearing the search input showing stale data before working. It can show a loading spinner
+- [x] fix user image on dashboard header being disproportional and distorted (not too sure)
+- [x] use optimistic updates for adding and removing birthdays
+- [x] add error component for data fetching
+- [x] fix color on the inline calender showing blue. the select options shouldn't be blue. Make black. Remove the underline showing in the months part.
+- [x] remove the hover effect from the inline calender
+- [] Create a serverless function for updating the year of birthdays that have passed in the database to the next year.
 - [] do home page
 - [] add meta tags
-- [] add error component for data fetching
 - [] work on a brithday template for mailing and add to courier dashboard
 - [] feedback page with 3 options (request feat, report bug, holla the dev)
 

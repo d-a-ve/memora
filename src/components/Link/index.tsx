@@ -1,10 +1,5 @@
-import {
-  AnchorHTMLAttributes,
-  ComponentProps,
-  DetailedHTMLProps,
-  ReactNode,
-} from "react";
-import { Link } from "react-router-dom";
+import { ComponentProps, ReactNode } from "react";
+import { Link, type LinkProps } from "react-router-dom";
 
 import { VariantProps } from "class-variance-authority";
 
@@ -13,10 +8,7 @@ import { cn } from "@helpers/cn";
 import { buttonVariants } from "@components/Button";
 
 interface LinkButtonVariants
-  extends DetailedHTMLProps<
-      AnchorHTMLAttributes<HTMLAnchorElement>,
-      HTMLAnchorElement
-    >,
+  extends Omit<LinkProps, "to">,
     VariantProps<typeof buttonVariants> {}
 
 export interface LinkButtonProps extends LinkButtonVariants {

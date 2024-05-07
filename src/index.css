@@ -67,6 +67,9 @@ body {
   .focus-ring-within {
     @apply focus-within:ring focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2
   }
+  .landing-padding {
+    @apply px-16 sm:px-5 md:px-8
+  }
 }
 /* @media (prefers-color-scheme: light) {
 

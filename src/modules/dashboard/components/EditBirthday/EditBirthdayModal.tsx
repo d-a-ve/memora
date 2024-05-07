@@ -1,16 +1,10 @@
 import { FormEvent, useEffect, useRef } from "react";
 
-import { useQueryClient } from "@tanstack/react-query";
-import { getDateFromSlashSeparatedString } from "helpers/getDate";
-import getValidFormData from "helpers/getValidFormData";
-import { toastSuccess } from "helpers/toastNotifs";
+import useEditBirthdayMutation from "@modules/dashboard/hooks/useEditBirthdayMutation";
 
 import useBodyOverflow from "@hooks/useBodyOverflow";
-import { useUserQuery } from "@hooks/useUserQuery";
 
-import { updateBirthdayDocument } from "@appwrite/utils/database";
-
-import { ErrorType } from "@myTypes/index";
+import getValidFormData from "@helpers/getValidFormData";
 
 import Button from "@components/Button";
 import { CustomDateInput } from "@components/Date";
@@ -18,15 +12,6 @@ import { FormWrapper } from "@components/Form";
 import { InputWithLabel } from "@components/Input";
 import { DateInput } from "@components/Input/DateInput";
 import { ModalLayout } from "@components/Layout";
-
-import useBirthdayMutation from "../../hooks/useBirthdayMutation";
-
-type MutationFnType = {
-  name: [string, FormDataEntryValue];
-  birthdayDate: [string, FormDataEntryValue];
-};
-
-type BirthdaysDataType = Awaited<ReturnType<typeof updateBirthdayDocument>>;
 
 type EditBirthdayModalProps = {
   docId: string;
@@ -44,10 +29,11 @@ export default function EditBirthdayModal({
   oldValue,
   docId,
 }: EditBirthdayModalProps) {
-  const { data: currentUser } = useUserQuery();
-  const query = useQueryClient();
   const containerRef = useRef<HTMLDivElement>(null);
   const { resetBodyOverflow } = useBodyOverflow();
+  const {
+    mutationResult: { mutate: editBirthday },
+  } = useEditBirthdayMutation();
 
   useEffect(() => {
     const handleClickOutside = (event: PointerEvent) => {
@@ -67,27 +53,12 @@ export default function EditBirthdayModal({
     };
   }, [modal.isOpen, resetBodyOverflow]);
 
-  const { mutate: addBirthday, isPending: isBirthdayAdding } =
-    useBirthdayMutation<BirthdaysDataType, ErrorType, MutationFnType>({
-      mutationFn: ({ name, birthdayDate }) =>
-        updateBirthdayDocument(docId, {
-          person_name: name[1] as string,
-          person_birthday: getDateFromSlashSeparatedString(
-            birthdayDate[1] as string
-          ),
-        }),
-      onSuccess: () => {
-        query.invalidateQueries({ queryKey: ["birthdays", currentUser?.$id] });
-        modal.close();
-        toastSuccess("Yay, birthday has been updated successfully!!");
-      },
-    });
-
   const addBirthdaySubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { formData } = getValidFormData(e);
     const [name, birthdayDate] = formData;
-    addBirthday({ name, birthdayDate });
+    editBirthday({ name, birthdayDate, docId });
+    modal.close();
   };
 
   return (
@@ -117,7 +88,7 @@ export default function EditBirthdayModal({
             />
           </div>
           <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-1">
-            <Button isLoading={isBirthdayAdding} label="Done" type="submit" />
+            <Button label="Done" type="submit" />
             <Button
               intent="secondary"
               label="Cancel"

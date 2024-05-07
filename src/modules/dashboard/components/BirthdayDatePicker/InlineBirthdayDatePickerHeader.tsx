@@ -20,8 +20,8 @@ export function InlineBirthdayDatePickerHeader({
 }: InlineBirthdayDatePickerHeaderPropsType) {
   return (
     <DatePickerHeaderWrapper>
-      <div className="flex items-center justify-center">
-        <p className="text-fs--1 font-medium text-primary">
+      <div className="flex items-center justify-center gap-2">
+        <p className="text-fs--1 font-medium">
           Birthdays in{"  "}
         </p>
         <DatePickerHeaderSelector
