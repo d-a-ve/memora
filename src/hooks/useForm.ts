@@ -38,7 +38,7 @@ export default function useForm() {
           passwordField[1] as string
         );
         queryClient.invalidateQueries({ queryKey: ["current-user"] });
-        navigate(`/dashboard/${account.$id}?query_limit=15`);
+        navigate(`/dashboard/${account.$id}?query_limit=15`, { replace: true });
       } else {
         toastError(
           "Cannot submit the form. Please check the highlighted fields for errors and try again."
@@ -64,7 +64,7 @@ export default function useForm() {
           passwordField[1] as string
         );
         queryClient.invalidateQueries({ queryKey: ["current-user"] });
-        navigate(`/dashboard/${session.userId}/`);
+        navigate(`/dashboard/${session.userId}/`, { replace: true });
       } else {
         toastError(
           "Cannot submit the form. Please check the highlighted fields for errors and try again."

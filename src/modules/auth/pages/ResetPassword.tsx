@@ -59,7 +59,7 @@ export default function ResetPassword() {
       toastSuccess(
         "Password reset successfully, Please log in with new password"
       );
-      navigate("/login");
+      navigate("/login", { replace: true });
     } catch (error: any) {
       toastError(extractErrorMessage(error.message));
     }

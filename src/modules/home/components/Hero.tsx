@@ -1,4 +1,5 @@
 import { LinkButton } from "@components/Link";
+import LandingButton from "./LandingButton";
 
 function Hero() {
   return (
@@ -11,13 +12,8 @@ function Hero() {
           Memora helps you keep track of birthdays of your loved ones, sending
           you timely reminders to make their day special.
         </p>
-        <div>
-          <LinkButton
-            href="/login"
-            size="sm"
-            label="Get Started"
-            className="w-fit"
-          />
+        <div className="w-fit">
+          <LandingButton />
         </div>
       </div>
       <div className="w-full hero:w-1/2 hero:mx-auto md:w-3/5 sm:w-full">

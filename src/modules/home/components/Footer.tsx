@@ -28,7 +28,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#why-choose-memora"
+                  href="#how-memora-works"
                   className="block w-fit outline-none transition-all hover:text-white focus-visible:ring-offset-primary focus-visible:rounded focus-visible:text-white focus-ring-visible"
                 >
                   How Memora Work

@@ -10,7 +10,7 @@ export function UserProtectedRoute() {
 
   if (isCurrentUserLoading) return <PageLoader />;
 
-  if (!currentUser) return <Navigate to="/login" />;
+  if (!currentUser) return <Navigate to="/login" replace={true} />;
 
   return <Outlet />;
 }
@@ -19,10 +19,11 @@ export function ProtectedRouteFromAuthenticatedUser() {
   const { data: currentUser, isLoading: isCurrentUserLoading } =
     useUserQuery(0);
 
-    console.log(currentUser);
+  console.log(currentUser);
   if (isCurrentUserLoading) return <PageLoader />;
 
-  if (currentUser) return <Navigate to={`/dashboard/${currentUser.$id}/`} />;
+  if (currentUser)
+    return <Navigate to={`/dashboard/${currentUser.$id}/`} replace={true} />;
 
   return <Outlet />;
 }

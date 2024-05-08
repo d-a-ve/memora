@@ -1,7 +1,7 @@
 function HowMemoraWorks() {
   return (
     <div>
-      <section className="pt-8">
+      <section className="pt-8" id="how-memora-works">
         <div className="text-center mb-12">
           <h2 className="font-semibold text-3xl mb-2 lg:text-2xl">
             How does <span className="text-accent">Memora</span> Work?
@@ -46,7 +46,6 @@ function HowMemoraWorks() {
               </div>
             </li>
           </ul>
-          {/* Step 2: "" -  - Step 3: "" -  */}
         </div>
       </section>
     </div>

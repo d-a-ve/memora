@@ -1,4 +1,5 @@
 import { LinkButton } from "@components/Link";
+import LandingButton from "./LandingButton";
 
 function CTA() {
   return (
@@ -8,7 +9,7 @@ function CTA() {
           Ready to <span className="text-accent">Celebrate</span> Effortlessly?
         </h2>
         <div>
-          <LinkButton href="/login" size="md" label="Get Started" />
+          <LandingButton />
         </div>
       </div>
     </div>

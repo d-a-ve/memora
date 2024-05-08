@@ -1,7 +1,7 @@
 function Features() {
   return (
     <div>
-      <section>
+      <section id="why-choose-memora">
         <div className="max-w-lg mx-auto text-center mb-6">
           <h2 className="font-semibold text-3xl mb-2 lg:text-2xl">
             Why choose <span className="text-accent">Memora</span>?

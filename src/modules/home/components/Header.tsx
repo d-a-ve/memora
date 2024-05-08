@@ -1,13 +1,14 @@
 import { ElementRef, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 
 import useBodyOverflow from "@hooks/useBodyOverflow";
+import { useUserQuery } from "@hooks/useUserQuery";
 
 import { cn } from "@helpers/cn";
 import getSVGFromString from "@helpers/getSVGFromString";
 
-import { LinkButton } from "@components/Link";
 import { FullNameLogo } from "@components/Logo";
+
+import LandingButton from "./LandingButton";
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -38,6 +39,8 @@ function Header() {
       document.removeEventListener("pointerup", handleClickOutside);
     };
   }, [isMobileMenuOpen]);
+
+  const { data } = useUserQuery();
 
   return (
     <div className="border-b border-b-grey-300">
@@ -78,29 +81,31 @@ function Header() {
             </div>
             <ul className="flex h-full items-center gap-4 hero:flex-col hero:gap-12 hero:justify-center hero:max-w-lg hero:mx-auto">
               <li>
-                <Link
-                  to="#"
-                  className="text-medium outline-none relative before:absolute before:w-0 before:h-0.5 before:left-0 before:bg-accent before:bottom-0 before:transition-[width] hover:before:w-1/2 focus-ring-visible focus-visible:rounded focus-visible:text-primary"
+                <a
+                  href="#why-choose-memora"
+                  className="font-medium outline-none relative before:absolute before:w-0 before:h-0.5 before:left-0 before:bg-accent before:bottom-0 before:transition-[width] hover:before:w-1/2 focus-ring-visible focus-visible:rounded focus-visible:text-primary"
+                  onClick={closeMenu}
                 >
                   Why Choose Memora
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  to="#"
-                  className="text-medium outline-none relative before:absolute before:w-0 before:h-0.5 before:left-0 before:bg-accent before:bottom-0 before:transition-[width] hover:before:w-1/2 focus-ring-visible focus-visible:rounded focus-visible:text-primary"
+                <a
+                  href="#how-memora-works"
+                  className="font-medium outline-none relative before:absolute before:w-0 before:h-0.5 before:left-0 before:bg-accent before:bottom-0 before:transition-[width] hover:before:w-1/2 focus-ring-visible focus-visible:rounded focus-visible:text-primary"
+                  onClick={closeMenu}
                 >
                   How Memora Works
-                </Link>
+                </a>
               </li>
               <li className="hidden hero:block hero:w-full">
-                <LinkButton href="/login" label="Get Started" size="sm" />
+                <LandingButton />
               </li>
             </ul>
           </nav>
         </div>
         <div className="hero:hidden">
-          <LinkButton href="/login" label="Get Started" size="sm" />
+          <LandingButton />
         </div>
       </header>
     </div>

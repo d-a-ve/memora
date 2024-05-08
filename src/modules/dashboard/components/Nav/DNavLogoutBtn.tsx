@@ -15,7 +15,7 @@ export default function DNavLogoutBtn() {
     mutationFn: deleteSession,
     onSuccess: () => {
       queryClient.removeQueries({ queryKey: ["current-user"] });
-      navigate("/login");
+      navigate("/login", { replace: true });
     },
     onError: () => {
       toastError("Something went wrong, could not log out!!!");
@@ -33,4 +33,3 @@ export default function DNavLogoutBtn() {
     </button>
   );
 }
-``;
