@@ -3,11 +3,12 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      xl: { max: "1279px" },
-      lg: { max: "1023px" },
-      md: { max: "767px" },
-      sm: { max: "479px" },
-      xs: { max: "319px" },
+      xl: { max: "1280px" },
+      lg: { max: "1024px" },
+      hero: { max: "900px" },
+      md: { max: "768px" },
+      sm: { max: "480px" },
+      xs: { max: "320px" },
     },
     extend: {
       colors: {

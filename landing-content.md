@@ -86,8 +86,7 @@ How It Works Section:
 - Title: "How Memora Works"
 - Step 1: "Sign Up for Memora" - Create your Memora account in a few simple steps.
 - Step 2: "Add Birthdays to Your Dashboard" - Easily add birthdays of your loved ones to your Memora dashboard.
-- Step 3: "Receive Timely Reminders" - Memora sends you personalized reminders before each birthday, ensuring you never miss a celebration.
-- Step 4: "Send Birthday Wishes" - Send heartfelt birthday wishes directly from Memora, making your loved ones' day extra special.
+- Step 3: "Receive Timely Reminders" - Memora sends you personalized reminders on each birthday, ensuring you never miss a celebration.
 
 Footer Section:
 - About Us: Learn more about Memora and our mission to make birthdays unforgettable.

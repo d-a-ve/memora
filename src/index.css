@@ -57,15 +57,15 @@ body {
     @apply w-full grid grid-flow-col items-center justify-start gap-4 px-4 py-2 text-foreground hover:bg-secondary;
   }
   .focus-ring-visible {
-    @apply focus-visible:ring focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
+    @apply focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
   }
 
   .focus-ring {
-    @apply focus:ring focus:ring-2 focus:ring-accent focus:ring-offset-2
+    @apply focus:ring-2 focus:ring-accent focus:ring-offset-2
   }
 
   .focus-ring-within {
-    @apply focus-within:ring focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2
+    @apply ocus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2
   }
   .landing-padding {
     @apply px-16 sm:px-5 md:px-8

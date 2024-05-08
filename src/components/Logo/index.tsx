@@ -15,6 +15,21 @@ export function FullNameLogo() {
   );
 }
 
+export function MonoFullNameLogo() {
+  return (
+    <Link
+      to="/"
+      className="w-full h full focus-ring-visible outline-none focus-visible:ring-offset-0 block focus-visible:rounded"
+    >
+      <img
+        src="/assets/logo/mono-full-name.png"
+        alt="Memora"
+        className="w-full z-full"
+      />
+    </Link>
+  );
+}
+
 export function IconOnlyLogo() {
   return (
     <Link
