@@ -5,7 +5,6 @@ import getSVGFromString from "helpers/getSVGFromString";
 import { cn } from "@helpers/cn";
 
 import { NavOpenPropsType } from "../../types";
-import DNavLogoutBtn from "./DNavLogoutBtn";
 
 export const navLinksArray = [
   {
@@ -20,12 +19,12 @@ export const navLinksArray = [
     icon: "calender",
     to: "upcoming-birthdays",
   },
-  {
-    id: 3,
-    text: "Settings",
-    icon: "settings",
-    to: "settings",
-  },
+  // {
+  //   id: 3,
+  //   text: "Settings",
+  //   icon: "settings",
+  //   to: "settings",
+  // },
 ];
 
 export default function DNav({
@@ -38,14 +37,14 @@ export default function DNav({
   return (
     <div
       className={cn(
-        "col-span-1 transition sticky top-16 bg-white border-r border-r-gray-300 lg:fixed lg:top-0 lg:left-0 lg:bottom-0 lg:w-[250px] h-dashboard-content lg:mt-16 isolate lg:z-10 lg:border-0",
+        "col-span-1 transition sticky top-16 backdrop-blur bg-white/80 lg:fixed lg:top-0 lg:left-0 lg:bottom-0 lg:w-[250px] h-dashboard-content lg:mt-16 isolate lg:z-10 lg:border-0",
         {
           "lg:-translate-x-full": !isNavOpen,
         }
       )}
       ref={navRef}
     >
-      <nav className="py-4 flex flex-col justify-between">
+      <nav className="py-8 flex flex-col justify-between">
         <ul className="flex flex-col space-y-2">
           {navLinksArray.map(({ id, to, icon, text }) => {
             return (
@@ -56,10 +55,9 @@ export default function DNav({
                     cn(
                       "grid grid-flow-col items-center justify-start gap-3 px-4 py-2 text-foreground relative before:absolute before:w-1 before:h-full before:bg-transparent outline-none focus-ring-visible focus-visible:ring-offset-0",
                       {
-                        "bg-background text-primary before:bg-primary":
-                          isActive,
+                        "bg-accent/10 before:bg-accent": isActive,
                         "animate-pulse": isPending,
-                        "hover:text-primary": !isActive,
+                        "hover:bg-accent/10": !isActive,
                       }
                     )
                   }
@@ -72,9 +70,6 @@ export default function DNav({
             );
           })}
         </ul>
-        <div className="mt-4 border-t border-t-gray-300 pt-4">
-          <DNavLogoutBtn />
-        </div>
       </nav>
     </div>
   );

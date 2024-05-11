@@ -2,7 +2,7 @@ import { NavOpenPropsType } from "@modules/dashboard/types";
 
 import getSVGFromString from "@helpers/getSVGFromString";
 
-import { FullNameLogo } from "@components/Logo";
+import { MonoFullNameLogo } from "@components/Logo";
 
 import User from "./User";
 
@@ -15,10 +15,10 @@ export default function Header({
   logoRef?: React.RefObject<HTMLDivElement>;
 }) {
   return (
-    <div className="sticky top-0 left-0 z-1 col-start-1 col-end-13 h-16 border-b border-b-gray-300 px-4 bg-white isolate">
+    <div className="sticky top-0 left-0 z-1 col-start-1 col-end-13 h-16 px-4 bg-primary isolate text-white">
       <div className="h-full grid grid-cols-[284px,_1fr] items-center justify-between lg:flex">
         <div
-          className="flex gap-4 items-center border-r border-r-gray-300 h-full lg:border-0"
+          className="flex gap-4 items-center h-full lg:border-0"
           ref={logoRef}
         >
           <button
@@ -29,7 +29,7 @@ export default function Header({
             {getSVGFromString(isNavOpen ? "close" : "menu", 16, 16)}
           </button>
           <div className="w-28 sm:w-20 md:w-24">
-            <FullNameLogo />
+            <MonoFullNameLogo />
           </div>
         </div>
         <div className="justify-self-end">

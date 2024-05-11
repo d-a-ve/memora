@@ -19,6 +19,8 @@ function Features() {
                   src="/assets/features-birthday-reminder.svg"
                   alt="Reminder Flat illustration"
                   className="w-full h-full object-cover object-center"
+                  width={120}
+                  height={120}
                 />
               </div>
               <h3 className="font-semibold text-lg pt-2">
@@ -35,6 +37,8 @@ function Features() {
                   src="/assets/features-dashboard-management.svg"
                   alt="Reminder Flat illustration"
                   className="w-full h-full object-cover object-center"
+                  width={120}
+                  height={120}
                 />
               </div>
               <h3 className="font-semibold text-lg pt-2">
@@ -51,6 +55,8 @@ function Features() {
                   src="/assets/features-crafting-messages.svg"
                   alt="Reminder Flat illustration"
                   className="w-full h-full object-cover object-center"
+                  width={120}
+                  height={120}
                 />
               </div>
               <h3 className="font-semibold text-lg pt-2">

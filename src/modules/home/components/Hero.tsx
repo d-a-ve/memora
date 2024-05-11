@@ -1,4 +1,3 @@
-import { LinkButton } from "@components/Link";
 import LandingButton from "./LandingButton";
 
 function Hero() {
@@ -18,6 +17,8 @@ function Hero() {
       </div>
       <div className="w-full hero:w-1/2 hero:mx-auto md:w-3/5 sm:w-full">
         <img
+          width={200}
+          height={200}
           src="/assets/hero-image.svg"
           alt=""
           className="w-full object-cover object-center"

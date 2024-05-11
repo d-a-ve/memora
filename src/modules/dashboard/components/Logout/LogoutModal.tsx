@@ -1,28 +1,50 @@
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
-import useDeleteBirthdayMutation from "@modules/dashboard/hooks/useDeleteBirthdayMutation";
 
-import useBodyOverflow from "@hooks/useBodyOverflow";
+
+import { useQueryClient } from "@tanstack/react-query";
+
+
+
+import useUserMutation from "@hooks/useUserMutation";
+
+
+
+import { deleteSession } from "@appwrite/utils/userSession";
+
+
+
+import { toastError } from "@helpers/toastNotifs";
+
+
 
 import Button from "@components/Button";
 import { ModalLayout } from "@components/Layout";
 
-type DeleteBirthdayModalProps = {
-  docId: string;
+
+type LogoutModalProps = {
   modal: {
     isOpen: boolean;
     close: () => void;
   };
 };
-export default function DeleteBirthdayModal({
-  modal,
-  docId,
-}: DeleteBirthdayModalProps) {
+export default function LogoutModal({ modal }: LogoutModalProps) {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const { mutate: logUserOut, isPending: isUserLoggingOut } = useUserMutation({
+    mutationFn: deleteSession,
+    onSuccess: () => {
+      queryClient.removeQueries({ queryKey: ["current-user"] });
+      modal.close();
+      navigate("/login", { replace: true });
+    },
+    onError: () => {
+      toastError("Something went wrong, could not log out!!!");
+    },
+  });
+
   const containerRef = useRef<HTMLDivElement>(null);
-  const {
-    mutationResult: { mutate: deleteBirthday },
-  } = useDeleteBirthdayMutation();
-  const { resetBodyOverflow } = useBodyOverflow();
 
   useEffect(() => {
     const handleClickOutside = (event: PointerEvent) => {
@@ -32,7 +54,6 @@ export default function DeleteBirthdayModal({
         modal.isOpen
       ) {
         modal.close();
-        resetBodyOverflow();
       }
     };
 
@@ -40,21 +61,12 @@ export default function DeleteBirthdayModal({
     return () => {
       document.removeEventListener("pointerup", handleClickOutside);
     };
-  }, [modal.isOpen, resetBodyOverflow]);
-
-  const handleDelete = () => {
-    deleteBirthday({ docId });
-    modal.close();
-  };
+  }, [modal.isOpen]);
 
   return (
     <ModalLayout isModalOpen={modal.isOpen}>
       <div className="bg-white py-12 px-8 rounded-lg" ref={containerRef}>
-        <h2 className="mb-6 font-semibold text-fs-1">Delete Birthday</h2>
-        <p>
-          Are you sure you want to delete this birthday? This action cannot be
-          undone.
-        </p>
+        <h2 className="mb-6 font-semibold text-fs-1">Are you sure you want to log out?</h2>
         <div className="mt-2 grid grid-cols-2 gap-4 sm:flex sm:flex-col-reverse">
           <Button
             intent="secondary"
@@ -63,8 +75,9 @@ export default function DeleteBirthdayModal({
           />
           <Button
             intent="danger"
-            label="Delete"
-            onClick={() => handleDelete()}
+            label="Logout"
+            isLoading={isUserLoggingOut}
+            onClick={() => logUserOut()}
           />
         </div>
       </div>

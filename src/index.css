@@ -50,7 +50,7 @@ body {
     @apply bg-secondary rounded py-2 px-4 font-semibold text-black transition-all hover:bg-primary hover:text-white;
   }
   .input {
-    @apply w-full rounded-md border-[1.25px] border-gray-300 bg-transparent py-1.5 px-3 caret-primary shadow-sm outline-none focus:border-primary;
+    @apply w-full rounded-md border-[1.25px] border-gray-300 bg-transparent py-2.5 px-4 caret-primary shadow-sm outline-none focus:border-primary;
   }
   .search-input {
     @apply input text-fs--1 sm:py-1 sm:px-3;
@@ -59,7 +59,7 @@ body {
     @apply w-full grid grid-flow-col items-center justify-start gap-4 px-4 py-2 text-foreground hover:bg-secondary;
   }
   .focus-ring-visible {
-    @apply focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
+    @apply focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:rounded focus-visible:ring-offset-current
   }
 
   .focus-ring {

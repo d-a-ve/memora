@@ -29,7 +29,7 @@ const DashboardUpcomingBirthdays = lazy(
   () => import("@pages/dashboard/UpcomingBirthday")
 );
 const Home = lazy(() => import("@pages/Home"));
-const Settings = lazy(() => import("@pages/dashboard/Settings"));
+const Profile = lazy(() => import("@pages/dashboard/Profile"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -66,7 +66,7 @@ const router = createBrowserRouter(
               path="/dashboard/:userId/upcoming-birthdays"
               element={<DashboardUpcomingBirthdays />}
             />
-            <Route path="/dashboard/:userId/settings" element={<Settings />} />
+            <Route path="/dashboard/:userId/profile" element={<Profile />} />
           </Route>
         </Route>
       </Route>

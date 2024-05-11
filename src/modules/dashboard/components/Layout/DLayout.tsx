@@ -62,7 +62,7 @@ export default function DLayout({ children }: { children: ReactNode }) {
             )}
           >
             {isNavOpen && <div className="inset-0 absolute bg-black/30 z-10" />}
-            <div className="max-w-3xl mx-auto md:mt-4 mt-6 h-full">
+            <div className="max-w-3xl mx-auto mt-12 h-full md:mt-10">
               {children}
             </div>
           </div>

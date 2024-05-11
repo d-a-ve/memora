@@ -77,16 +77,16 @@ export default function AddBirthdayModal({
             </label>
             <DateInput customInput={<CustomDateInput id="birthdayDate" />} />
           </div>
-          <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-1">
-            <Button
-              // isLoading={isBirthdayAdding}
-              label="Add Birthday"
-              type="submit"
-            />
+          <div className="mt-2 grid grid-cols-2 gap-4 sm:flex sm:flex-col-reverse">
             <Button
               intent="secondary"
               label="Cancel"
               onClick={() => modal.close()}
+            />
+            <Button
+              // isLoading={isBirthdayAdding}
+              label="Add Birthday"
+              type="submit"
             />
           </div>
         </FormWrapper>

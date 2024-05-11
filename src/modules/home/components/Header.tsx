@@ -1,7 +1,6 @@
 import { ElementRef, useEffect, useRef, useState } from "react";
 
 import useBodyOverflow from "@hooks/useBodyOverflow";
-import { useUserQuery } from "@hooks/useUserQuery";
 
 import { cn } from "@helpers/cn";
 import getSVGFromString from "@helpers/getSVGFromString";
@@ -40,8 +39,6 @@ function Header() {
     };
   }, [isMobileMenuOpen]);
 
-  const { data } = useUserQuery();
-
   return (
     <div className="border-b border-b-grey-300">
       <header className="flex items-center justify-between py-6 landing-padding">
@@ -79,7 +76,7 @@ function Header() {
                 {getSVGFromString("close", 16, 16)}
               </button>
             </div>
-            <ul className="flex h-full items-center gap-4 hero:flex-col hero:gap-12 hero:justify-center hero:max-w-lg hero:mx-auto">
+            <ul className="flex h-full items-center gap-8 hero:flex-col hero:gap-12 hero:justify-center hero:max-w-lg hero:mx-auto">
               <li>
                 <a
                   href="#why-choose-memora"

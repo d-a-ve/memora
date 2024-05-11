@@ -1,6 +1,6 @@
 .react-datepicker {
   width: 100%;
-  border: 1px solid #d1d5db;
+  border: 1px solid rgb(229 231 235);
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05)
 }
 
@@ -9,7 +9,8 @@
 }
 
 .react-datepicker__header {
-  border-bottom-color: rgb(209 213 219);
+  background-color: color-mix(in srgb, var(--primary), white 87%);
+  border-bottom-color: transparent;
 }
 
 .react-datepicker__day-names,

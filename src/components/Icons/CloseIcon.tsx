@@ -11,7 +11,7 @@ export default function CloseIcon({ width, height }: IconPropsType) {
     >
       <path
         d="M0.75827 11.2426L6.0009 6M6.0009 6L11.2435 0.75736M6.0009 6L0.75827 0.75736M6.0009 6L11.2435 11.2426"
-        stroke="black"
+        stroke="currentColor"
         strokeWidth="1"
         strokeLinecap="round"
         strokeLinejoin="round"

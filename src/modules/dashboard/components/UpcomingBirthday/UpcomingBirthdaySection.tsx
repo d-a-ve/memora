@@ -54,10 +54,12 @@ export function UpcomingBirthdaySection({
           <h2 className="font-semibold text-fs-1 sm:mb-1">
             Upcoming Birthdays
           </h2>
-          <UpcomingBirthdaySearch
-            setSearchedBirthday={setSearchedBirthday}
-            setIsSearching={setIsSearching}
-          />
+          <div className="sm:w-full">
+            <UpcomingBirthdaySearch
+              setSearchedBirthday={setSearchedBirthday}
+              setIsSearching={setIsSearching}
+            />
+          </div>
         </div>
         {isSearching && (
           <div className="fill-primary text-background flex justify-center py-6">
@@ -113,7 +115,7 @@ export function UpcomingBirthdaySection({
 
             {(shouldSeeMoreSearchedBirthdaysLinkShow ||
               shouldSeeMoreBirthdaysLinkShow) && (
-              <p className="mt-8 text-center">
+              <p className="mt-8 text-center text-white">
                 <LinkButton
                   className="text-fs--1"
                   href={showMoreBirthdays.linkToSeeMoreBirthdays}

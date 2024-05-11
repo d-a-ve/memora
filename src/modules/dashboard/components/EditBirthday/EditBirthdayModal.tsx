@@ -87,13 +87,13 @@ export default function EditBirthdayModal({
               selectedDate={new Date(oldValue.birthday)}
             />
           </div>
-          <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-1">
-            <Button label="Done" type="submit" />
+          <div className="mt-2 grid grid-cols-2 gap-4 sm:flex sm:flex-col-reverse">
             <Button
               intent="secondary"
               label="Cancel"
               onClick={() => modal.close()}
             />
+            <Button label="Done" type="submit" />
           </div>
         </FormWrapper>
       </div>

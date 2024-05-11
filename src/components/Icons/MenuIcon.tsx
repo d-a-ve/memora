@@ -12,21 +12,21 @@ export default function MenuIcon({ width, height }: IconPropsType) {
       >
         <path
           d="M1 1H19"
-          stroke="black"
+          stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M1 8H19"
-          stroke="black"
+          stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M1 15H19"
-          stroke="black"
+          stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"

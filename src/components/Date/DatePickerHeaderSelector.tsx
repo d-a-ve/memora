@@ -14,7 +14,7 @@ export default function DatePickerHeaderSelector({
   return (
     <div className="relative">
       <select
-        className="text-base text-center font-medium bg-background/50 px-2 py-0.5 rounded border border-gray-300 appearance-none focus-ring-visible outline-none focus-visible:ring-offset-0 rounded-t-none cursor-pointer focus-visible:rounded"
+        className="text-lg text-center font-medium bg-background/50 px-2 py-1 rounded border border-gray-300 appearance-none focus-ring-visible outline-none focus-visible:ring-offset-0 cursor-pointer"
         value={selectValue}
         onChange={onChangeHandler}
       >

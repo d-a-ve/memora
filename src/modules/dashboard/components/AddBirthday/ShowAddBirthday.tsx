@@ -12,21 +12,25 @@ export default function ShowAddBirthday({
   switch (showMode.mode) {
     case "text":
       return (
-        <p>
-          {showMode.text}{" "}
-          <button
+        <div className="space-y-6">
+          <p>{showMode.text}</p>
+          <Button
             onClick={() => modal.open()}
-            className="text-primary cursor-pointer hover:underline"
-          >
-            {showMode.openModalText}
-          </button>
-        </p>
+            size="sm"
+            label={showMode.openModalText}
+          />
+        </div>
       );
 
     case "button":
       return (
         <div className="fixed right-8 bottom-8">
-          <Button size="sm" label="+" onClick={() => modal.open()} />
+          <Button
+            size="sm"
+            label="+"
+            className="text-xl px-3 py-1 font-semibold"
+            onClick={() => modal.open()}
+          />
         </div>
       );
 

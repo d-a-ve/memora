@@ -76,7 +76,7 @@ export function UpcomingBirthdayCard({
         <div className="w-10 h-10 rounded-lg overflow-hidden bg-background">
           <img src={initials.href} alt={`${name} initials`} />
         </div>
-        <div className="ml-2">
+        <div className="ml-3">
           <p className="font-semibold leading-tight mb-1">{name}</p>
           <p>
             <span className="text-fs-1">{day}</span>.{monthName}

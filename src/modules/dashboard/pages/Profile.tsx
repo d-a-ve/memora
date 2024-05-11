@@ -21,7 +21,7 @@ import CardSectionLayout from "../components/Layout/CardSectionLayout";
 
 type UpdateCurrentUserNameMutationFn = { name: string };
 
-export default function Settings() {
+export default function Profile() {
   const queryClient = useQueryClient();
   const { data: currentUser } = useUserQuery();
   const [isFormEditable, setIsFormEditable] = useState(false);
