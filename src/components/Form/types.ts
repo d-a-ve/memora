@@ -1,4 +1,4 @@
-import { ReactNode, FormEvent } from "react";
+import { ReactNode, FormEvent, RefObject } from "react";
 
 export type FormHeaderType = {
   headerTitle: string;
@@ -10,4 +10,5 @@ export type FormHeaderType = {
 export type FormWrapperType = {
   submitFunction: ((e: FormEvent<HTMLFormElement>) => void) | undefined;
   children: ReactNode;
+  formRef?: RefObject<HTMLFormElement>;
 };

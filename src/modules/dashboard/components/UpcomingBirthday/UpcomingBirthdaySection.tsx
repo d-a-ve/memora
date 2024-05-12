@@ -4,6 +4,8 @@ import filterUpcomingBirthdaysFromCurrentDate from "helpers/filterUpcomingBirthd
 
 import useAddBirthdayMutation from "@modules/dashboard/hooks/useAddBirthdayMutation";
 
+import { getDateFromSlashSeparatedString } from "@helpers/getDate";
+
 import { birthdayDataType } from "@myTypes/index";
 
 import { LinkButton } from "@components/Link";
@@ -68,7 +70,7 @@ export function UpcomingBirthdaySection({
         )}
         {!isSearching && (
           <div>
-            <div className="space-y-3 divide-y divide-y-grey-300">
+            <div>
               {/* to optimistically show new birthday added to the list immediately */}
               {mutationVariables.length > 0 && (
                 <div className="opacity-50">
@@ -76,9 +78,9 @@ export function UpcomingBirthdaySection({
                     key={mutationVariables[0].name[1] as string}
                     docId={mutationVariables[0].name[1] as string}
                     name={mutationVariables[0].name[1] as string}
-                    birthday={`${
-                      mutationVariables[0].birthdayDate[1]
-                    }/${new Date().getFullYear()}`}
+                    birthday={`${getDateFromSlashSeparatedString(
+                      mutationVariables[0].birthdayDate[1] as string
+                    )}`}
                   />
                 </div>
               )}
@@ -90,14 +92,21 @@ export function UpcomingBirthdaySection({
                   // if undefined, show all birthdays
                   showMoreBirthdays && showMoreBirthdays.numOfBirthdaysToShow
                 )
-                ?.map((doc) => {
+                ?.map((doc, i, arr) => {
                   return (
-                    <UpcomingBirthdayCard
-                      key={doc.$id}
-                      docId={doc.$id}
-                      name={doc.person_name}
-                      birthday={doc.person_birthday}
-                    />
+                    <div key={doc.$id}>
+                      <UpcomingBirthdayCard
+                        docId={doc.$id}
+                        name={doc.person_name}
+                        birthday={doc.person_birthday}
+                      />
+                      {arr.length - 1 !== i && (
+                        <div
+                          aria-hidden="true"
+                          className="w-full my-3 h-[1px] bg-gray-200"
+                        ></div>
+                      )}
+                    </div>
                   );
                 })}
             </div>

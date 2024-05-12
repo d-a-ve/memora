@@ -60,8 +60,8 @@ export default function Profile() {
 
   return (
     <CardSectionLayout>
-      <h1 className="text-fs-1 mb-1">Profile</h1>
-      <p className="text-fs--2">Manage settings for your account</p>
+      <h1 className="font-semibold text-fs-1 sm:mb-1 mb-1">Profile</h1>
+      <p className="text-fs--1">Manage settings for your account</p>
       <div className="mt-8 relative before:w-full before:h-[1px] before:bg-gray-300 before:absolute before:-top-4">
         <div className="max-w-lg">
           <FormWrapper submitFunction={submitHandler}>

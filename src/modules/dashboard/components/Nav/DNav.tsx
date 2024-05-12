@@ -19,12 +19,12 @@ export const navLinksArray = [
     icon: "calender",
     to: "upcoming-birthdays",
   },
-  // {
-  //   id: 3,
-  //   text: "Settings",
-  //   icon: "settings",
-  //   to: "settings",
-  // },
+  {
+    id: 3,
+    text: "Feedback",
+    icon: "settings",
+    to: "feedback",
+  },
 ];
 
 export default function DNav({

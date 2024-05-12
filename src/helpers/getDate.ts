@@ -4,7 +4,6 @@ import {
   getDate,
   getMonth,
   getYear,
-  isPast,
   isToday,
   isTomorrow,
 } from "date-fns";
@@ -12,11 +11,8 @@ import {
 import { calenderMonths } from "@constants/index";
 
 export function getDateFromSlashSeparatedString(birthdayDate: string) {
-  const d = new Date();
-  let year = d.getFullYear();
+  const year = new Date().getFullYear();
   const [day, month] = birthdayDate.split("/").map((date) => Number(date));
-
-  if (isPast(new Date(year, month - 1, day))) year = year + 1;
 
   const formattedDate = formatISO(new Date(year, month - 1, day), {
     representation: "date",

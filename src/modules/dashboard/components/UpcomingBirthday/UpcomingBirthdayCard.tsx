@@ -1,6 +1,6 @@
 import { ElementRef, useEffect, useRef, useState } from "react";
 
-import { getDateFromDateString, getDaysLeft } from "helpers/getDate";
+import { getDateFromDateString, getDateFromSlashSeparatedString, getDaysLeft } from "helpers/getDate";
 
 import useEditBirthdayMutation from "@modules/dashboard/hooks/useEditBirthdayMutation";
 
@@ -63,7 +63,7 @@ export function UpcomingBirthdayCard({
   return (
     <div
       className={cn(
-        "flex items-center justify-between gap-2 text-fs--1 pt-4 px-3",
+        "flex items-center justify-between gap-2 text-fs--1 py-2 b-accent px-3",
         {
           "bg-accent text-background rounded-md": timeLeft === "Today 🎉",
           "animate-pulse":
