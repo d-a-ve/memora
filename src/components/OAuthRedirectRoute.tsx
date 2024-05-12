@@ -9,7 +9,6 @@ export function OAuthRedirectRoute() {
     isError,
   } = useUserQuery(0);
 
-  console.log(currentUser);
   if (isCurrentUserLoading)
     return (
       <div className="h-screen flex items-center justify-center">

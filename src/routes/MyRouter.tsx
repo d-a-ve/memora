@@ -54,8 +54,8 @@ const router = createBrowserRouter(
           <Route path="signup" element={<Signup />} />
           <Route path="forgot-password" element={<ForgotPassword />} />
           <Route path="reset-password" element={<ResetPassword />} />
-          <Route path="oauth" element={<OAuthRedirectRoute />} />
         </Route>
+        <Route path="oauth" element={<OAuthRedirectRoute />} />
       </Route>
 
       <Route element={<UserProtectedRoute />}>

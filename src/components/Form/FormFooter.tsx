@@ -1,8 +1,11 @@
+import { useQueryClient } from "@tanstack/react-query";
+
 import { AUTHMETHODS } from "@constants/index";
 
 import Button from "@components/Button";
 
 export function FormFooter() {
+  const queryClient = useQueryClient();
   return (
     <div>
       <div className="flex flex-col gap-4 mb-6">
@@ -11,7 +14,10 @@ export function FormFooter() {
             key={method.id}
             intent="secondary"
             label={method.name}
-            onClick={method.clickFunction}
+            onClick={() => {
+              queryClient.invalidateQueries({ queryKey: ["current-user"] });
+              method.clickFunction();
+            }}
             leftIcon={
               <img
                 className="w-5 h-5"
