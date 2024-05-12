@@ -53,7 +53,7 @@ This project makes use of pnpm as the package manager.
 - [x] remove the divider class from the upcoming birthday section and use en element beneath each card
 - [x] fix date error when adding new date
 - [x] feedback page with 3 options (request feat, report bug, holla the dev)
-- [] Create a serverless function for updating the year of birthdays that have passed in the database to the next year.
+- [x] Create a serverless function for updating the year of birthdays that have passed in the database to the next year.
 - [] change the loading state for protecting routes from authenticated user to use a popup at the right corner like linkedIn and popular apps do it
 - [] add meta tags
 - [] show all birthdays received from backend on the calender (seems not possible yet)
