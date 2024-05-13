@@ -13,14 +13,12 @@ export default function getInputError(inputType: string, value: string) {
         "Invalid email format. Please enter a valid email address e.g example@gmail.com";
       break;
     case "password":
-      pattern =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+      pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,}$/;
       errorMessage =
         "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one symbol with a minimum of 6 characters.";
       break;
     case "c-password":
-      pattern =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+      pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,}$/;
       errorMessage =
         "Passwords do not match. Please re-enter the same password in both fields.";
       break;

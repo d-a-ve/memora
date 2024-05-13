@@ -15,8 +15,12 @@ export function PasswordInput() {
 
   return (
     <div className="flex flex-col gap-2">
-      <label className="input-label" htmlFor="password-input">
-        Password
+      <label className="input-label grid gap-1" htmlFor="password-input">
+        <span>Password</span>
+        <span className="text-sm text-gray-500">
+          It must contain one uppercase letter, one lowercase letter, one
+          number, one special character, and be at least 8 characters long
+        </span>
       </label>
       <InputWithEyeIcon
         changeHandler={(e) => setInputValue(e.target.value)}
