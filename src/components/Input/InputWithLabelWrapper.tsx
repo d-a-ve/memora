@@ -24,7 +24,7 @@ export function InputWithLabelWrapper({
   return (
     <div className="flex flex-col gap-2">
       <div className="flex justify-between items-center">
-        <label className="input-label" htmlFor={`${labelFor}-input`}>
+        <label className="font-medium text-base" htmlFor={`${labelFor}-input`}>
           {labelText}
         </label>
         {children}

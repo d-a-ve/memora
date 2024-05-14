@@ -16,7 +16,7 @@ export function ConfirmPasswordInput() {
 
   return (
     <div className="flex flex-col gap-2">
-      <label className="input-label" htmlFor="c-password-input">
+      <label className="font-medium text-base" htmlFor="c-password-input">
         Confirm Password
       </label>
       <InputWithEyeIcon

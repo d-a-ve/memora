@@ -79,7 +79,7 @@ export default function EditBirthdayModal({
             defaultValue={oldValue.name}
           />
           <div className="flex flex-col gap-2">
-            <label className="input-label" htmlFor="birthdayDate">
+            <label className="font-medium text-base" htmlFor="birthdayDate">
               Select birthday
             </label>
             <DateInput

@@ -87,7 +87,7 @@ function Feedback() {
         <div className="max-w-lg">
           <FormWrapper submitFunction={submitHandler} formRef={formRef}>
             <div className="flex flex-col gap-2">
-              <label htmlFor="type" className="input-label">
+              <label htmlFor="type" className="font-medium text-base">
                 Select an option
               </label>
               <div className="relative">
@@ -144,7 +144,7 @@ function Feedback() {
               </p>
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="message" className="input-label">
+              <label htmlFor="message" className="font-medium text-base">
                 Message
               </label>
               <textarea

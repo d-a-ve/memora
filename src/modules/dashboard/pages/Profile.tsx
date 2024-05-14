@@ -66,7 +66,7 @@ export default function Profile() {
         <div className="max-w-lg">
           <FormWrapper submitFunction={submitHandler}>
             <div className="flex flex-col gap-2">
-              <label htmlFor="name-input" className="input-label">
+              <label htmlFor="name-input" className="font-medium text-base">
                 Name
               </label>
               <Input

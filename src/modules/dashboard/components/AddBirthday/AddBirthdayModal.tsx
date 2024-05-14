@@ -72,7 +72,7 @@ export default function AddBirthdayModal({
             placeHolder="John Doe"
           />
           <div className="flex flex-col gap-2">
-            <label className="input-label" htmlFor="birthdayDate">
+            <label className="font-medium text-base" htmlFor="birthdayDate">
               Select birthday
             </label>
             <DateInput customInput={<CustomDateInput id="birthdayDate" />} />
